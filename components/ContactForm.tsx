@@ -183,6 +183,11 @@ export default function ContactForm() {
 
   const onSubmit = async (e: FormEvent) => {
     e.preventDefault();
+    // Guard: only submit on the final step. Enter key on earlier steps advances instead.
+    if (step !== 3) {
+      onContinue();
+      return;
+    }
     // Final guard: re-validate all required steps.
     const e0 = validateStep(0);
     const e1 = validateStep(1);
@@ -268,7 +273,7 @@ export default function ContactForm() {
       html:
         `<strong>Done!</strong> Your enquiry was ` +
         (bits.length ? bits.join(" and ") : "received") +
-        `. I opened <strong>WhatsApp</strong> with everything pre-filled: just press send there and it lands straight on my phone.` +
+        `. Tap <strong>WhatsApp</strong> below — everything's pre-filled, just press send and it lands straight on my phone.` +
         `<div class="channel-row">` +
         `<a class="ch-btn wa" target="_blank" rel="noopener" href="${wa}"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.5 8.5 0 0 1-12.4 7.5L3 21l2-5.4A8.5 8.5 0 1 1 21 11.5z"/></svg>WhatsApp</a>` +
         `<a class="ch-btn mail" href="${mail}"><svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>Email app</a>` +
