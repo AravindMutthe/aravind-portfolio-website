@@ -271,9 +271,10 @@ export default function ContactForm() {
     setStatus({
       ok: true,
       html:
-        `<strong>Done!</strong> Your enquiry was ` +
+        `<strong>Thank you, ${n.split(" ")[0]}!</strong> Your enquiry has been ` +
         (bits.length ? bits.join(" and ") : "received") +
-        `. Tap <strong>WhatsApp</strong> below — everything's pre-filled, just press send and it lands straight on my phone.` +
+        `. I appreciate you reaching out — I'll personally review your project details and get back to you shortly.` +
+        `<br><br>Tap <strong>WhatsApp</strong> below — everything's pre-filled, just press send and it lands straight on my phone.` +
         `<div class="channel-row">` +
         `<a class="ch-btn wa" target="_blank" rel="noopener" href="${wa}"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.5 8.5 0 0 1-12.4 7.5L3 21l2-5.4A8.5 8.5 0 1 1 21 11.5z"/></svg>WhatsApp</a>` +
         `<a class="ch-btn mail" href="${mail}"><svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>Email app</a>` +

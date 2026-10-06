@@ -25,15 +25,15 @@ export const metadata: Metadata = {
   title: "Aravind Mutte — Cloud DevOps & SRE Engineer",
   description:
     "Aravind Mutte — Cloud DevOps & Site Reliability Engineer (AWS, Azure, Kubernetes, Terraform), Hyderabad, India. Available for freelance projects and full-time roles.",
-  metadataBase: new URL("https://aravind-portfolio-next.vercel.app"),
+  metadataBase: new URL("https://aravind-portfolio.vercel.app"),
   alternates: {
-    canonical: "https://aravind-portfolio-next.vercel.app",
+    canonical: "https://aravind-portfolio.vercel.app",
   },
   openGraph: {
     title: "Aravind Mutte — Cloud DevOps & SRE Engineer",
     description:
       "Cloud DevOps & Site Reliability Engineer (AWS, Azure, Kubernetes, Terraform), Hyderabad, India. Available for freelance projects and full-time roles.",
-    url: "https://aravind-portfolio-next.vercel.app",
+    url: "https://aravind-portfolio.vercel.app",
     siteName: "Aravind Mutte",
     locale: "en_IN",
     type: "website",
@@ -58,7 +58,7 @@ const PERSON_SCHEMA = {
     addressCountry: "IN",
   },
   email: "mailto:mutthe.aravind@gmail.com",
-  url: "https://aravind-portfolio-next.vercel.app",
+  url: "https://aravind-portfolio.vercel.app",
   sameAs: [
     "https://linkedin.com/in/aravindmutte",
     "https://github.com/AravindMutthe",
