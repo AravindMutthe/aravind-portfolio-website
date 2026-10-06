@@ -255,8 +255,7 @@ export default function ContactForm() {
 
     const [apiOk, emailOk] = await Promise.all([apiPromise, emailPromise]);
 
-    // 3) Open WhatsApp with the enquiry pre-filled — one tap sends it to him.
-    window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(summary)}`, "_blank");
+    // 3) WhatsApp handoff is manual via the buttons below (auto-open is blocked on iOS).
 
     setSending(false);
     const bits: string[] = [];
