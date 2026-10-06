@@ -4,6 +4,7 @@ import CtaBand from "@/components/CtaBand";
 import ParallaxPoster from "@/components/ParallaxPoster";
 import PageHero from "@/components/sections/PageHero";
 import SkillsPanels from "@/components/sections/SkillsPanels";
+import TechShowcase from "@/components/sections/TechShowcase";
 
 export const metadata: Metadata = {
   title: "Skills — Aravind Mutte",
@@ -38,6 +39,16 @@ export default function SkillsPage() {
       </div>
 
       <SkillsPanels />
+
+      <TechShowcase
+        eyebrow="Under the hood"
+        title={
+          <>
+            The stack behind <span className="grad">this site.</span>
+          </>
+        }
+        sub="The same modern tools I use for client work — this portfolio is built with them."
+      />
 
       <CtaBand
         title={

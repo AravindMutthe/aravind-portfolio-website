@@ -3,12 +3,24 @@ import CtaBand from "@/components/CtaBand";
 import ParallaxPoster from "@/components/ParallaxPoster";
 import HomeHero from "@/components/sections/HomeHero";
 import HomeFeatures from "@/components/sections/HomeFeatures";
+import HowIWork from "@/components/sections/HowIWork";
+import TechShowcase from "@/components/sections/TechShowcase";
 
 export default function HomePage() {
   return (
     <>
       <HomeHero />
       <HomeFeatures />
+      <HowIWork />
+      <TechShowcase
+        eyebrow="Tech stack"
+        title={
+          <>
+            Built with <span className="grad">modern tech.</span>
+          </>
+        }
+        sub="The trending tools behind this site and the production systems I ship — every logo the real thing."
+      />
 
       <section className="block" style={{ paddingTop: 0 }}>
         <div className="wrap">
