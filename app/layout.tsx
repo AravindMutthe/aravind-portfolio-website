@@ -72,11 +72,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={`${fraunces.variable} ${inter.variable}`}>
       <head>
-        {/* Plausible analytics — confirm aravind-portfolio-next.vercel.app as the domain in Plausible (free tier) for stats to appear. */}
+        {/* Cloudflare Web Analytics — free. Get your token at dash.cloudflare.com → Web Analytics → Add a site, then replace CF_BEACON_TOKEN below. */}
         <script
           defer
-          data-domain="aravind-portfolio-next.vercel.app"
-          src="https://plausible.io/js/script.js"
+          src="https://static.cloudflareinsights.com/beacon.min.js"
+          data-cf-beacon='{"token": "CF_BEACON_TOKEN"}'
         />
         <script
           type="application/ld+json"
