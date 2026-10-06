@@ -7,18 +7,7 @@ import {
   type FormEvent,
   type MouseEvent as ReactMouseEvent,
 } from "react";
-import { AXON_API, RECAPTCHA_KEY } from "./data";
-
-declare global {
-  interface Window {
-    grecaptcha?: {
-      enterprise: {
-        ready: (cb: () => void) => void;
-        execute: (siteKey: string, opts: { action: string }) => Promise<string>;
-      };
-    };
-  }
-}
+import { AXON_API } from "./data";
 
 interface Msg {
   id: number;
@@ -235,31 +224,10 @@ export default function ChatBot() {
     };
   }, [open ]);
 
-  const getToken = (): Promise<string | null> =>
-    new Promise((resolve) => {
-      const t0 = Date.now();
-      const tryExec = () => {
-        if (window.grecaptcha?.enterprise) {
-          window.grecaptcha.enterprise.ready(() => {
-            window
-              .grecaptcha!.enterprise.execute(RECAPTCHA_KEY, { action: "lead_submit" })
-              .then((t) => resolve(t))
-              .catch(() => resolve(null));
-          });
-        } else if (Date.now() - t0 < 8000) {
-          setTimeout(tryExec, 300);
-        } else {
-          resolve(null);
-        }
-      };
-      tryExec();
-    });
-
   const captureLead = async (email: string) => {
     setBusy(true);
     setTyping(true);
     try {
-      const token = await getToken();
       const res = await fetch(`${AXON_API}/api/leads`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -268,7 +236,6 @@ export default function ChatBot() {
           email,
           message: "Requested follow-up via site chatbot",
           source: "chatbot",
-          recaptchaToken: token,
         }),
       });
       const j = await res.json().catch(() => null);

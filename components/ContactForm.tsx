@@ -1,16 +1,11 @@
 "use client";
 
 import { useRef, useState, type FormEvent } from "react";
-import { AXON_API, EMAIL, RECAPTCHA_KEY, WA_NUMBER } from "./data";
+import { AXON_API, EMAIL, WA_NUMBER } from "./data";
 
 declare global {
   interface Window {
-    grecaptcha?: {
-      enterprise: {
-        ready: (cb: () => void) => void;
-        execute: (siteKey: string, opts: { action: string }) => Promise<string>;
-      };
-    };
+    // reCAPTCHA removed — using honeypot instead for mobile reliability
   }
 }
 
@@ -129,26 +124,6 @@ export default function ContactForm() {
     }
   };
 
-  const getToken = (): Promise<string | null> =>
-    new Promise((resolve) => {
-      const t0 = Date.now();
-      const tryExec = () => {
-        if (window.grecaptcha?.enterprise) {
-          window.grecaptcha.enterprise.ready(() => {
-            window
-              .grecaptcha!.enterprise.execute(RECAPTCHA_KEY, { action: "lead_submit" })
-              .then((t) => resolve(t))
-              .catch(() => resolve(null));
-          });
-        } else if (Date.now() - t0 < 8000) {
-          setTimeout(tryExec, 300);
-        } else {
-          resolve(null);
-        }
-      };
-      tryExec();
-    });
-
   const buildSummary = (): string => {
     const org = company.trim();
     const rl = role.trim();
@@ -205,10 +180,8 @@ export default function ContactForm() {
     setSending(true);
     setStatus(null);
 
-    // 1) Save to Supabase via the Axon lead API (bot-checked with reCAPTCHA).
+    // 1) Save to Supabase via the Axon lead API (honeypot bot check).
     const apiPromise = (async () => {
-      const token = await getToken();
-      if (!token) return false;
       try {
         const res = await fetch(`${AXON_API}/api/leads`, {
           method: "POST",
@@ -218,7 +191,7 @@ export default function ContactForm() {
             email: em,
             message: summary,
             source: "portfolio",
-            recaptchaToken: token,
+            website: honey, // honeypot — must be empty
           }),
         });
         const j = await res.json().catch(() => null);

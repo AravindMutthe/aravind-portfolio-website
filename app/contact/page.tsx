@@ -1,11 +1,9 @@
 import type { Metadata } from "next";
-import Script from "next/script";
 import Reveal from "@/components/Reveal";
 import ParallaxPoster from "@/components/ParallaxPoster";
 import PageHero from "@/components/sections/PageHero";
 import ContactSection from "@/components/sections/ContactSection";
 import BookACall from "@/components/sections/BookACall";
-import { RECAPTCHA_KEY } from "@/components/data";
 
 export const metadata: Metadata = {
   title: "Contact — Aravind Mutte",
@@ -16,11 +14,6 @@ export const metadata: Metadata = {
 export default function ContactPage() {
   return (
     <>
-      <Script
-        src={`https://www.google.com/recaptcha/enterprise.js?render=${RECAPTCHA_KEY}`}
-        strategy="lazyOnload"
-      />
-
       <PageHero
         num="05"
         eyebrow="Contact"

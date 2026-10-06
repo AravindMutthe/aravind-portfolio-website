@@ -2,48 +2,17 @@
 
 import { useState, type FormEvent } from "react";
 import Reveal from "@/components/Reveal";
-import { AXON_API, RECAPTCHA_KEY } from "@/components/data";
-
-declare global {
-  interface Window {
-    grecaptcha?: {
-      enterprise: {
-        ready: (cb: () => void) => void;
-        execute: (siteKey: string, opts: { action: string }) => Promise<string>;
-      };
-    };
-  }
-}
+import { AXON_API } from "@/components/data";
 
 /** Lead magnet band — free "Production Readiness Checklist" PDF in exchange for
  *  name + email. Writes to the same Supabase leads table via the Axon API
- *  with source='lead-magnet'. Same reCAPTCHA pattern as ContactForm. */
+ *  with source='lead-magnet'. Uses honeypot bot check (no reCAPTCHA). */
 export default function LeadMagnet() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [sending, setSending] = useState(false);
   const [done, setDone] = useState(false);
   const [error, setError] = useState<string | null>(null);
-
-  const getToken = (): Promise<string | null> =>
-    new Promise((resolve) => {
-      const t0 = Date.now();
-      const tryExec = () => {
-        if (window.grecaptcha?.enterprise) {
-          window.grecaptcha.enterprise.ready(() => {
-            window
-              .grecaptcha!.enterprise.execute(RECAPTCHA_KEY, { action: "lead_submit" })
-              .then((t) => resolve(t))
-              .catch(() => resolve(null));
-          });
-        } else if (Date.now() - t0 < 8000) {
-          setTimeout(tryExec, 300);
-        } else {
-          resolve(null);
-        }
-      };
-      tryExec();
-    });
 
   const onSubmit = async (e: FormEvent) => {
     e.preventDefault();
@@ -56,7 +25,6 @@ export default function LeadMagnet() {
     setSending(true);
     setError(null);
     try {
-      const token = await getToken();
       const res = await fetch(`${AXON_API}/api/leads`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -65,7 +33,6 @@ export default function LeadMagnet() {
           email: em,
           message: "Requested: Production Readiness Checklist",
           source: "lead-magnet",
-          recaptchaToken: token,
         }),
       });
       const j = await res.json().catch(() => null);
