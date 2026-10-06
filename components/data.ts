@@ -61,8 +61,6 @@ export interface SocialLink {
 export const FAB_LINKS: SocialLink[] = [
   { label: "WhatsApp", href: "https://wa.me/919885189951", external: true, img: "https://cdn.simpleicons.org/whatsapp", imgAlt: "WhatsApp logo" },
   { label: "Email", href: "mailto:mutthe.aravind@gmail.com", svg: '<rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/>' },
-  { label: "Call", href: "tel:+919885189951", svg: '<path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.13.96.36 1.9.7 2.8a2 2 0 0 1-.45 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.45c.9.34 1.84.57 2.8.7A2 2 0 0 1 22 16.9z"/>' },
-  { label: "SMS", href: "sms:+919885189951", svg: '<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M8 9h8M8 12h5"/>' },
   { label: "LinkedIn", href: "https://linkedin.com/in/aravindmutte", external: true, img: "https://commons.wikimedia.org/wiki/Special:FilePath/LinkedIn_logo_initials.png", imgAlt: "LinkedIn logo" },
   { label: "X", href: "https://x.com/aravind_mutthe", external: true, img: "https://cdn.simpleicons.org/x", imgAlt: "X logo" },
 ];

@@ -58,7 +58,6 @@ const PERSON_SCHEMA = {
     addressCountry: "IN",
   },
   email: "mailto:mutthe.aravind@gmail.com",
-  telephone: "+91-9885189951",
   url: "https://aravind-portfolio-next.vercel.app",
   sameAs: [
     "https://linkedin.com/in/aravindmutte",
