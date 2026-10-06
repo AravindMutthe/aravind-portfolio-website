@@ -4,6 +4,7 @@ import Reveal from "@/components/Reveal";
 import ParallaxPoster from "@/components/ParallaxPoster";
 import PageHero from "@/components/sections/PageHero";
 import ContactSection from "@/components/sections/ContactSection";
+import BookACall from "@/components/sections/BookACall";
 import { RECAPTCHA_KEY } from "@/components/data";
 
 export const metadata: Metadata = {
@@ -50,6 +51,8 @@ export default function ContactPage() {
       </div>
 
       <ContactSection />
+
+      <BookACall />
     </>
   );
 }

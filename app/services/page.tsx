@@ -4,6 +4,7 @@ import CtaBand from "@/components/CtaBand";
 import ParallaxPoster from "@/components/ParallaxPoster";
 import PageHero from "@/components/sections/PageHero";
 import ServicesGrid from "@/components/sections/ServicesGrid";
+import ServicesFaq from "@/components/sections/ServicesFaq";
 
 export const metadata: Metadata = {
   title: "Services — Aravind Mutte",
@@ -38,6 +39,8 @@ export default function ServicesPage() {
       </div>
 
       <ServicesGrid />
+
+      <ServicesFaq />
 
       <CtaBand
         title={

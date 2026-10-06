@@ -35,7 +35,7 @@ export default function AboutPage() {
           <ParallaxPoster className="poster poster-band tight">
             <img
               src="img/about-visual.jpg"
-              alt="Abstract portrait of engineering craft with orange duotone"
+              alt="Abstract portrait of engineering craft with navy duotone"
               loading="lazy"
             />
           </ParallaxPoster>

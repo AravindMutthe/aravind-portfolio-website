@@ -766,3 +766,34 @@ footer{border-top:1px solid var(--line-soft);margin-top:40px;background:var(--bg
   .how-grid{grid-template-columns:1fr}
   .pipe-arrow{margin:0 6px}
 }
+
+/* ---------- projects page ---------- */
+.proj-list{display:grid;gap:28px}
+.proj-card{padding:32px}
+.proj-tagline{font-size:17px;color:var(--muted);margin:-6px 0 18px}
+.proj-h{font-family:var(--font-fraunces);font-size:15px;font-weight:600;color:var(--navy);margin:20px 0 8px;letter-spacing:.02em}
+.proj-list-ul{margin:0 0 6px;padding-left:20px}
+.proj-list-ul li{margin:6px 0;color:var(--ink);font-size:15px;line-height:1.6}
+.proj-stack{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 6px}
+.proj-link{display:inline-block;margin-top:10px;font-weight:600;color:var(--navy);text-decoration:none;border-bottom:2px solid var(--gold);padding-bottom:2px}
+.proj-link:hover{color:var(--accent)}
+
+/* ---------- book a call ---------- */
+.book-card{display:grid;grid-template-columns:1fr 1.1fr;gap:32px;align-items:start;background:#fff;border:1px solid var(--line);border-radius:20px;padding:36px;box-shadow:0 12px 40px rgba(27,47,75,.08)}
+.book-copy h2{font-family:var(--font-fraunces);font-size:clamp(26px,3.4vw,36px);font-weight:600;margin:10px 0 12px;color:var(--navy)}
+.book-copy p{color:var(--ink);line-height:1.65;margin:0 0 20px}
+.book-embed{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--paper);min-height:560px}
+@media(max-width:900px){.book-card{grid-template-columns:1fr;padding:24px}}
+
+/* ---------- services FAQ ---------- */
+.faq-accordion{margin-top:20px}
+.faq-accordion .cds--accordion__heading{font-weight:600;color:var(--navy)}
+.faq-accordion .cds--accordion__content p{color:var(--ink);line-height:1.7;margin:0}
+
+/* ---------- resume button ---------- */
+.sbtn-resume{background:var(--navy);color:#fff;border-color:var(--navy)}
+.sbtn-resume:hover{background:var(--accent);border-color:var(--accent);color:#fff}
+.sbtn-resume svg{stroke:#fff}
+
+/* ---------- a11y: focus visibility ---------- */
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,[tabindex]:focus-visible{outline:3px solid var(--gold);outline-offset:2px;border-radius:4px}

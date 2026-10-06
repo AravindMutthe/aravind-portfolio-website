@@ -96,6 +96,9 @@ export default function Navbar() {
           <Link href="/experience" className={isActive("/experience") ? "active" : ""}>
             Experience
           </Link>
+          <Link href="/projects" className={isActive("/projects") ? "active" : ""}>
+            Projects
+          </Link>
           <Link href="/skills" className={isActive("/skills") ? "active" : ""}>
             Skills
           </Link>

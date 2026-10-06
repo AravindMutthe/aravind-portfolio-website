@@ -25,11 +25,60 @@ export const metadata: Metadata = {
   title: "Aravind Mutte — Cloud DevOps & SRE Engineer",
   description:
     "Aravind Mutte — Cloud DevOps & Site Reliability Engineer (AWS, Azure, Kubernetes, Terraform), Hyderabad, India. Available for freelance projects and full-time roles.",
+  openGraph: {
+    title: "Aravind Mutte — Cloud DevOps & SRE Engineer",
+    description:
+      "Cloud DevOps & Site Reliability Engineer (AWS, Azure, Kubernetes, Terraform), Hyderabad, India. Available for freelance projects and full-time roles.",
+    url: "https://aravind-portfolio-next.vercel.app",
+    siteName: "Aravind Mutte",
+    locale: "en_IN",
+    type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title: "Aravind Mutte — Cloud DevOps & SRE Engineer",
+    description:
+      "Cloud DevOps & Site Reliability Engineer, Hyderabad, India. Available for freelance projects and full-time roles.",
+    creator: "@aravind_mutthe",
+  },
+};
+
+const PERSON_SCHEMA = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Aravind Mutte",
+  jobTitle: "Cloud DevOps & Site Reliability Engineer",
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Hyderabad",
+    addressCountry: "IN",
+  },
+  email: "mailto:mutthe.aravind@gmail.com",
+  telephone: "+91-9885189951",
+  url: "https://aravind-portfolio-next.vercel.app",
+  sameAs: [
+    "https://linkedin.com/in/aravindmutte",
+    "https://github.com/AravindMutthe",
+    "https://x.com/aravind_mutthe",
+  ],
+  knowsAbout: ["AWS", "Azure", "Google Cloud", "Kubernetes", "Terraform", "Docker", "CI/CD", "Python", "TypeScript"],
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${fraunces.variable} ${inter.variable}`}>
+      <head>
+        {/* Plausible analytics — confirm aravind-portfolio-next.vercel.app as the domain in Plausible (free tier) for stats to appear. */}
+        <script
+          defer
+          data-domain="aravind-portfolio-next.vercel.app"
+          src="https://plausible.io/js/script.js"
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(PERSON_SCHEMA) }}
+        />
+      </head>
       <body>
         <ScrollProgress />
         <Navbar />

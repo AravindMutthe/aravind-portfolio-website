@@ -4,6 +4,9 @@ export default function Footer() {
       <div className="wrap foot-inner">
         <span>© 2026 Aravind Mutte · Hyderabad, India</span>
         <div className="foot-links">
+          <a href="/projects">
+            Projects
+          </a>
           <a href="https://linkedin.com/in/aravindmutte" target="_blank" rel="noopener">
             LinkedIn
           </a>

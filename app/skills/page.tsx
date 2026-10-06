@@ -31,7 +31,7 @@ export default function SkillsPage() {
           <ParallaxPoster className="poster poster-band tight">
             <img
               src="img/hero-poster.jpg"
-              alt="Abstract technology artwork with orange duotone"
+              alt="Abstract technology artwork with navy duotone"
               loading="eager"
             />
           </ParallaxPoster>
