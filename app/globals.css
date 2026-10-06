@@ -84,6 +84,7 @@
 }
 
 :root{
+  color-scheme: light;
   --bg:#FAFAF7;
   --bg2:#ffffff;
   --card:#ffffff;
