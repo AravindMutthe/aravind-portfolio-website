@@ -72,11 +72,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={`${fraunces.variable} ${inter.variable}`}>
       <head>
-        {/* Cloudflare Web Analytics — free. Get your token at dash.cloudflare.com → Web Analytics → Add a site, then replace CF_BEACON_TOKEN below. */}
+        {/* Cloudflare Web Analytics — free. */}
         <script
           defer
           src="https://static.cloudflareinsights.com/beacon.min.js"
-          data-cf-beacon='{"token": "CF_BEACON_TOKEN"}'
+          data-cf-beacon='{"token": "baa7f6d5d7b9436ea456597998221bbd"}'
         />
         <script
           type="application/ld+json"
