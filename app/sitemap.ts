@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 
 export const dynamic = "force-static";
 
-const BASE = "https://aravind-portfolio-axonfde.vercel.app";
+const BASE = "https://aravind-portfolio-next.vercel.app";
 
 const ROUTES = ["", "/services", "/experience", "/projects", "/skills", "/about", "/contact"];
 

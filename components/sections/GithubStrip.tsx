@@ -9,7 +9,7 @@ const REPOS = [
     name: "aravind-portfolio-next",
     desc: "This site — Next.js 15, Tailwind, IBM Carbon, navy/gold theme.",
     tech: ["Next.js", "TypeScript", "Carbon"],
-    href: "https://aravind-portfolio-axonfde.vercel.app",
+    href: "https://aravind-portfolio-next.vercel.app",
     linkLabel: "Live site →",
     private: true,
   },
