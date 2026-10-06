@@ -9,7 +9,7 @@ export default function AboutProfile() {
         <div className="profile-grid">
           <Reveal>
             <div className="photo-frame">
-              <div className="photo-ph">AM</div>
+              <img className="photo-img" src="/aravind-photo.jpg" alt="Aravind Mutte — Cloud DevOps & SRE Engineer" />
               <div className="photo-meta">
                 <strong>Aravind Mutte</strong>
                 <span>Cloud DevOps &amp; SRE Engineer · Hyderabad, India</span>

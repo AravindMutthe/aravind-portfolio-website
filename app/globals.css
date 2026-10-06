@@ -397,6 +397,7 @@ body::after{
 .profile-grid{display:grid;grid-template-columns:340px 1fr;gap:56px;align-items:start;margin-bottom:88px}
 .photo-frame{background:#fff;border:1px solid var(--line-soft);border-radius:24px;overflow:hidden;box-shadow:0 24px 70px rgba(30,42,58,.12)}
 .photo-ph{aspect-ratio:3/3.5;display:grid;place-items:center;background:linear-gradient(135deg,#14243A,#1B2F4B 55%,#2E4A6B);color:#fff;font-family:var(--fd);font-weight:800;font-size:92px;letter-spacing:-.04em}
+.photo-img{aspect-ratio:3/3.5;width:100%;object-fit:cover;object-position:top;display:block}
 .photo-meta{padding:22px 24px;border-top:1px solid var(--line-soft)}
 .photo-meta strong{display:block;font-size:17px;color:var(--ink)}
 .photo-meta span{font-size:13.5px;color:var(--muted)}
