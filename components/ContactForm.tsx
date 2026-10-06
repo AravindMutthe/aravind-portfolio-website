@@ -88,8 +88,8 @@ export default function ContactForm() {
   const goStep = (n: number) => {
     setErrors({});
     setStep(n);
+    // Scroll to top of form on step change (no programmatic focus — iOS keyboard issues).
     requestAnimationFrame(() => {
-      stepHeadRef.current?.focus({ preventScroll: true });
       formTopRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
     });
   };
@@ -257,6 +257,22 @@ export default function ContactForm() {
     // 3) WhatsApp handoff is manual via the buttons below (auto-open is blocked on iOS).
 
     setSending(false);
+
+    // If BOTH delivery paths failed, show an error — don't fake a success.
+    if (!apiOk && !emailOk) {
+      setStatus({
+        ok: false,
+        html:
+          `<strong>Something went wrong.</strong> Your enquiry couldn't be sent. ` +
+          `Please try again, or reach me directly via the buttons below.` +
+          `<div class="channel-row">` +
+          `<a class="ch-btn wa" target="_blank" rel="noopener" href="https://wa.me/${WA_NUMBER}"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.5 8.5 0 0 1-12.4 7.5L3 21l2-5.4A8.5 8.5 0 1 1 21 11.5z"/></svg>WhatsApp</a>` +
+          `<a class="ch-btn mail" href="mailto:${EMAIL}"><svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>Email app</a>` +
+          `</div>`,
+      });
+      return;
+    }
+
     const bits: string[] = [];
     if (apiOk) bits.push("saved");
     if (emailOk) bits.push("emailed to me");
@@ -266,10 +282,15 @@ export default function ContactForm() {
       `Project enquiry — ${n} (${service})`
     )}&body=${encodeURIComponent(summary)}`;
 
+    // Escape user input to prevent XSS in the thank-you message.
+    const esc = (s: string) =>
+      s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+    const firstName = esc(n.split(" ")[0]);
+
     setStatus({
       ok: true,
       html:
-        `<strong>Thank you, ${n.split(" ")[0]}!</strong> Your enquiry has been ` +
+        `<strong>Thank you, ${firstName}!</strong> Your enquiry has been ` +
         (bits.length ? bits.join(" and ") : "received") +
         `. I appreciate you reaching out — I'll personally review your project details and get back to you shortly.` +
         `<br><br>Tap <strong>WhatsApp</strong> below — everything's pre-filled, just press send and it lands straight on my phone.` +
