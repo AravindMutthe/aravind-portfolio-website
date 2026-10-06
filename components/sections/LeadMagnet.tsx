@@ -15,7 +15,7 @@ declare global {
   }
 }
 
-/** Lead magnet band — free "Cloud Cost Waste Checklist" PDF in exchange for
+/** Lead magnet band — free "Production Readiness Checklist" PDF in exchange for
  *  name + email. Writes to the same Supabase leads table via the Axon API
  *  with source='lead-magnet'. Same reCAPTCHA pattern as ContactForm. */
 export default function LeadMagnet() {
@@ -63,7 +63,7 @@ export default function LeadMagnet() {
         body: JSON.stringify({
           fullName: n,
           email: em,
-          message: "Requested: Cloud Cost Waste Checklist",
+          message: "Requested: Production Readiness Checklist",
           source: "lead-magnet",
           recaptchaToken: token,
         }),
@@ -92,16 +92,17 @@ export default function LeadMagnet() {
                 Free download
               </div>
               <h2>
-                The Cloud Cost <span className="grad">Waste Checklist.</span>
+                The Production Readiness <span className="grad">Checklist.</span>
               </h2>
               <p>
-                Ten checks I run on every cloud bill — the same ones that find
-                idle disks, forgotten environments, and oversized instances.
+                Fifteen checks I run before anything ships — the same ones that
+                catch missing health checks, untested rollbacks, and silent
+                failures before your users do.
               </p>
               <ul>
-                <li>Unattached volumes &amp; idle load balancers</li>
-                <li>Rightsizing &amp; snapshot retention rules</li>
-                <li>Staging auto-shutdown &amp; billing alerts</li>
+                <li>Health checks, readiness &amp; liveness probes</li>
+                <li>Rollback plan, backups &amp; runbook essentials</li>
+                <li>Alerts, dashboards &amp; on-call readiness</li>
               </ul>
             </div>
             <div className="magnet-form-wrap">
@@ -112,7 +113,7 @@ export default function LeadMagnet() {
                   </p>
                   <a
                     className="btn"
-                    href="/cloud-cost-checklist.pdf"
+                    href="/production-readiness-checklist.pdf"
                     download
                   >
                     Download the PDF &darr;
