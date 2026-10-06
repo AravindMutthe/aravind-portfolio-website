@@ -7,6 +7,7 @@ import AboutProfile from "@/components/sections/AboutProfile";
 import AboutEducation from "@/components/sections/AboutEducation";
 import AboutAchievements from "@/components/sections/AboutAchievements";
 import AboutProjects from "@/components/sections/AboutProjects";
+import Testimonials from "@/components/sections/Testimonials";
 
 export const metadata: Metadata = {
   title: "About — Aravind Mutte",
@@ -45,6 +46,7 @@ export default function AboutPage() {
       <AboutEducation />
       <AboutAchievements />
       <AboutProjects />
+      <Testimonials />
 
       <CtaBand
         title={

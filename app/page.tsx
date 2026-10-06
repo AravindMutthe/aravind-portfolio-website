@@ -5,6 +5,8 @@ import HomeHero from "@/components/sections/HomeHero";
 import HomeFeatures from "@/components/sections/HomeFeatures";
 import HowIWork from "@/components/sections/HowIWork";
 import TechShowcase from "@/components/sections/TechShowcase";
+import LeadMagnet from "@/components/sections/LeadMagnet";
+import Testimonials from "@/components/sections/Testimonials";
 
 export default function HomePage() {
   return (
@@ -21,6 +23,8 @@ export default function HomePage() {
         }
         sub="The trending tools behind this site and the production systems I ship — every logo the real thing."
       />
+      <LeadMagnet />
+      <Testimonials />
 
       <section className="block" style={{ paddingTop: 0 }}>
         <div className="wrap">

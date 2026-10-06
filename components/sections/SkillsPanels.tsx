@@ -16,17 +16,23 @@ function SkillTileCard({ tile }: { tile: SkillTile }) {
 }
 
 /** Skills page: category panels with Carbon Tiles for logos and Carbon Tags
- *  for the "also" items . */
+ *  for the "also" items. Each panel carries an honest proficiency level. */
 export default function SkillsPanels() {
   return (
     <section className="block" style={{ paddingTop: 0 }}>
       <div className="wrap">
+        <div className="skill-legend" aria-label="Proficiency legend">
+          <span><b className="level-daily">● Daily driver</b> — used every day</span>
+          <span><b className="level-prod">● Production experience</b> — shipped real systems</span>
+          <span><b className="level-working">● Working knowledge</b> — can get productive fast</span>
+        </div>
         <div className="skills-cats">
           {SKILL_PANELS.map((panel) => (
             <Reveal key={panel.title}>
               <div className="skill-panel">
                 <h4>{panel.title}</h4>
                 <p className="sp-sub">{panel.sub}</p>
+                <span className="skill-level">{panel.level}</span>
 
                 {panel.tiles && (
                   <div className="tile-grid">

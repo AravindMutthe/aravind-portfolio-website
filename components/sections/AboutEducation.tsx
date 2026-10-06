@@ -4,17 +4,20 @@ const CERTS = [
   {
     icon: '<path d="M12 2 2 7l10 5 10-5-10-5z"/><path d="m2 17 10 5 10-5"/><path d="m2 12 10 5 10-5"/>',
     title: "Google Cloud Certified",
-    sub: "Professional Cloud Architect",
+    sub: "Professional Cloud Architect · Issued Jun 2024",
+    verifyUrl: "https://ude.my/UC-b4742e8b-ea8c-42d9-bc05-ccdb2987a385",
   },
   {
     icon: '<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/>',
-    title: "Microsoft Azure",
-    sub: "AZ-900: Azure Fundamentals",
+    title: "Microsoft Certified",
+    sub: "Azure Fundamentals (AZ-900) · Issued Jun 2022",
+    verifyUrl: "https://www.credly.com/badges/99cf10a0-5907-49e8-883e-2616a0a00517",
   },
   {
     icon: '<path d="m4 17 6-6-6-6"/><path d="M12 19h8"/>',
-    title: "Linux & Shell Scripting",
-    sub: "Systems automation coursework",
+    title: "Linux Command-Line & Shell Scripting",
+    sub: "Udemy · Issued May 2024",
+    verifyUrl: "https://ude.my/UC-46ac4fac-bfda-4e51-907e-ed4f166eab20",
   },
 ];
 
@@ -79,6 +82,16 @@ export default function AboutEducation() {
                   </div>
                   <h4>{c.title}</h4>
                   <p>{c.sub}</p>
+                  {c.verifyUrl && (
+                    <a
+                      className="cert-verify"
+                      href={c.verifyUrl}
+                      target="_blank"
+                      rel="noopener"
+                    >
+                      Verify &rarr;
+                    </a>
+                  )}
                 </div>
               </Reveal>
             ))}

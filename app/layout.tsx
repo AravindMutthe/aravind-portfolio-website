@@ -25,6 +25,10 @@ export const metadata: Metadata = {
   title: "Aravind Mutte — Cloud DevOps & SRE Engineer",
   description:
     "Aravind Mutte — Cloud DevOps & Site Reliability Engineer (AWS, Azure, Kubernetes, Terraform), Hyderabad, India. Available for freelance projects and full-time roles.",
+  metadataBase: new URL("https://aravind-portfolio-next.vercel.app"),
+  alternates: {
+    canonical: "https://aravind-portfolio-next.vercel.app",
+  },
   openGraph: {
     title: "Aravind Mutte — Cloud DevOps & SRE Engineer",
     description:

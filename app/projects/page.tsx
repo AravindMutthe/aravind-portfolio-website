@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import CtaBand from "@/components/CtaBand";
 import PageHero from "@/components/sections/PageHero";
 import ProjectsCaseStudies from "@/components/sections/ProjectsCaseStudies";
+import GithubStrip from "@/components/sections/GithubStrip";
 
 export const metadata: Metadata = {
   title: "Projects — Aravind Mutte",
@@ -24,6 +25,7 @@ export default function ProjectsPage() {
       />
 
       <ProjectsCaseStudies />
+      <GithubStrip />
 
       <CtaBand
         title={

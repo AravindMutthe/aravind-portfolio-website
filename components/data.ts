@@ -73,9 +73,13 @@ export interface SkillTile {
   alt: string;
 }
 
+export type SkillLevel = "Daily driver" | "Production experience" | "Working knowledge";
+
 export interface SkillPanel {
   title: string;
   sub: string;
+  /** Honest depth signal — conservative; tier down when in doubt. */
+  level: SkillLevel;
   tiles?: SkillTile[];
   also?: string;
   groups?: { label: string; caption: string; tiles: SkillTile[] }[];
@@ -87,6 +91,7 @@ const S = (s: string) => `https://cdn.simpleicons.org/${s}`;
 export const SKILL_PANELS: SkillPanel[] = [
   {
     title: "Cloud Platforms", sub: "Where workloads live.",
+    level: "Production experience",
     tiles: [
       { name: "AWS", logo: W("Amazon_Web_Services_Logo.svg"), alt: "AWS logo" },
       { name: "Google Cloud", logo: S("googlecloud"), alt: "Google Cloud logo" },
@@ -96,6 +101,7 @@ export const SKILL_PANELS: SkillPanel[] = [
   },
   {
     title: "By Service Model", sub: "The same stack, mapped to how it's delivered.",
+    level: "Working knowledge",
     groups: [
       { label: "IaaS", caption: "Infrastructure as a Service", tiles: [
         { name: "AWS", logo: W("Amazon_Web_Services_Logo.svg"), alt: "AWS logo" },
@@ -120,6 +126,7 @@ export const SKILL_PANELS: SkillPanel[] = [
   },
   {
     title: "Containers & Orchestration", sub: "Package once, run anywhere.",
+    level: "Production experience",
     tiles: [
       { name: "Docker", logo: S("docker"), alt: "Docker logo" },
       { name: "Kubernetes", logo: S("kubernetes"), alt: "Kubernetes logo" },
@@ -129,6 +136,7 @@ export const SKILL_PANELS: SkillPanel[] = [
   },
   {
     title: "Infrastructure as Code", sub: "ClickOps is not a strategy.",
+    level: "Daily driver",
     tiles: [
       { name: "Terraform", logo: S("terraform"), alt: "Terraform logo" },
       { name: "CloudFormation", logo: W("AWS%20Simple%20Icons%20Deployment%20Management%20AWS%20CloudFormation.svg"), alt: "CloudFormation logo" },
@@ -138,6 +146,7 @@ export const SKILL_PANELS: SkillPanel[] = [
   },
   {
     title: "CI / CD & Automation", sub: "Ship on every commit.",
+    level: "Production experience",
     tiles: [
       { name: "Jenkins", logo: S("jenkins"), alt: "Jenkins logo" },
       { name: "GitHub Actions", logo: S("githubactions"), alt: "GitHub Actions logo" },
@@ -149,6 +158,7 @@ export const SKILL_PANELS: SkillPanel[] = [
   },
   {
     title: "Languages & Runtimes", sub: "The raw materials.",
+    level: "Daily driver",
     tiles: [
       { name: "Python", logo: S("python"), alt: "Python logo" },
       { name: "TypeScript", logo: S("typescript"), alt: "TypeScript logo" },
@@ -160,6 +170,7 @@ export const SKILL_PANELS: SkillPanel[] = [
   },
   {
     title: "Modern Web Stack", sub: "What I build sites and apps with.",
+    level: "Production experience",
     tiles: [
       { name: "Next.js", logo: S("nextdotjs"), alt: "Next.js logo" },
       { name: "React", logo: S("react"), alt: "React logo" },
@@ -173,6 +184,7 @@ export const SKILL_PANELS: SkillPanel[] = [
   },
   {
     title: "Data, Messaging & Integration", sub: "Moving data between systems.",
+    level: "Working knowledge",
     tiles: [
       { name: "PostgreSQL", logo: S("postgresql"), alt: "PostgreSQL logo" },
       { name: "Supabase", logo: S("supabase"), alt: "Supabase logo" },
@@ -183,6 +195,7 @@ export const SKILL_PANELS: SkillPanel[] = [
   },
   {
     title: "Observability & AI", sub: "See everything, predict what's next.",
+    level: "Working knowledge",
     tiles: [
       { name: "Prometheus", logo: S("prometheus"), alt: "Prometheus logo" },
       { name: "Grafana", logo: S("grafana"), alt: "Grafana logo" },
@@ -194,6 +207,7 @@ export const SKILL_PANELS: SkillPanel[] = [
   },
   {
     title: "Platforms & Tooling", sub: "The daily drivers.",
+    level: "Daily driver",
     tiles: [
       { name: "Linux", logo: S("linux"), alt: "Linux logo" },
       { name: "Git", logo: S("git"), alt: "Git logo" },
@@ -293,5 +307,31 @@ export const EXPERIENCE: ExperienceEntry[] = [
       { name: "Linux", logo: S("linux"), alt: "Linux logo" },
       { name: "Bash", logo: S("gnubash"), alt: "Bash logo" },
     ],
+  },
+];
+
+/* ------------------------------------------------------------------ */
+/* Testimonials — render real quotes here once available.              */
+/* TODO: replace the placeholder below with genuine quotes: ask former */
+/* colleagues, mentors, or clients for a 1–2 sentence recommendation. */
+/* NEVER invent a person's name or quote.                              */
+/* ------------------------------------------------------------------ */
+export interface Testimonial {
+  quote: string;
+  name: string;
+  role: string;
+  /** set true only for real, permission-granted quotes */
+  real: boolean;
+}
+
+export const TESTIMONIALS: Testimonial[] = [
+  {
+    // TODO: replace with a real quote — e.g. ask a former colleague or mentor:
+    // quote: "…their words…", name: "Real Name", role: "Role, Company", real: true
+    quote:
+      "Recommendations from people I've worked with will appear here.",
+    name: "Your name could be here",
+    role: "Work with me",
+    real: false,
   },
 ];
