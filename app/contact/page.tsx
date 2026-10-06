@@ -31,9 +31,10 @@ export default function ContactPage() {
         }
         lead={
           <>
-            Have a cloud project, a pipeline that needs fixing, or a full-time role to fill? Fill
-            this in — it lands straight in my <strong>email and WhatsApp</strong> — plus an instant
-            alert on my phone. I usually reply within a day.
+            Tell me about your project — the more detail, the better I can help. It takes about
+            a minute: your details, what you need, budget and timeline, and where you are today.
+            It lands straight in my <strong>email and WhatsApp</strong> — plus an instant alert
+            on my phone. I usually reply within a day.
           </>
         }
       />

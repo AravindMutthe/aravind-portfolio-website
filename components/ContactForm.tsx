@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { useRef, useState, type FormEvent } from "react";
 import { AXON_API, EMAIL, RECAPTCHA_KEY, WA_NUMBER } from "./data";
 
 declare global {
@@ -14,25 +14,121 @@ declare global {
   }
 }
 
-const BUDGETS = [
-  "Under ₹25,000",
-  "₹25,000 – ₹75,000",
-  "₹75,000 – ₹2,00,000",
-  "₹2,00,000+",
-  "Full-time role (salary)",
+const SERVICES = [
+  "Cloud Infrastructure Setup",
+  "CI-CD Pipeline",
+  "Kubernetes & Containers",
+  "Cloud Cost Optimization",
+  "Monitoring & Reliability",
+  "Something else",
 ];
 
-/** Hire/enquiry form — saves to Supabase via the Axon lead API (reCAPTCHA-checked),
- *  emails via FormSubmit, and hands off to WhatsApp — same as the static site. */
+const BUDGETS = [
+  "Under ₹25,000",
+  "₹25,000–₹50,000",
+  "₹50,000–₹1,00,000",
+  "Above ₹1,00,000",
+  "Not sure yet",
+];
+
+const TIMELINES = ["ASAP", "Within a month", "2–3 months", "Flexible"];
+
+const CLOUDS = ["AWS", "Azure", "Google Cloud", "None yet", "Other"];
+
+const TEAM_SIZES = ["Just me", "2–10", "11–50", "50+"];
+
+const REFERRALS = ["Google", "LinkedIn", "X", "Medium", "Referral", "Other"];
+
+const STEP_TITLES = ["About you", "What you need", "Budget & timeline", "Your current setup"];
+const STEP_SUBS = [
+  "Who should I reply to?",
+  "What are we building or fixing?",
+  "So I can scope this realistically.",
+  "Helps me understand your starting point. All optional.",
+];
+
+const EMAIL_RE = /^\S+@\S+\.\S+$/;
+
+/** Multi-step client intake form — qualifies leads before the first call.
+ *  Saves to Supabase via the Axon lead API (reCAPTCHA-checked), emails via
+ *  FormSubmit, and hands off to WhatsApp with a structured summary. */
 export default function ContactForm() {
+  const [step, setStep] = useState(0);
+  // Step 1
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
+  const [company, setCompany] = useState("");
+  const [role, setRole] = useState("");
+  // Step 2
+  const [service, setService] = useState("");
+  const [description, setDescription] = useState("");
+  // Step 3
   const [budget, setBudget] = useState("");
-  const [message, setMessage] = useState("");
+  const [timeline, setTimeline] = useState("");
+  // Step 4
+  const [cloud, setCloud] = useState("");
+  const [teamSize, setTeamSize] = useState("");
+  const [referral, setReferral] = useState("");
+
   const [honey, setHoney] = useState("");
+  const [errors, setErrors] = useState<Record<string, string>>({});
   const [sending, setSending] = useState(false);
   const [status, setStatus] = useState<{ ok: boolean; html: string } | null>(null);
+
+  const stepHeadRef = useRef<HTMLHeadingElement>(null);
+  const formTopRef = useRef<HTMLDivElement>(null);
+
+  const clearErr = (key: string) =>
+    setErrors((prev) => {
+      if (!prev[key]) return prev;
+      const next = { ...prev };
+      delete next[key];
+      return next;
+    });
+
+  const goStep = (n: number) => {
+    setErrors({});
+    setStep(n);
+    requestAnimationFrame(() => {
+      stepHeadRef.current?.focus({ preventScroll: true });
+      formTopRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  };
+
+  const validateStep = (s: number): Record<string, string> => {
+    const e: Record<string, string> = {};
+    if (s === 0) {
+      if (!name.trim()) e.name = "Please enter your name.";
+      if (!email.trim()) e.email = "Please enter your email.";
+      else if (!EMAIL_RE.test(email.trim())) e.email = "That email doesn't look right.";
+    } else if (s === 1) {
+      if (!service) e.service = "Pick the closest match — you can explain more below.";
+      if (!description.trim())
+        e.description = "A few sentences about your project helps a lot.";
+    } else if (s === 2) {
+      if (!budget) e.budget = "Choose a budget range.";
+      if (!timeline) e.timeline = "Choose a timeline.";
+    }
+    return e;
+  };
+
+  const focusFirstError = (e: Record<string, string>) => {
+    const key = Object.keys(e)[0];
+    const el =
+      document.getElementById(`cf-${key}`) ||
+      document.querySelector(`#cf-${key}-group input, #cf-${key}-group select`);
+    (el as HTMLElement | null)?.focus();
+  };
+
+  const onContinue = () => {
+    const e = validateStep(step);
+    setErrors(e);
+    if (Object.keys(e).length === 0) {
+      goStep(step + 1);
+    } else {
+      focusFirstError(e);
+    }
+  };
 
   const getToken = (): Promise<string | null> =>
     new Promise((resolve) => {
@@ -46,7 +142,6 @@ export default function ContactForm() {
               .catch(() => resolve(null));
           });
         } else if (Date.now() - t0 < 8000) {
-          // reCAPTCHA script still loading — poll briefly.
           setTimeout(tryExec, 300);
         } else {
           resolve(null);
@@ -55,33 +150,53 @@ export default function ContactForm() {
       tryExec();
     });
 
+  const buildSummary = (): string => {
+    const org = company.trim();
+    const rl = role.trim();
+    const who = org && rl ? `${org} (${rl})` : org || rl || "—";
+    return (
+      `New project enquiry — portfolio site\n` +
+      `Company: ${who}\n` +
+      `Service: ${service}\n` +
+      `Budget: ${budget} | Timeline: ${timeline}\n` +
+      `Cloud: ${cloud || "—"} | Team: ${teamSize || "—"} | Found via: ${referral || "—"}\n` +
+      `\nProject details:\n${description.trim()}`
+    );
+  };
+
+  const resetAll = () => {
+    setName("");
+    setEmail("");
+    setCompany("");
+    setRole("");
+    setService("");
+    setDescription("");
+    setBudget("");
+    setTimeline("");
+    setCloud("");
+    setTeamSize("");
+    setReferral("");
+    setHoney("");
+    setErrors({});
+    setStep(0);
+  };
+
   const onSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    const n = name.trim();
-    const em = email.trim();
-    const msg = message.trim();
-
-    if (!n || !em || !msg || !/^\S+@\S+\.\S+$/.test(em)) {
-      setStatus({
-        ok: false,
-        html: "<strong>Almost there.</strong> Please add your name, a valid email, and a few words about the project.",
-      });
+    // Final guard: re-validate all required steps.
+    const e0 = validateStep(0);
+    const e1 = validateStep(1);
+    const e2 = validateStep(2);
+    const eAll = { ...e0, ...e1, ...e2 };
+    if (Object.keys(eAll).length > 0) {
+      setErrors(eAll);
+      goStep(Object.keys(e0).length ? 0 : Object.keys(e1).length ? 1 : 2);
       return;
     }
 
-    const summary =
-      "New project enquiry — portfolio site\n" +
-      "Name: " + n +
-      "\nEmail: " + em +
-      (phone.trim() ? "\nPhone: " + phone.trim() : "") +
-      (budget ? "\nBudget: " + budget : "") +
-      "\n\n" + msg;
-
-    // Normalize phone to a 10-digit Indian mobile for the API (optional field).
-    let digits = phone.replace(/\D/g, "");
-    if (digits.length === 12 && digits.indexOf("91") === 0) digits = digits.slice(2);
-    if (digits.length === 11 && digits.charAt(0) === "0") digits = digits.slice(1);
-    const cleanPhone = /^[6-9]\d{9}$/.test(digits) ? digits : undefined;
+    const n = name.trim();
+    const em = email.trim();
+    const summary = buildSummary();
 
     setSending(true);
     setStatus(null);
@@ -97,8 +212,7 @@ export default function ContactForm() {
           body: JSON.stringify({
             fullName: n,
             email: em,
-            ...(cleanPhone ? { phone: cleanPhone } : {}),
-            message: (budget ? `Budget: ${budget}\n\n` : "") + msg,
+            message: summary,
             source: "portfolio",
             recaptchaToken: token,
           }),
@@ -117,10 +231,16 @@ export default function ContactForm() {
       body: JSON.stringify({
         name: n,
         email: em,
-        phone: phone.trim(),
+        company: company.trim(),
+        role: role.trim(),
+        service,
         budget,
-        message: msg,
-        _subject: `New project enquiry from ${n}`,
+        timeline,
+        cloud: cloud || "—",
+        teamSize: teamSize || "—",
+        referral: referral || "—",
+        message: description.trim(),
+        _subject: `New project enquiry from ${n} — ${service}`,
         _template: "table",
         _honey: honey,
       }),
@@ -139,8 +259,9 @@ export default function ContactForm() {
     if (emailOk) bits.push("emailed to me");
 
     const wa = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(summary)}`;
-    const sms = `sms:+91${WA_NUMBER.slice(2)}?&body=${encodeURIComponent(summary)}`;
-    const mail = `mailto:${EMAIL}?subject=${encodeURIComponent("Project enquiry — " + n)}&body=${encodeURIComponent(summary)}`;
+    const mail = `mailto:${EMAIL}?subject=${encodeURIComponent(
+      `Project enquiry — ${n} (${service})`
+    )}&body=${encodeURIComponent(summary)}`;
 
     setStatus({
       ok: true,
@@ -150,107 +271,357 @@ export default function ContactForm() {
         `. I opened <strong>WhatsApp</strong> with everything pre-filled: just press send there and it lands straight on my phone.` +
         `<div class="channel-row">` +
         `<a class="ch-btn wa" target="_blank" rel="noopener" href="${wa}"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.5 8.5 0 0 1-12.4 7.5L3 21l2-5.4A8.5 8.5 0 1 1 21 11.5z"/></svg>WhatsApp</a>` +
-        `<a class="ch-btn sms" href="${sms}"><svg viewBox="0 0 24 24"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg>SMS</a>` +
         `<a class="ch-btn mail" href="${mail}"><svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>Email app</a>` +
-        `</div>` +
-        `<div style="margin-top:12px;font-size:13px;opacity:.75">Prefer another way? Use SMS or your email app above.</div>`,
+        `</div>`,
     });
 
-    setName("");
-    setEmail("");
-    setPhone("");
-    setBudget("");
-    setMessage("");
-    setHoney("");
+    resetAll();
   };
 
+  const errFor = (key: string) =>
+    errors[key] ? (
+      <p className="field-err" id={`cf-${key}-err`} role="alert">
+        {errors[key]}
+      </p>
+    ) : null;
+
+  const inputCls = (key: string) => (errors[key] ? "input-err" : "");
+
   return (
-    <form className="cform" id="hireForm" noValidate onSubmit={onSubmit}>
-      <div className="frow">
-        <div className="field">
-          <label htmlFor="cf-name">Your name *</label>
-          <input
-            type="text"
-            id="cf-name"
-            name="name"
-            placeholder="Jane Sharma"
-            autoComplete="name"
-            required
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          />
-        </div>
-        <div className="field">
-          <label htmlFor="cf-email">Your email *</label>
-          <input
-            type="email"
-            id="cf-email"
-            name="email"
-            placeholder="jane@company.com"
-            autoComplete="email"
-            required
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </div>
-      </div>
-      <div className="frow">
-        <div className="field">
-          <label htmlFor="cf-phone">Phone / WhatsApp</label>
-          <input
-            type="tel"
-            id="cf-phone"
-            name="phone"
-            placeholder="+91 …"
-            autoComplete="tel"
-            value={phone}
-            onChange={(e) => setPhone(e.target.value)}
-          />
-        </div>
-        <div className="field">
-          <label htmlFor="cf-budget">Project budget</label>
-          <select id="cf-budget" name="budget" value={budget} onChange={(e) => setBudget(e.target.value)}>
-            <option value="">Select a range…</option>
-            {BUDGETS.map((b) => (
-              <option key={b}>{b}</option>
-            ))}
-          </select>
-        </div>
-      </div>
-      <div className="field">
-        <label htmlFor="cf-msg">Project details *</label>
-        <textarea
-          id="cf-msg"
-          name="message"
-          placeholder="What are you building? Timeline? Current stack?…"
-          required
-          value={message}
-          onChange={(e) => setMessage(e.target.value)}
-        />
-      </div>
-      <input
-        type="text"
-        name="_honey"
-        className="hp"
-        tabIndex={-1}
-        autoComplete="off"
-        aria-hidden="true"
-        value={honey}
-        onChange={(e) => setHoney(e.target.value)}
-      />
-      <button type="submit" className={`btn${sending ? " loading" : ""}`} id="hireBtn" disabled={sending}>
-        <span className="spinner"></span>
-        <span className="btn-label">{sending ? "Sending…" : "Send Enquiry →"}</span>
-      </button>
-      {status && (
+    <div className="cform" id="hireForm" ref={formTopRef}>
+      {status?.ok ? (
         <div
-          className={`form-status ${status.ok ? "ok" : "err"}`}
+          className="form-status ok"
           id="formStatus"
           role="status"
           aria-live="polite"
           dangerouslySetInnerHTML={{ __html: status.html }}
         />
+      ) : (
+        <form noValidate onSubmit={onSubmit}>
+          {/* Progress */}
+          <div className="istep-progress" aria-hidden="true">
+            <div className="istep-progress-top">
+              <span>
+                Step {step + 1} of 4
+              </span>
+              <span>{STEP_TITLES[step]}</span>
+            </div>
+            <div className="istep-track">
+              <div className="istep-fill" style={{ width: `${((step + 1) / 4) * 100}%` }} />
+            </div>
+          </div>
+
+          <h3 className="istep-title" ref={stepHeadRef} tabIndex={-1}>
+            {STEP_TITLES[step]}
+          </h3>
+          <p className="istep-sub">{STEP_SUBS[step]}</p>
+
+          <div className="istep-body" key={step}>
+            {step === 0 && (
+              <>
+                <div className="frow">
+                  <div className="field">
+                    <label htmlFor="cf-name">
+                      Full name <span aria-hidden="true">*</span>
+                    </label>
+                    <input
+                      type="text"
+                      id="cf-name"
+                      name="name"
+                      placeholder="Jane Sharma"
+                      autoComplete="name"
+                      required
+                      className={inputCls("name")}
+                      aria-describedby={errors.name ? "cf-name-err" : undefined}
+                      aria-invalid={!!errors.name}
+                      value={name}
+                      onChange={(e) => {
+                        setName(e.target.value);
+                        clearErr("name");
+                      }}
+                    />
+                    {errFor("name")}
+                  </div>
+                  <div className="field">
+                    <label htmlFor="cf-email">
+                      Email <span aria-hidden="true">*</span>
+                    </label>
+                    <input
+                      type="email"
+                      id="cf-email"
+                      name="email"
+                      placeholder="jane@company.com"
+                      autoComplete="email"
+                      required
+                      className={inputCls("email")}
+                      aria-describedby={errors.email ? "cf-email-err" : undefined}
+                      aria-invalid={!!errors.email}
+                      value={email}
+                      onChange={(e) => {
+                        setEmail(e.target.value);
+                        clearErr("email");
+                      }}
+                    />
+                    {errFor("email")}
+                  </div>
+                </div>
+                <div className="frow">
+                  <div className="field">
+                    <label htmlFor="cf-company">Company / organization</label>
+                    <input
+                      type="text"
+                      id="cf-company"
+                      name="company"
+                      placeholder="Acme Inc (optional)"
+                      autoComplete="organization"
+                      value={company}
+                      onChange={(e) => setCompany(e.target.value)}
+                    />
+                  </div>
+                  <div className="field">
+                    <label htmlFor="cf-role">Your role</label>
+                    <input
+                      type="text"
+                      id="cf-role"
+                      name="role"
+                      placeholder="e.g. Founder, CTO, Engineering Manager"
+                      value={role}
+                      onChange={(e) => setRole(e.target.value)}
+                    />
+                  </div>
+                </div>
+              </>
+            )}
+
+            {step === 1 && (
+              <>
+                <fieldset className="field" id="cf-service-group">
+                  <legend>
+                    What do you need? <span aria-hidden="true">*</span>
+                  </legend>
+                  <div
+                    className="radio-cards"
+                    role="radiogroup"
+                    aria-describedby={errors.service ? "cf-service-err" : undefined}
+                  >
+                    {SERVICES.map((s, i) => {
+                      const id = `cf-service-${i}`;
+                      return (
+                        <span key={s} className="rc-wrap">
+                          <input
+                            type="radio"
+                            id={id}
+                            name="service"
+                            value={s}
+                            checked={service === s}
+                            onChange={() => {
+                              setService(s);
+                              clearErr("service");
+                            }}
+                          />
+                          <label htmlFor={id} className="radio-card">
+                            {s}
+                          </label>
+                        </span>
+                      );
+                    })}
+                  </div>
+                  {errFor("service")}
+                </fieldset>
+                <div className="field">
+                  <label htmlFor="cf-desc">
+                    Project details <span aria-hidden="true">*</span>
+                  </label>
+                  <textarea
+                    id="cf-desc"
+                    name="description"
+                    placeholder="Tell me about your project, goals, and pain points…"
+                    required
+                    className={inputCls("description")}
+                    aria-describedby={errors.description ? "cf-description-err" : undefined}
+                    aria-invalid={!!errors.description}
+                    value={description}
+                    onChange={(e) => {
+                      setDescription(e.target.value);
+                      clearErr("description");
+                    }}
+                  />
+                  {errFor("description")}
+                </div>
+              </>
+            )}
+
+            {step === 2 && (
+              <>
+                <fieldset className="field" id="cf-budget-group">
+                  <legend>
+                    Budget range <span aria-hidden="true">*</span>
+                  </legend>
+                  <div className="pills" aria-describedby={errors.budget ? "cf-budget-err" : undefined}>
+                    {BUDGETS.map((b, i) => {
+                      const id = `cf-budget-${i}`;
+                      return (
+                        <span key={b} className="rc-wrap">
+                          <input
+                            type="radio"
+                            id={id}
+                            name="budget"
+                            value={b}
+                            checked={budget === b}
+                            onChange={() => {
+                              setBudget(b);
+                              clearErr("budget");
+                            }}
+                          />
+                          <label htmlFor={id} className="pill">
+                            {b}
+                          </label>
+                        </span>
+                      );
+                    })}
+                  </div>
+                  {errFor("budget")}
+                </fieldset>
+                <fieldset className="field" id="cf-timeline-group">
+                  <legend>
+                    Timeline <span aria-hidden="true">*</span>
+                  </legend>
+                  <div
+                    className="pills"
+                    aria-describedby={errors.timeline ? "cf-timeline-err" : undefined}
+                  >
+                    {TIMELINES.map((t, i) => {
+                      const id = `cf-timeline-${i}`;
+                      return (
+                        <span key={t} className="rc-wrap">
+                          <input
+                            type="radio"
+                            id={id}
+                            name="timeline"
+                            value={t}
+                            checked={timeline === t}
+                            onChange={() => {
+                              setTimeline(t);
+                              clearErr("timeline");
+                            }}
+                          />
+                          <label htmlFor={id} className="pill">
+                            {t}
+                          </label>
+                        </span>
+                      );
+                    })}
+                  </div>
+                  {errFor("timeline")}
+                </fieldset>
+              </>
+            )}
+
+            {step === 3 && (
+              <>
+                <fieldset className="field" id="cf-cloud-group">
+                  <legend>Current cloud provider</legend>
+                  <div className="pills">
+                    {CLOUDS.map((c, i) => {
+                      const id = `cf-cloud-${i}`;
+                      return (
+                        <span key={c} className="rc-wrap">
+                          <input
+                            type="radio"
+                            id={id}
+                            name="cloud"
+                            value={c}
+                            checked={cloud === c}
+                            onChange={() => setCloud(c)}
+                          />
+                          <label htmlFor={id} className="pill">
+                            {c}
+                          </label>
+                        </span>
+                      );
+                    })}
+                  </div>
+                </fieldset>
+                <div className="frow">
+                  <div className="field">
+                    <label htmlFor="cf-team">Team size</label>
+                    <select
+                      id="cf-team"
+                      name="teamSize"
+                      value={teamSize}
+                      onChange={(e) => setTeamSize(e.target.value)}
+                    >
+                      <option value="">Select…</option>
+                      {TEAM_SIZES.map((t) => (
+                        <option key={t}>{t}</option>
+                      ))}
+                    </select>
+                  </div>
+                  <div className="field">
+                    <label htmlFor="cf-ref">How did you hear about me?</label>
+                    <select
+                      id="cf-ref"
+                      name="referral"
+                      value={referral}
+                      onChange={(e) => setReferral(e.target.value)}
+                    >
+                      <option value="">Select…</option>
+                      {REFERRALS.map((r) => (
+                        <option key={r}>{r}</option>
+                      ))}
+                    </select>
+                  </div>
+                </div>
+              </>
+            )}
+          </div>
+
+          <input
+            type="text"
+            name="_honey"
+            className="hp"
+            tabIndex={-1}
+            autoComplete="off"
+            aria-hidden="true"
+            value={honey}
+            onChange={(e) => setHoney(e.target.value)}
+          />
+
+          <div className="istep-nav">
+            {step > 0 && (
+              <button type="button" className="btn btn-ghost" onClick={() => goStep(step - 1)}>
+                ← Back
+              </button>
+            )}
+            {step < 3 ? (
+              <button type="button" className="btn" onClick={onContinue}>
+                Continue →
+              </button>
+            ) : (
+              <button
+                type="submit"
+                className={`btn${sending ? " loading" : ""}`}
+                id="hireBtn"
+                disabled={sending}
+              >
+                <span className="spinner"></span>
+                <span className="btn-label">{sending ? "Sending…" : "Send Enquiry →"}</span>
+              </button>
+            )}
+          </div>
+
+          {status && !status.ok && (
+            <div
+              className="form-status err"
+              id="formStatus"
+              role="status"
+              aria-live="polite"
+              dangerouslySetInnerHTML={{ __html: status.html }}
+            />
+          )}
+        </form>
       )}
-    </form>
+    </div>
   );
 }

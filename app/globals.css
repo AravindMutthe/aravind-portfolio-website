@@ -509,6 +509,48 @@ body::after{
 .ch-btn:hover{transform:translateY(-2px)}
 .ch-btn.sms:hover,.ch-btn.mail:hover{border-color:var(--accent);color:var(--accent);background:rgba(27,47,75,.07)}
 
+/* ---------- multi-step intake form ---------- */
+.istep-progress{margin-bottom:26px}
+.istep-progress-top{display:flex;justify-content:space-between;align-items:baseline;font-size:13px;font-weight:600;color:var(--muted);margin-bottom:10px}
+.istep-progress-top span:last-child{color:var(--faint)}
+.istep-track{height:8px;border-radius:999px;background:#ECEAE6;overflow:hidden}
+.istep-fill{height:100%;border-radius:999px;background:linear-gradient(90deg,var(--accent),var(--gold));transition:width .45s var(--ease)}
+.istep-title{font-family:var(--fd);font-size:clamp(22px,3vw,28px);font-weight:700;letter-spacing:-.02em;color:var(--ink);margin:0 0 6px;outline:none}
+.istep-sub{color:var(--muted);font-size:15px;margin:0 0 24px}
+.istep-body{animation:istepIn .35s var(--ease)}
+@keyframes istepIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.field legend{font-size:13px;font-weight:600;color:var(--muted);margin-bottom:12px;padding:0}
+.field fieldset,.field{border:0;padding:0}
+fieldset.field{margin-bottom:20px}
+.rc-wrap{position:relative;display:block}
+.radio-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.radio-cards input,.pills input{position:absolute;opacity:0;pointer-events:none;width:1px;height:1px}
+.radio-card{display:flex;align-items:center;min-height:64px;border:1px solid var(--line);border-radius:14px;padding:14px 16px;cursor:pointer;font-weight:600;font-size:14px;line-height:1.35;color:var(--ink);background:#F3F4F5;transition:border-color .25s,box-shadow .25s,background .25s,transform .25s}
+.radio-card:hover{border-color:var(--accent);transform:translateY(-1px)}
+.radio-cards input:checked + .radio-card{border-color:var(--accent);background:#fff;box-shadow:0 0 0 3px rgba(27,47,75,.16)}
+.radio-cards input:focus-visible + .radio-card{outline:2px solid var(--gold);outline-offset:2px}
+.pills{display:flex;flex-wrap:wrap;gap:10px}
+.pills .rc-wrap{display:inline-block}
+.pill{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:11px 20px;cursor:pointer;font-weight:600;font-size:14px;color:var(--ink);background:#F3F4F5;transition:border-color .25s,box-shadow .25s,background .25s,color .25s}
+.pill:hover{border-color:var(--accent)}
+.pills input:checked + .pill{background:var(--accent);border-color:var(--accent);color:#fff}
+.pills input:focus-visible + .pill{outline:2px solid var(--gold);outline-offset:2px}
+.field-err{color:#B3261E;font-size:13px;font-weight:500;margin:8px 0 0}
+.field .input-err{border-color:#B3261E}
+.field .input-err:focus{border-color:#B3261E;box-shadow:0 0 0 3px rgba(179,38,30,.14)}
+.istep-nav{display:flex;gap:12px;margin-top:10px}
+.istep-nav .btn{flex:1;margin-top:0;width:auto}
+.btn-ghost{background:#fff;border:1px solid var(--line);color:var(--ink)}
+.btn-ghost:hover{border-color:var(--accent);color:var(--accent)}
+@media(max-width:700px){
+  .radio-cards{grid-template-columns:1fr 1fr}
+  .radio-card{min-height:56px;font-size:13px;padding:12px}
+}
+@media(max-width:480px){
+  .radio-cards{grid-template-columns:1fr}
+  .istep-nav{flex-direction:column}
+}
+
 /* ---------- cta band (deep contrast on light) ---------- */
 .cta-band{
   position:relative;overflow:hidden;text-align:center;color:#f5f5f7;
