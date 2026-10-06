@@ -2,8 +2,6 @@
 
 export const WA_NUMBER = "919885189951";
 export const EMAIL = "mutthe.aravind@gmail.com";
-export const AXON_API = "https://axon-api-246396716039.us-central1.run.app";
-export const RECAPTCHA_KEY = "6LeEg-EtAAAAAP_YI5QwbY2dYINLYWjDSxv48YoL";
 
 export interface Product {
   name: string;

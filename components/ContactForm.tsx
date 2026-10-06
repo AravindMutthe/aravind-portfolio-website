@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useState, type FormEvent } from "react";
-import { AXON_API, EMAIL, WA_NUMBER } from "./data";
+import { EMAIL, WA_NUMBER } from "./data";
 
 declare global {
   interface Window {
@@ -180,59 +180,41 @@ export default function ContactForm() {
     setSending(true);
     setStatus(null);
 
-    // 1) Save to Supabase via the Axon lead API (honeypot bot check).
-    const apiPromise = (async () => {
-      try {
-        const res = await fetch(`${AXON_API}/api/leads`, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            fullName: n,
-            email: em,
-            message: summary,
-            source: "portfolio",
-            website: honey, // honeypot — must be empty
-          }),
-        });
-        const j = await res.json().catch(() => null);
-        return res.ok && j?.ok === true;
-      } catch {
-        return false;
-      }
-    })();
+    // Email straight to his inbox (free FormSubmit relay) — instant notify.
+    // Portfolio is self-contained: no backend API dependency.
+    let emailOk = false;
+    try {
+      const res = await fetch(`https://formsubmit.co/ajax/${EMAIL}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          name: n,
+          email: em,
+          company: company.trim(),
+          role: role.trim(),
+          service,
+          budget,
+          timeline,
+          cloud: cloud || "—",
+          teamSize: teamSize || "—",
+          referral: referral || "—",
+          message: description.trim(),
+          _subject: `New project enquiry from ${n} — ${service}`,
+          _template: "table",
+          _honey: honey,
+        }),
+      });
+      emailOk = res.ok;
+    } catch {
+      emailOk = false;
+    }
 
-    // 2) Email straight to his inbox (free FormSubmit relay) — instant notify.
-    const emailPromise = fetch(`https://formsubmit.co/ajax/${EMAIL}`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json", Accept: "application/json" },
-      body: JSON.stringify({
-        name: n,
-        email: em,
-        company: company.trim(),
-        role: role.trim(),
-        service,
-        budget,
-        timeline,
-        cloud: cloud || "—",
-        teamSize: teamSize || "—",
-        referral: referral || "—",
-        message: description.trim(),
-        _subject: `New project enquiry from ${n} — ${service}`,
-        _template: "table",
-        _honey: honey,
-      }),
-    })
-      .then(() => true)
-      .catch(() => false);
-
-    const [apiOk, emailOk] = await Promise.all([apiPromise, emailPromise]);
-
-    // 3) WhatsApp handoff is manual via the buttons below (auto-open is blocked on iOS).
+    // WhatsApp handoff is manual via the buttons below (auto-open is blocked on iOS).
 
     setSending(false);
 
-    // If BOTH delivery paths failed, show an error — don't fake a success.
-    if (!apiOk && !emailOk) {
+    // If email failed, show an error — don't fake a success.
+    if (!emailOk) {
       setStatus({
         ok: false,
         html:
@@ -247,7 +229,6 @@ export default function ContactForm() {
     }
 
     const bits: string[] = [];
-    if (apiOk) bits.push("saved");
     if (emailOk) bits.push("emailed to me");
 
     const wa = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(summary)}`;

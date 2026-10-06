@@ -7,7 +7,6 @@ import {
   type FormEvent,
   type MouseEvent as ReactMouseEvent,
 } from "react";
-import { AXON_API } from "./data";
 
 interface Msg {
   id: number;
@@ -228,18 +227,19 @@ export default function ChatBot() {
     setBusy(true);
     setTyping(true);
     try {
-      const res = await fetch(`${AXON_API}/api/leads`, {
+      // Capture via FormSubmit (email) — portfolio is self-contained.
+      const res = await fetch(`https://formsubmit.co/ajax/${EMAIL}`, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
         body: JSON.stringify({
-          fullName: "Chatbot visitor",
+          name: "Chatbot visitor",
           email,
           message: "Requested follow-up via site chatbot",
-          source: "chatbot",
+          _subject: `Chatbot lead: ${email}`,
+          _template: "table",
         }),
-      });
-      const j = await res.json().catch(() => null);
-      pushBot(res.ok && j && j.ok === true ? LEAD_DONE : LEAD_FAIL);
+      }).catch(() => null);
+      pushBot(res && res.ok ? LEAD_DONE : LEAD_FAIL);
     } catch {
       pushBot(LEAD_FAIL);
     } finally {

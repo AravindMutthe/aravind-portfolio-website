@@ -2,7 +2,7 @@
 
 import { useState, type FormEvent } from "react";
 import Reveal from "@/components/Reveal";
-import { AXON_API } from "@/components/data";
+import { EMAIL } from "@/components/data";
 
 /** Lead magnet band — free "Production Readiness Checklist" PDF in exchange for
  *  name + email. Writes to the same Supabase leads table via the Axon API
@@ -25,23 +25,19 @@ export default function LeadMagnet() {
     setSending(true);
     setError(null);
     try {
-      const res = await fetch(`${AXON_API}/api/leads`, {
+      // Capture via FormSubmit (email) — portfolio is self-contained.
+      await fetch(`https://formsubmit.co/ajax/${EMAIL}`, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
         body: JSON.stringify({
-          fullName: n,
+          name: n,
           email: em,
           message: "Requested: Production Readiness Checklist",
-          source: "lead-magnet",
+          _subject: `Checklist download: ${n}`,
+          _template: "table",
         }),
-      });
-      const j = await res.json().catch(() => null);
-      if (res.ok && j?.ok === true) {
-        setDone(true);
-      } else {
-        // Still give the PDF — capture is best-effort, the asset is free.
-        setDone(true);
-      }
+      }).catch(() => null);
+      setDone(true);
     } catch {
       setDone(true);
     } finally {
