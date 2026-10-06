@@ -20,9 +20,8 @@ const CONNECT_LINKS = [
   { href: "https://linkedin.com/in/aravindmutte", label: "LinkedIn", external: true },
   { href: "https://github.com/AravindMutthe", label: "GitHub", external: true },
   { href: "https://x.com/aravind_mutthe", label: "X", external: true },
-  { href: "https://medium.com/@aravindmutte", label: "Medium", external: true },
+  { href: "https://medium.com/@aravind.mutthe", label: "Medium", external: true },
   { href: "https://www.reddit.com/user/aravindmutte/", label: "Reddit", external: true },
-  { href: "https://aravindmutte.substack.com", label: "Substack", external: true },
   { href: "mailto:mutthe.aravind@gmail.com", label: "Email" },
 ];
 
