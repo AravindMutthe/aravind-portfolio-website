@@ -3,7 +3,7 @@ import { Fraunces, Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import FloatingContact from "@/components/FloatingContact";
+import ChatBot from "@/components/ChatBot";
 import ScrollProgress from "@/components/ScrollProgress";
 
 /* Premium consultancy pairing: high-contrast serif display + clean grotesque body */
@@ -87,7 +87,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Navbar />
         {children}
         <Footer />
-        <FloatingContact />
+        <ChatBot />
       </body>
     </html>
   );

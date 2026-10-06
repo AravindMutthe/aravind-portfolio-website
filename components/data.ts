@@ -49,22 +49,6 @@ export const PRODUCTS: Product[] = [
   },
 ];
 
-export interface SocialLink {
-  label: string;
-  href: string;
-  external?: boolean;
-  img?: string; // official logo URL
-  imgAlt?: string;
-  svg?: string; // inline SVG path markup (stroke style)
-}
-
-export const FAB_LINKS: SocialLink[] = [
-  { label: "WhatsApp", href: "https://wa.me/919885189951", external: true, img: "https://cdn.simpleicons.org/whatsapp", imgAlt: "WhatsApp logo" },
-  { label: "Email", href: "mailto:mutthe.aravind@gmail.com", svg: '<rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/>' },
-  { label: "LinkedIn", href: "https://linkedin.com/in/aravindmutte", external: true, img: "https://commons.wikimedia.org/wiki/Special:FilePath/LinkedIn_logo_initials.png", imgAlt: "LinkedIn logo" },
-  { label: "X", href: "https://x.com/aravind_mutthe", external: true, img: "https://cdn.simpleicons.org/x", imgAlt: "X logo" },
-];
-
 export interface SkillTile {
   name: string;
   logo: string;
