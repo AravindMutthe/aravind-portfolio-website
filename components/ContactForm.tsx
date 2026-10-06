@@ -39,12 +39,11 @@ const TEAM_SIZES = ["Just me", "2–10", "11–50", "50+"];
 
 const REFERRALS = ["Google", "LinkedIn", "X", "Medium", "Referral", "Other"];
 
-const STEP_TITLES = ["About you", "What you need", "Budget & timeline", "Your current setup"];
+const STEP_TITLES = ["About you", "What you need", "Budget & timeline"];
 const STEP_SUBS = [
   "Who should I reply to?",
   "What are we building or fixing?",
   "So I can scope this realistically.",
-  "Helps me understand your starting point. All optional.",
 ];
 
 const EMAIL_RE = /^\S+@\S+\.\S+$/;
@@ -184,7 +183,7 @@ export default function ContactForm() {
   const onSubmit = async (e: FormEvent) => {
     e.preventDefault();
     // Guard: only submit on the final step. Enter key on earlier steps advances instead.
-    if (step !== 3) {
+    if (step !== 2) {
       onContinue();
       return;
     }
@@ -308,12 +307,12 @@ export default function ContactForm() {
           <div className="istep-progress" aria-hidden="true">
             <div className="istep-progress-top">
               <span>
-                Step {step + 1} of 4
+                Step {step + 1} of 3
               </span>
               <span>{STEP_TITLES[step]}</span>
             </div>
             <div className="istep-track">
-              <div className="istep-fill" style={{ width: `${((step + 1) / 4) * 100}%` }} />
+              <div className="istep-fill" style={{ width: `${((step + 1) / 3) * 100}%` }} />
             </div>
           </div>
 
@@ -599,7 +598,7 @@ export default function ContactForm() {
                 ← Back
               </button>
             )}
-            {step < 3 ? (
+            {step < 2 ? (
               <button type="button" className="btn" onClick={onContinue}>
                 Continue →
               </button>
