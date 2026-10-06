@@ -20,10 +20,10 @@ const CERTS = [
 
 const DELAYS = ["", "d1", "d2", "d3"] as const;
 
-/** About page: education (official university logos) + certifications (deep emerald section). */
+/** About page: education (official university logos) + certifications . */
 export default function AboutEducation() {
   return (
-    <section className="block section-dark">
+    <section className="block">
       <div className="wrap">
         <div className="about-sec">
           <Reveal>

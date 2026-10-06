@@ -43,10 +43,10 @@ const METHODS: Method[] = [
   },
 ];
 
-/** Contact page: method cards + the Supabase-wired enquiry form (deep emerald section). */
+/** Contact page: method cards + the Supabase-wired enquiry form . */
 export default function ContactSection() {
   return (
-    <section className="block section-dark" style={{ paddingTop: 0 }}>
+    <section className="block" style={{ paddingTop: 0 }}>
       <div className="wrap">
         <Reveal>
           <div className="contact-grid">

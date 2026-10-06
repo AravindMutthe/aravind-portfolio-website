@@ -67,10 +67,10 @@ const SERVICES: Service[] = [
   },
 ];
 
-/** Services page: four tilting service cards (deep emerald section). */
+/** Services page: four tilting service cards . */
 export default function ServicesGrid() {
   return (
-    <section className="block section-dark" style={{ paddingTop: 0 }}>
+    <section className="block" style={{ paddingTop: 0 }}>
       <div className="wrap">
         <div className="grid2">
           {SERVICES.map((s) => (

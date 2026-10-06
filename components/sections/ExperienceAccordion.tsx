@@ -4,12 +4,12 @@ import { Accordion, AccordionItem, Tag } from "@carbon/react";
 import Reveal from "@/components/Reveal";
 import { EXPERIENCE } from "@/components/data";
 
-/** Experience page: career timeline as a Carbon Accordion (deep emerald section).
+/** Experience page: career timeline as a Carbon Accordion .
  *  Each role expands to show the project, achievements, and tech stack as Carbon Tags.
  *  All company logos are the original official artwork, never recolored. */
 export default function ExperienceAccordion() {
   return (
-    <section className="block section-dark" style={{ paddingTop: 0 }}>
+    <section className="block" style={{ paddingTop: 0 }}>
       <div className="wrap">
         <Reveal>
           <Accordion className="exp-accordion">

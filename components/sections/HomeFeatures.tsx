@@ -24,10 +24,10 @@ const FEATURES = [
   },
 ];
 
-/** Homepage "Two ways to work together" feature rows (deep emerald section). */
+/** Homepage "Two ways to work together" feature rows . */
 export default function HomeFeatures() {
   return (
-    <section className="block section-dark">
+    <section className="block">
       <div className="wrap">
         <Reveal>
           <div className="sec-label">What I do</div>

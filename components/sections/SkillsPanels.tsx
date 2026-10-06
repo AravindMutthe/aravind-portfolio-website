@@ -16,10 +16,10 @@ function SkillTileCard({ tile }: { tile: SkillTile }) {
 }
 
 /** Skills page: category panels with Carbon Tiles for logos and Carbon Tags
- *  for the "also" items (deep emerald section). */
+ *  for the "also" items . */
 export default function SkillsPanels() {
   return (
-    <section className="block section-dark" style={{ paddingTop: 0 }}>
+    <section className="block" style={{ paddingTop: 0 }}>
       <div className="wrap">
         <div className="skills-cats">
           {SKILL_PANELS.map((panel) => (

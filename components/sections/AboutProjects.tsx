@@ -54,10 +54,10 @@ const SOCIALS: SocCard[] = [
 
 const DELAYS = ["", "d1", "d2", "d3"] as const;
 
-/** About page: projects (Carbon ClickableTiles) + social cards (deep emerald section). */
+/** About page: projects (Carbon ClickableTiles) + social cards . */
 export default function AboutProjects() {
   return (
-    <section className="block section-dark">
+    <section className="block">
       <div className="wrap">
         <div className="about-sec">
           <Reveal>
