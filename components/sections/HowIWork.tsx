@@ -1,6 +1,6 @@
 import Reveal from "@/components/Reveal";
 
-const S = (s: string) => `https://cdn.simpleicons.org/${s}`;
+const S = (s: string) => `/logos/${s}.svg`;
 
 const STEPS = [
   {

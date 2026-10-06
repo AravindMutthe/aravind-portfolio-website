@@ -42,7 +42,7 @@ export default function AboutEducation() {
               <div className="edu-card">
                 <img
                   className="edu-logo"
-                  src="https://commons.wikimedia.org/wiki/Special:FilePath/Rivier%20University%2C%20Logo%2C%20Nashua%20NH.svg"
+                  src="/logos/rivier.svg"
                   alt="Rivier University logo"
                 />
                 <span className="edu-date">Completed May 2025</span>
@@ -54,7 +54,7 @@ export default function AboutEducation() {
               <div className="edu-card">
                 <img
                   className="edu-logo"
-                  src="https://en.wikipedia.org/wiki/Special:FilePath/JNTU%20Hyderabad%20logo.png"
+                  src="/logos/jntu.png"
                   alt="JNTU Hyderabad logo"
                 />
                 <span className="edu-date">2017 – 2020</span>

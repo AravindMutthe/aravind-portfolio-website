@@ -67,8 +67,20 @@ export interface SkillPanel {
   groups?: { label: string; caption: string; tiles: SkillTile[] }[];
 }
 
-const W = (f: string) => `https://commons.wikimedia.org/wiki/Special:FilePath/${f}`;
-const S = (s: string) => `https://cdn.simpleicons.org/${s}`;
+const W_MAP: Record<string, string> = {
+  "Amazon_Web_Services_Logo.svg": "/logos/aws.svg",
+  "IBM_logo.svg": "/logos/ibm.svg",
+  "Microsoft_Azure_Logo.svg": "/logos/azure.svg",
+  "Oracle_logo.svg": "/logos/oracle.svg",
+  "AWS%20Simple%20Icons%20Deployment%20Management%20AWS%20CloudFormation.svg":
+    "/logos/aws-simple-icons-deployment-management-aws-cloudformation.svg",
+  "Azure%20DevOps%20icon.svg": "/logos/azure-devops-icon.svg",
+  "Groq_logo.svg": "/logos/groq_logo.svg",
+  "Infosys%20logo.svg": "/logos/infosys-logo.svg",
+  "HCLTech-new-logo.svg": "/logos/hcltech-new-logo.svg",
+};
+const W = (f: string) => W_MAP[f] ?? `/logos/${f}`;
+const S = (s: string) => `/logos/${s}.svg`;
 
 export const SKILL_PANELS: SkillPanel[] = [
   {
@@ -276,7 +288,7 @@ export const EXPERIENCE: ExperienceEntry[] = [
     title: "Infrastructure Engineer",
     date: "MAR 2021 – MAR 2022",
     org: "PragmaEdge · Hyderabad, India",
-    orgLogo: "https://pragmaedge.com/logo-hd.png",
+    orgLogo: "/logos/pragmaedge.png",
     orgLogoAlt: "PragmaEdge logo",
     proj: "Enterprise B2B integration — IBM Sterling stack",
     bullets: [

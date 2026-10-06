@@ -24,7 +24,7 @@ const METHODS: Method[] = [
     value: "Chat instantly",
     href: "https://wa.me/919885189951",
     external: true,
-    img: "https://cdn.simpleicons.org/whatsapp",
+    img: "/logos/whatsapp.svg",
     imgAlt: "WhatsApp logo",
   },
   {
@@ -32,7 +32,7 @@ const METHODS: Method[] = [
     value: "linkedin.com/in/aravindmutte",
     href: "https://linkedin.com/in/aravindmutte",
     external: true,
-    img: "https://commons.wikimedia.org/wiki/Special:FilePath/LinkedIn_logo_initials.png",
+    img: "/logos/linkedin.png",
     imgAlt: "LinkedIn logo",
   },
   {
@@ -40,7 +40,7 @@ const METHODS: Method[] = [
     value: "github.com/AravindMutthe",
     href: "https://github.com/AravindMutthe",
     external: true,
-    img: "https://cdn.simpleicons.org/github",
+    img: "/logos/github.svg",
     imgAlt: "GitHub logo",
   },
 ];

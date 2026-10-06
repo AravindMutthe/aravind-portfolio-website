@@ -1,4 +1,4 @@
-const S = (s: string) => `https://cdn.simpleicons.org/${s}`;
+const S = (s: string) => `/logos/${s}.svg`;
 
 const ITEMS = [
   { name: "Next.js 15", logo: S("nextdotjs"), alt: "Next.js logo" },

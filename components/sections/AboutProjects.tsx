@@ -42,13 +42,13 @@ interface SocCard {
 
 /** Official brand logos only — original artwork, never recolored or filtered. */
 const SOCIALS: SocCard[] = [
-  { label: "LinkedIn", value: "/in/aravindmutte", href: "https://linkedin.com/in/aravindmutte", external: true, img: "https://commons.wikimedia.org/wiki/Special:FilePath/LinkedIn_logo_initials.png", imgAlt: "LinkedIn logo" },
-  { label: "GitHub", value: "@AravindMutthe", href: "https://github.com/AravindMutthe", external: true, img: "https://cdn.simpleicons.org/github", imgAlt: "GitHub logo" },
-  { label: "X", value: "@aravind_mutthe", href: "https://x.com/aravind_mutthe", external: true, img: "https://cdn.simpleicons.org/x", imgAlt: "X logo" },
-  { label: "Medium", value: "@aravind.mutthe", href: "https://medium.com/@aravind.mutthe", external: true, img: "https://cdn.simpleicons.org/medium", imgAlt: "Medium logo" },
-  { label: "Reddit", value: "u/aravindmutte", href: "https://www.reddit.com/user/aravindmutte/", external: true, img: "https://cdn.simpleicons.org/reddit", imgAlt: "Reddit logo" },
+  { label: "LinkedIn", value: "/in/aravindmutte", href: "https://linkedin.com/in/aravindmutte", external: true, img: "/logos/linkedin.png", imgAlt: "LinkedIn logo" },
+  { label: "GitHub", value: "@AravindMutthe", href: "https://github.com/AravindMutthe", external: true, img: "/logos/github.svg", imgAlt: "GitHub logo" },
+  { label: "X", value: "@aravind_mutthe", href: "https://x.com/aravind_mutthe", external: true, img: "/logos/x.svg", imgAlt: "X logo" },
+  { label: "Medium", value: "@aravind.mutthe", href: "https://medium.com/@aravind.mutthe", external: true, img: "/logos/medium.svg", imgAlt: "Medium logo" },
+  { label: "Reddit", value: "u/aravindmutte", href: "https://www.reddit.com/user/aravindmutte/", external: true, img: "/logos/reddit.svg", imgAlt: "Reddit logo" },
   { label: "Email", value: "mutthe.aravind@gmail.com", href: "mailto:mutthe.aravind@gmail.com", svg: '<rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/>' },
-  { label: "WhatsApp", value: "Chat instantly", href: "https://wa.me/919885189951", external: true, img: "https://cdn.simpleicons.org/whatsapp", imgAlt: "WhatsApp logo" },
+  { label: "WhatsApp", value: "Chat instantly", href: "https://wa.me/919885189951", external: true, img: "/logos/whatsapp.svg", imgAlt: "WhatsApp logo" },
   { label: "Email", value: "mutthe.aravind@gmail.com", href: "mailto:mutthe.aravind@gmail.com", svg: '<rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/>' },
   { label: "Hire Me", value: "Start a project →", href: "/contact", svg: '<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>' },
 ];

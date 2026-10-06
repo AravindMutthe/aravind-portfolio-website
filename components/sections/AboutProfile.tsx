@@ -53,7 +53,7 @@ export default function AboutProfile() {
                   rel="noopener"
                 >
                   <img
-                    src="https://commons.wikimedia.org/wiki/Special:FilePath/LinkedIn_logo_initials.png"
+                    src="/logos/linkedin.png"
                     alt="LinkedIn logo"
                   />
                   LinkedIn
@@ -64,11 +64,11 @@ export default function AboutProfile() {
                   target="_blank"
                   rel="noopener"
                 >
-                  <img src="https://cdn.simpleicons.org/github" alt="GitHub logo" />
+                  <img src="/logos/github.svg" alt="GitHub logo" />
                   GitHub
                 </a>
                 <a className="sbtn" href="https://x.com/aravind_mutthe" target="_blank" rel="noopener">
-                  <img src="https://cdn.simpleicons.org/x" alt="X logo" />X
+                  <img src="/logos/x.svg" alt="X logo" />X
                 </a>
                 <a className="sbtn" href="mailto:mutthe.aravind@gmail.com">
                   <svg viewBox="0 0 24 24">

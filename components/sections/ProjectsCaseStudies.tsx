@@ -5,8 +5,14 @@ import Reveal from "@/components/Reveal";
 import TiltCard from "@/components/TiltCard";
 
 /* Logo URL helpers — official brand artwork, never recolored or filtered. */
-const S = (s: string) => `https://cdn.simpleicons.org/${s}`;
-const W = (f: string) => `https://commons.wikimedia.org/wiki/Special:FilePath/${f}`;
+const S = (s: string) => `/logos/${s}.svg`;
+const W_MAP: Record<string, string> = {
+  "Amazon_Web_Services_Logo.svg": "/logos/aws.svg",
+  "IBM_logo.svg": "/logos/ibm.svg",
+  "Microsoft_Azure_Logo.svg": "/logos/azure.svg",
+  "Oracle_logo.svg": "/logos/oracle.svg",
+};
+const W = (f: string) => W_MAP[f] ?? `/logos/${f}`;
 
 interface StackItem { name: string; logo: string; alt: string }
 interface CaseStudy {
