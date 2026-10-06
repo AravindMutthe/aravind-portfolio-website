@@ -4,10 +4,10 @@ import Reveal from "@/components/Reveal";
 
 /**
  * Book a call — Cal.com embed.
- * TODO: replace https://cal.com/aravindmutte/30min with the real Cal.com
+ * Cal.com booking link — live.
  * event link after the Cal.com account is set up.
  */
-const CAL_URL = "https://cal.com/aravindmutte/30min";
+const CAL_URL = "https://cal.com/aravindmutte/intro-call";
 
 export default function BookACall() {
   return (
