@@ -21,6 +21,12 @@ const inter = Inter({
   variable: "--font-inter",
 });
 
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+};
+
 export const metadata: Metadata = {
   title: "Aravind Mutte — Cloud DevOps & SRE Engineer",
   description:
