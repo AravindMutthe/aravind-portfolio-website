@@ -119,6 +119,14 @@ export default function LeadMagnet() {
                   </p>
                 </form>
               )}
+              {/* Native fallback for no-JS: direct PDF link */}
+              <noscript>
+                <div className="magnet-form">
+                  <a className="btn" href="/production-readiness-checklist.pdf" download>
+                    Download the PDF ↓
+                  </a>
+                </div>
+              </noscript>
             </div>
           </div>
         </Reveal>

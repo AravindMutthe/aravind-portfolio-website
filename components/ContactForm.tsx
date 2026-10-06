@@ -601,6 +601,33 @@ export default function ContactForm() {
           )}
         </form>
       )}
+      {/* Native fallback: works even if JavaScript fails. Posts directly to FormSubmit. */}
+      <noscript>
+        <form
+          action={`https://formsubmit.co/${EMAIL}`}
+          method="POST"
+          className="cform-fallback"
+        >
+          <input type="hidden" name="_subject" value="New project enquiry (no-JS fallback)" />
+          <input type="hidden" name="_template" value="table" />
+          <input type="text" name="_honey" style={{ display: "none" }} />
+          <div className="field">
+            <label htmlFor="fb-name">Your name</label>
+            <input id="fb-name" name="name" type="text" required placeholder="Jane Smith" />
+          </div>
+          <div className="field">
+            <label htmlFor="fb-email">Email</label>
+            <input id="fb-email" name="email" type="email" required placeholder="jane@company.com" />
+          </div>
+          <div className="field">
+            <label htmlFor="fb-message">Project details</label>
+            <textarea id="fb-message" name="message" required placeholder="Tell me about your project..." />
+          </div>
+          <button className="btn btn-go" type="submit">
+            Send Enquiry →
+          </button>
+        </form>
+      </noscript>
     </div>
   );
 }
