@@ -18,11 +18,17 @@ export default function Reveal({ children, variant = "", delay = "", className =
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
+    // Fallback: if IntersectionObserver doesn't fire (iOS quirks), reveal after 1.2s.
+    const fallback = setTimeout(() => {
+      el.classList.add("in");
+    }, 1200);
+    if (typeof IntersectionObserver === "undefined") return;
     const io = new IntersectionObserver(
       (entries) => {
         entries.forEach((e) => {
           if (e.isIntersecting) {
             e.target.classList.add("in");
+            clearTimeout(fallback);
             io.unobserve(e.target);
           }
         });
@@ -30,7 +36,10 @@ export default function Reveal({ children, variant = "", delay = "", className =
       { threshold: 0.12, rootMargin: "0px 0px -40px 0px" }
     );
     io.observe(el);
-    return () => io.disconnect();
+    return () => {
+      clearTimeout(fallback);
+      io.disconnect();
+    };
   }, []);
 
   const cls = `reveal${variant ? `-${variant}` : ""}${delay ? ` ${delay}` : ""}${className ? ` ${className}` : ""}`;
