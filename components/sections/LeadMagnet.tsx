@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
-import Reveal from "@/components/Reveal";
 import { EMAIL } from "@/components/data";
 
 /** Lead magnet band — free "Production Readiness Checklist" PDF in exchange for
@@ -48,8 +47,7 @@ export default function LeadMagnet() {
   return (
     <section className="block">
       <div className="wrap">
-        <Reveal variant="scale">
-          <div className="magnet-card">
+        <div className="magnet-card">
             <div className="magnet-copy">
               <div className="sub-label" style={{ color: "var(--gold)" }}>
                 Free download
@@ -129,7 +127,6 @@ export default function LeadMagnet() {
               </noscript>
             </div>
           </div>
-        </Reveal>
       </div>
     </section>
   );

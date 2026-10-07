@@ -73,9 +73,7 @@ export default function ContactSection() {
           </div>
         </Reveal>
 
-        <Reveal>
-          <ContactForm />
-        </Reveal>
+        <ContactForm />
       </div>
     </section>
   );

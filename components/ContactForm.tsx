@@ -83,10 +83,8 @@ export default function ContactForm() {
   const goStep = (n: number) => {
     setErrors({});
     setStep(n);
-    // Scroll to top of form on step change (no programmatic focus — iOS keyboard issues).
-    requestAnimationFrame(() => {
-      formTopRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
-    });
+    // Scroll to top of form on step change — instant, no smooth animation (iOS jank).
+    formTopRef.current?.scrollIntoView({ block: "start" });
   };
 
   const validateStep = (s: number): Record<string, string> => {
@@ -106,22 +104,14 @@ export default function ContactForm() {
     return e;
   };
 
-  const focusFirstError = (e: Record<string, string>) => {
-    const key = Object.keys(e)[0];
-    const el =
-      document.getElementById(`cf-${key}`) ||
-      document.querySelector(`#cf-${key}-group input, #cf-${key}-group select`);
-    (el as HTMLElement | null)?.focus();
-  };
-
   const onContinue = () => {
     const e = validateStep(step);
     setErrors(e);
     if (Object.keys(e).length === 0) {
       goStep(step + 1);
-    } else {
-      focusFirstError(e);
     }
+    // No programmatic focus on error — iOS Safari keyboard issues.
+    // Error messages are shown inline below each field.
   };
 
   const buildSummary = (): string => {
