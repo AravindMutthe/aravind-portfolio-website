@@ -1466,3 +1466,17 @@ a.xtweet:hover{background:rgba(27,47,75,.03)}
   .feed-app{grid-template-columns:1fr}
   .feed-side{display:none}
 }
+
+/* ---------- medium-style article card ---------- */
+.mpost{display:block;margin:10px 0 12px;color:inherit}
+.mpost-kicker{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--muted);margin-bottom:8px}
+.mpost-title{font-family:var(--font-fraunces);font-weight:700;font-size:24px;line-height:1.25;
+  color:var(--ink);margin:0 0 8px;letter-spacing:-.01em}
+.mpost:hover .mpost-title{color:#8a6d1c}
+.mpost-desc{font-family:Georgia,"Times New Roman",serif;font-size:15.5px;line-height:1.6;
+  color:var(--muted);margin:0 0 12px;max-width:60ch}
+.mpost-meta{display:flex;align-items:center;gap:8px;font-size:13.5px;color:var(--muted)}
+.mpost-meta .mdot{opacity:.5}
+.mpost-icons{margin-left:auto;display:flex;gap:16px;color:var(--muted)}
+.mpost-icons svg{width:20px;height:20px}

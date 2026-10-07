@@ -1,19 +1,20 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import Reveal from "@/components/Reveal";
 import TerminalCard from "@/components/sections/TerminalCard";
-import { XPost, InstaPost, FBCard, X_URL } from "@/components/feed/posts";
+import { XPost, InstaPost, FBCard, MediumPost, X_URL } from "@/components/feed/posts";
 import Stories, { Composer } from "@/components/feed/Stories";
 import NavRail from "@/components/feed/NavRail";
 
-type Cat = "all" | "insights" | "visuals" | "services" | "work";
+type Cat = "all" | "insights" | "visuals" | "reading" | "services" | "work";
 
 const TABS: { id: Cat; label: string }[] = [
   { id: "all", label: "All" },
   { id: "insights", label: "Insights" },
   { id: "visuals", label: "Visuals" },
+  { id: "reading", label: "Reading" },
   { id: "services", label: "Services" },
   { id: "work", label: "Work" },
 ];
@@ -101,6 +102,37 @@ const WORK = [
   },
 ];
 
+const READING = [
+  {
+    tag: "Linux",
+    title: "System Architecture Planes (Linux Server View)",
+    desc: "Control, data, management, and security planes — how a Linux server actually holds together.",
+    href: "https://medium.com/@aravind.mutthe/system-architecture-planes-linux-server-view-20ed6f0f2cd1",
+    readTime: "8 min",
+  },
+  {
+    tag: "Operating Systems",
+    title: "Kernel Mode vs User Mode in OS",
+    desc: "Why your app crashing doesn't take down the whole system — privilege separation explained.",
+    href: "https://medium.com/@aravind.mutthe/kernal-mode-vs-user-mode-in-os-ce1f5a0f5921",
+    readTime: "6 min",
+  },
+  {
+    tag: "Networking",
+    title: "Network Pipes & Sockets — The Complete Command List",
+    desc: "Master TCP/UDP pipes, VPN tunnels, and GRE with the iproute2 suite and diagnostic tools.",
+    href: "https://medium.com/@aravind.mutthe/network-pipes-sockets-92ebb17166cc",
+    readTime: "10 min",
+  },
+  {
+    tag: "Linux",
+    title: "Internal Pipes / IPC — Anonymous, Named, and Sockets",
+    desc: "How processes talk on the same machine: pipes, FIFOs, and Unix domain sockets.",
+    href: "https://medium.com/@aravind.mutthe/internal-pipes-or-ipc-31df0cd8f216",
+    readTime: "7 min",
+  },
+];
+
 function ProfileHeader() {
   return (
     <div className="feed-profile">
@@ -143,17 +175,44 @@ function ProfileHeader() {
 export default function FeedHome() {
   const [tab, setTab] = useState<Cat>("all");
   const show = (c: Cat) => tab === "all" || tab === c;
+  const rootRef = useRef<HTMLDivElement>(null);
+
+  // GSAP entrance choreography — our motion tech, research-grade easing.
+  useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    let ctx: { revert: () => void } | null = null;
+    (async () => {
+      const { gsap } = await import("gsap");
+      if (!rootRef.current) return;
+      ctx = gsap.context(() => {
+        gsap.from(".feed-anim", {
+          y: 28,
+          opacity: 0,
+          duration: 0.85,
+          ease: "expo.out",
+          stagger: 0.07,
+          clearProps: "all",
+          overwrite: "auto",
+        });
+      }, rootRef);
+    })();
+    return () => ctx?.revert();
+  }, []);
 
   return (
-    <div className="feed-app">
+    <div className="feed-app" ref={rootRef}>
       <NavRail />
       <div className="feed-col">
         <Reveal>
           <ProfileHeader />
         </Reveal>
 
-        <Stories />
-        <Composer />
+        <div className="feed-anim">
+          <Stories />
+        </div>
+        <div className="feed-anim">
+          <Composer />
+        </div>
 
         <div className="xtabs feed-tabs" role="tablist" aria-label="Feed filter">
           {TABS.map((t) => (
@@ -200,6 +259,18 @@ export default function FeedHome() {
           {show("visuals") &&
             VISUALS.map((v) => (
               <InstaPost key={v.scene} scene={v.scene} label={v.label} caption={v.caption} meta={v.meta} />
+            ))}
+
+          {show("reading") &&
+            READING.map((a) => (
+              <MediumPost
+                key={a.href}
+                href={a.href}
+                tag={a.tag}
+                title={a.title}
+                desc={a.desc}
+                readTime={a.readTime}
+              />
             ))}
 
           {show("insights") && (
