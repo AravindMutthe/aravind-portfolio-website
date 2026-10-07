@@ -65,6 +65,8 @@ export default function ContactForm() {
   const [cloud, setCloud] = useState("");
   const [teamSize, setTeamSize] = useState("");
   const [referral, setReferral] = useState("");
+  const [decider, setDecider] = useState("");
+  const [success, setSuccess] = useState("");
 
   const [honey, setHoney] = useState("");
   const [errors, setErrors] = useState<Record<string, string>>({});
@@ -126,6 +128,8 @@ export default function ContactForm() {
       `Service: ${service}\n` +
       `Budget: ${budget} | Timeline: ${timeline}\n` +
       `Cloud: ${cloud || "—"} | Team: ${teamSize || "—"} | Found via: ${referral || "—"}\n` +
+      `Decision maker: ${decider.trim() || "—"}\n` +
+      `Success looks like: ${success.trim() || "—"}\n` +
       `\nProject details:\n${description.trim()}`
     );
   };
@@ -191,6 +195,8 @@ export default function ContactForm() {
           cloud: cloud || "—",
           teamSize: teamSize || "—",
           referral: referral || "—",
+          decider: decider.trim() || "—",
+          success: success.trim() || "—",
           message: description.trim(),
           _subject: `New project enquiry from ${n} — ${service}`,
           _template: "table",
@@ -545,6 +551,28 @@ export default function ContactForm() {
                       ))}
                     </select>
                   </div>
+                </div>
+                <div className="field">
+                  <label htmlFor="cf-decider">Who signs off on scope and payment?</label>
+                  <input
+                    type="text"
+                    id="cf-decider"
+                    name="decider"
+                    placeholder="e.g. I do, our CTO, procurement team…"
+                    value={decider}
+                    onChange={(e) => setDecider(e.target.value)}
+                  />
+                </div>
+                <div className="field">
+                  <label htmlFor="cf-success">How will you know this worked?</label>
+                  <textarea
+                    id="cf-success"
+                    name="success"
+                    rows={2}
+                    placeholder="e.g. Deploy time cut in half, zero downtime launches…"
+                    value={success}
+                    onChange={(e) => setSuccess(e.target.value)}
+                  />
                 </div>
               </>
             )}
