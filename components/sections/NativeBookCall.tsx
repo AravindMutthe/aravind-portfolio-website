@@ -76,24 +76,38 @@ export default function NativeBookCall() {
     e.preventDefault();
     if (!picked || !slot || !name.trim() || !email.trim()) return;
     setSending(true); setError("");
+    const isoDate = `${picked.getFullYear()}-${String(picked.getMonth() + 1).padStart(2, "0")}-${String(picked.getDate()).padStart(2, "0")}`;
     try {
-      const res = await fetch(`https://formsubmit.co/ajax/${EMAIL}`, {
+      // Real booking via our Cal.com API proxy (key stays server-side).
+      const res = await fetch("/api/book", {
         method: "POST",
-        headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify({
-          _subject: `Call booking request — ${fmtDate(picked)} ${slot} IST`,
-          _template: "table",
-          name: name.trim(),
-          email: email.trim(),
-          date: fmtDate(picked),
-          time: `${slot} IST`,
-          type: "30-minute intro call",
-        }),
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ date: isoDate, time: slot, name: name.trim(), email: email.trim() }),
       });
-      if (!res.ok) throw new Error("send failed");
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok) throw new Error(data?.error || "booking failed");
       setDone(true);
     } catch {
-      setError("Couldn't send the request — please try again or use the Cal.com link below.");
+      // Fallback: email the request through the lead pipeline.
+      try {
+        await fetch(`https://formsubmit.co/ajax/${EMAIL}`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json", Accept: "application/json" },
+          body: JSON.stringify({
+            _subject: `Call booking request — ${fmtDate(picked)} ${slot} IST`,
+            _template: "table",
+            name: name.trim(),
+            email: email.trim(),
+            date: fmtDate(picked),
+            time: `${slot} IST`,
+            type: "30-minute intro call",
+            note: "Cal.com API failed; confirm manually.",
+          }),
+        });
+        setDone(true);
+      } catch {
+        setError("Couldn't send the request — please try again or use the Cal.com link below.");
+      }
     } finally {
       setSending(false);
     }
