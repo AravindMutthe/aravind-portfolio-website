@@ -18,16 +18,14 @@ function CoinDoodle({ className = "", symbol = "₹" }: { className?: string; sy
     <svg className={className} viewBox="0 0 80 80" fill="none" aria-hidden="true">
       <circle cx="40" cy="40" r="30" stroke="#1B2F4B" strokeWidth="5" fill="#FFFDF5" />
       <circle cx="40" cy="40" r="22" stroke="#C9A227" strokeWidth="3" strokeDasharray="6 5" />
-      {/* cartoon face */}
-      <circle cx="32" cy="30" r="3.2" fill="#1B2F4B" />
-      <circle cx="48" cy="30" r="3.2" fill="#1B2F4B" />
-      <circle cx="33.2" cy="28.8" r="1.1" fill="#fff" />
-      <circle cx="49.2" cy="28.8" r="1.1" fill="#fff" />
-      <path d="M31 52 Q 40 60, 49 52" stroke="#1B2F4B" strokeWidth="3.5"
-        strokeLinecap="round" fill="none" />
-      {/* currency symbol as a forehead stamp */}
-      <text x="40" y="20" textAnchor="middle" fontSize="13" fontWeight="800"
-        fill="#8a6d1c" fontFamily="var(--font-motto)">{symbol}</text>
+      {/* cartoon eyes */}
+      <circle cx="31" cy="26" r="3" fill="#1B2F4B" />
+      <circle cx="49" cy="26" r="3" fill="#1B2F4B" />
+      <circle cx="32.1" cy="24.9" r="1" fill="#fff" />
+      <circle cx="50.1" cy="24.9" r="1" fill="#fff" />
+      {/* BIG currency symbol — the hero of the coin */}
+      <text x="40" y="58" textAnchor="middle" fontSize={symbol.length > 1 ? "24" : "32"} fontWeight="800"
+        fill="#1B2F4B" fontFamily="var(--font-motto)">{symbol}</text>
       {/* shine */}
       <ellipse className="coin-shine" cx="28" cy="22" rx="14" ry="8"
         fill="#fff" opacity="0.55" transform="rotate(-24 28 22)" />

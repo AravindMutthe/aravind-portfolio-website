@@ -1912,3 +1912,16 @@ a.xtweet:hover{background:rgba(27,47,75,.03)}
   .motto-band{padding:52px 0}
 }
 .foot-motto{font-family:var(--font-motto);font-weight:700;font-style:italic;color:#8a6d1c}
+
+/* ============ PROCESS (how I work) ============ */
+.process-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.process-card{background:#fff;border:1px solid var(--line);border-radius:16px;
+  padding:26px 22px;transition:transform .25s,box-shadow .25s}
+.process-card:hover{transform:translateY(-4px);box-shadow:0 16px 36px -16px rgba(27,47,75,.25)}
+.process-num{font-family:var(--font-motto);font-weight:800;font-size:15px;
+  letter-spacing:.1em;color:#8a6d1c}
+.process-card h3{font-family:var(--font-fraunces);font-weight:700;font-size:19px;
+  color:var(--ink);margin:12px 0 10px}
+.process-card p{font-size:14.5px;line-height:1.65;color:var(--muted);margin:0}
+@media(max-width:1024px){.process-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.process-grid{grid-template-columns:1fr}}

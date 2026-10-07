@@ -39,8 +39,30 @@ const WORK = [
   },
 ];
 
-const ESSAYS = [
+const PROCESS = [
   {
+    n: "01",
+    title: "Discovery call",
+    desc: "A 30-minute conversation about your goals, your stack, and what's hurting. You talk, I listen — and I tell you honestly if I'm not the right fit.",
+  },
+  {
+    n: "02",
+    title: "Fixed-scope proposal",
+    desc: "Within two days you get a written plan: exactly what I'll build, what it costs, and when it's done. No hourly billing, no open-ended retainers to start.",
+  },
+  {
+    n: "03",
+    title: "Build in the open",
+    desc: "I work in weekly increments you can see and test. Infrastructure as code from day one, so everything I build is documented and reproducible.",
+  },
+  {
+    n: "04",
+    title: "Handover & support",
+    desc: "You get the code, the runbooks, and a walkthrough session. Your team can run everything without me — though most clients keep me on speed dial.",
+  },
+];
+
+const ESSAYS = [  {
     title: "System Architecture Planes (Linux Server View)",
     meta: "Linux · 8 min read",
     href: "https://medium.com/@aravind.mutthe/system-architecture-planes-linux-server-view-20ed6f0f2cd1",
@@ -135,6 +157,31 @@ export default function HomeNarrative() {
           <Link href="/blog" className="scard-cta">All writing <span aria-hidden="true">›</span></Link>
         </div>
       </section>
+
+      {/* how I work */}
+      <section className="narr-section" aria-label="How I work">
+        <div className="wrap">
+          <div className="code-label">{"// how-i-work"}</div>
+          <h2 className="narr-title">
+            No surprises. <em>Just shipping.</em>
+          </h2>
+          <p className="narr-lead">
+            Every engagement follows the same four steps — you always know
+            where things stand and what happens next.
+          </p>
+          <div className="process-grid">
+            {PROCESS.map((p) => (
+              <article key={p.n} className="process-card">
+                <span className="process-num">{p.n}</span>
+                <h3>{p.title}</h3>
+                <p>{p.desc}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <DoodleDivider />
 
       {/* motto band */}
       <section className="motto-band" aria-label="Motto">
