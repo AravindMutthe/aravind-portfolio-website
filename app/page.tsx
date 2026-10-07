@@ -8,12 +8,15 @@ import LeadMagnet from "@/components/sections/LeadMagnet";
 import Testimonials from "@/components/sections/Testimonials";
 import WaveReveal from "@/components/WaveReveal";
 import GenArt from "@/components/GenArt";
+import { DoodleDivider } from "@/components/doodles";
 
 export default function HomePage() {
   return (
     <>
       <HomeHero />
+      <DoodleDivider />
       <HomeFeatures />
+      <DoodleDivider />
       <HowIWork />
       <TechShowcase
         eyebrow="Tech stack"
@@ -25,6 +28,7 @@ export default function HomePage() {
         sub="The trending tools behind this site and the production systems I ship — every logo the real thing."
       />
       <LeadMagnet />
+      <DoodleDivider />
       <Testimonials />
 
       <section className="block" style={{ paddingTop: 0 }}>

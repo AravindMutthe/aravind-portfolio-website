@@ -7,6 +7,7 @@ import ChatBot from "@/components/ChatBot";
 import ScrollProgress from "@/components/ScrollProgress";
 import StickyCtaBar from "@/components/StickyCtaBar";
 import CursorGlow from "@/components/CursorGlow";
+import RouteSplash from "@/components/RouteSplash";
 
 /* Premium consultancy pairing: high-contrast serif display + clean grotesque body */
 const fraunces = Fraunces({
@@ -98,6 +99,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <ChatBot />
         <StickyCtaBar />
         <CursorGlow />
+        <RouteSplash />
       </body>
     </html>
   );

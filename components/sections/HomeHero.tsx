@@ -7,7 +7,7 @@ import Reveal from "@/components/Reveal";
 import CountUp from "@/components/CountUp";
 import Ticker from "@/components/Ticker";
 import WordCycler from "@/components/WordCycler";
-import { BotMascot, Squiggle, Sparkle } from "@/components/doodles";
+import { BotMascot, Squiggle, Sparkle, SpeechBubble, GearDoodle } from "@/components/doodles";
 
 /* Branch-only: pixi canvas is code-split and client-only so the main
  * bundle stays untouched by the ~1MB WebGL lib. */
@@ -35,7 +35,10 @@ export default function HomeHero() {
       const { gsap } = await import("gsap");
       if (!heroRef.current) return;
       ctx = gsap.context(() => {
-        gsap.from(".gs-in", {
+        /* one choreographed entrance: copy springs in, Pip pops elastic,
+           bubble and gear follow like a little skit */
+        const tl = gsap.timeline();
+        tl.from(".gs-in", {
           y: 60,
           opacity: 0,
           scale: 0.92,
@@ -43,16 +46,22 @@ export default function HomeHero() {
           ease: "back.out(1.5)",
           stagger: 0.13,
           clearProps: "all",
-        });
-        /* mascot pops in with an elastic overshoot */
-        gsap.from(".gs-mascot", {
-          scale: 0,
-          rotation: -18,
-          duration: 1.1,
-          ease: "elastic.out(1, 0.45)",
-          delay: 0.55,
-          clearProps: "transform",
-        });
+        })
+          .from(
+            ".gs-mascot",
+            { scale: 0, rotation: -18, duration: 1.1, ease: "elastic.out(1, 0.45)", clearProps: "transform" },
+            "-=0.75"
+          )
+          .from(
+            ".gs-bubble",
+            { scale: 0, transformOrigin: "20% 90%", duration: 0.7, ease: "back.out(2.2)", clearProps: "transform" },
+            "-=0.55"
+          )
+          .from(
+            ".gs-gear",
+            { scale: 0, rotation: 120, duration: 0.9, ease: "back.out(1.8)", clearProps: "transform" },
+            "-=0.5"
+          );
       }, heroRef);
     })();
     return () => ctx?.revert();
@@ -62,7 +71,11 @@ export default function HomeHero() {
     <div className="hero-stage">
       <header className="home-hero" ref={heroRef}>
         <PixiHero />
-        <BotMascot className="gs-mascot hero-bot" />
+        <div className="hero-cast" aria-hidden="true">
+          <BotMascot className="gs-mascot" />
+          <SpeechBubble text="Let's ship it!" className="gs-bubble" />
+          <GearDoodle className="gs-gear" />
+        </div>
         <Sparkle className="doodle-sparkle s1" />
         <Sparkle className="doodle-sparkle s2" />
         <div className="wrap hero-copy">

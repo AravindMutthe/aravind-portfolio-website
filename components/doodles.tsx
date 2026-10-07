@@ -143,6 +143,9 @@ export function BotMascot({ className = "" }: { className?: string }) {
             <circle cx="84" cy="62" r="2" fill="#FAFAF7" />
           </g>
         </g>
+        {/* rosy cheeks */}
+        <circle cx="50" cy="74" r="4" fill="#C9A227" opacity="0.55" />
+        <circle cx="90" cy="74" r="4" fill="#C9A227" opacity="0.55" />
         {/* smile */}
         <path d="M58 82 Q 70 90, 82 82" stroke="#1B2F4B" strokeWidth="4" strokeLinecap="round" />
         {/* belly lights */}
@@ -172,5 +175,80 @@ export function DoodleCloud({ className = "" }: { className?: string }) {
       <circle cx="80" cy="52" r="3.5" fill="#1B2F4B" />
       <path d="M64 62 Q 71 67, 78 62" stroke="#1B2F4B" strokeWidth="3" strokeLinecap="round" />
     </svg>
+  );
+}
+
+/** Speech bubble doodle — pops in next to Pip. */
+export function SpeechBubble({ text, className = "" }: { text: string; className?: string }) {
+  return (
+    <div className={`speech-bubble ${className}`} aria-hidden="true">
+      <svg viewBox="0 0 200 90" aria-hidden="true">
+        <path
+          d="M18 8 H182 Q192 8 192 18 V58 Q192 68 182 68 H70 L48 84 L54 68 H18 Q8 68 8 58 V18 Q8 8 18 8 Z"
+          fill="#FAFAF7"
+          stroke="#1B2F4B"
+          strokeWidth="4"
+          strokeLinejoin="round"
+        />
+      </svg>
+      <span>{text}</span>
+    </div>
+  );
+}
+
+/** Spinning gear doodle — chunky hand-drawn cog. */
+export function GearDoodle({ className = "" }: { className?: string }) {
+  return (
+    <svg className={`gear-doodle ${className}`} viewBox="0 0 100 100" aria-hidden="true">
+      <g className="gear-spin" stroke="#1B2F4B" strokeWidth="7" strokeLinecap="round">
+        {[0, 45, 90, 135].map((r) => (
+          <line key={r} x1="50" y1="14" x2="50" y2="30" transform={`rotate(${r} 50 50)`} />
+        ))}
+      </g>
+      <circle cx="50" cy="50" r="26" fill="#C9A227" stroke="#1B2F4B" strokeWidth="5" />
+      <circle cx="50" cy="50" r="10" fill="#FAFAF7" stroke="#1B2F4B" strokeWidth="4" />
+    </svg>
+  );
+}
+
+/** Doodle divider — squiggle that draws itself on scroll, with sparkles. */
+export function DoodleDivider({ className = "" }: { className?: string }) {
+  const ref = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      el.classList.add("draw");
+      return;
+    }
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            el.classList.add("draw");
+            io.disconnect();
+          }
+        });
+      },
+      { threshold: 0.6 }
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+  return (
+    <div ref={ref} className={`doodle-divider ${className}`} aria-hidden="true">
+      <svg viewBox="0 0 1200 36" preserveAspectRatio="none">
+        <path
+          className="dd-line"
+          d="M0 18 Q 75 4, 150 18 T 300 18 T 450 18 T 600 18 T 750 18 T 900 18 T 1050 18 T 1200 18"
+          fill="none"
+          stroke="#C9A227"
+          strokeWidth="5"
+          strokeLinecap="round"
+        />
+      </svg>
+      <Sparkle className="dd-spark left" />
+      <Sparkle className="dd-spark right" />
+    </div>
   );
 }
