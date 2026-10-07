@@ -1662,7 +1662,7 @@ a.xtweet:hover{background:rgba(27,47,75,.03)}
 .hero-shade{position:absolute;inset:0;
   background:linear-gradient(100deg,rgba(10,20,36,.92) 0%,rgba(10,20,36,.72) 42%,
     rgba(10,20,36,.28) 70%,rgba(10,20,36,.12) 100%)}
-.hero-content{position:relative;z-index:2;padding-top:120px;padding-bottom:80px}
+.hero-content{position:relative;z-index:2;padding-top:120px;padding-bottom:120px}
 .hero-status{display:inline-flex;align-items:center;gap:9px;font-size:13px;font-weight:700;
   color:#d8ecdc;background:rgba(46,157,91,.16);border:1px solid rgba(46,157,91,.5);
   border-radius:999px;padding:8px 16px;margin-bottom:26px;backdrop-filter:blur(6px)}
