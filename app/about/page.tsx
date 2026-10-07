@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Reveal from "@/components/Reveal";
 import CtaBand from "@/components/CtaBand";
-import ParallaxPoster from "@/components/ParallaxPoster";
+import GenArt from "@/components/GenArt";
 import PageHero from "@/components/sections/PageHero";
 import AboutProfile from "@/components/sections/AboutProfile";
 import AboutEducation from "@/components/sections/AboutEducation";
@@ -33,13 +33,7 @@ export default function AboutPage() {
 
       <div className="wrap">
         <Reveal variant="scale">
-          <ParallaxPoster className="poster poster-band tight">
-            <img
-              src="img/about-visual.jpg"
-              alt="Abstract portrait of engineering craft with navy duotone"
-              loading="lazy"
-            />
-          </ParallaxPoster>
+          <GenArt scene="orbit" label="Generative art: an orbital system around a glowing gold core" />
         </Reveal>
       </div>
 

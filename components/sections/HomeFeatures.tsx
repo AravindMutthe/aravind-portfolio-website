@@ -1,15 +1,17 @@
 import Link from "next/link";
 import Reveal from "@/components/Reveal";
+import GenArt from "@/components/GenArt";
+import type { ArtScene } from "@/components/GenerativeArt";
 
-const FEATURES = [
+const FEATURES: { variant: "l" | "r"; title: string; copy: string; href: string; linkLabel: string; scene: ArtScene; sceneLabel: string; num: string }[] = [
   {
     variant: "l" as const,
     title: "For businesses — freelance DevOps",
     copy: "Cloud infrastructure, CI/CD pipelines, Kubernetes platforms, and cost optimization — delivered as fixed-scope engagements. You get senior-level DevOps without the hiring cycle.",
     href: "/services",
     linkLabel: "See all services",
-    img: "img/services-neon.jpg",
-    imgAlt: "Vibrant 3D illustration of a DevOps pipeline — gears, containers and cloud nodes",
+    scene: "pipeline",
+    sceneLabel: "Generative art: CI/CD pipeline stages lighting up",
     num: "01",
   },
   {
@@ -18,8 +20,8 @@ const FEATURES = [
     copy: "Two years across Infosys and PragmaEdge — enterprise B2B integration and production Linux — plus independent cloud builds I run myself on modern platforms.",
     href: "/experience",
     linkLabel: "See experience",
-    img: "img/about-neon.jpg",
-    imgAlt: "Neon-lit futuristic data center corridor",
+    scene: "network",
+    sceneLabel: "Generative art: constellation of connected nodes",
     num: "02",
   },
 ];
@@ -55,7 +57,7 @@ export default function HomeFeatures() {
                 </Link>
               </div>
               <div className="f-visual">
-                <img src={f.img} alt={f.imgAlt} loading="lazy" />
+                <GenArt scene={f.scene} label={f.sceneLabel} />
                 <span className="big">{f.num}</span>
               </div>
             </div>

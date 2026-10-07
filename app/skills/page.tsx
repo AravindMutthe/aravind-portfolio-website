@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Reveal from "@/components/Reveal";
 import CtaBand from "@/components/CtaBand";
-import ParallaxPoster from "@/components/ParallaxPoster";
+import GenArt from "@/components/GenArt";
 import PageHero from "@/components/sections/PageHero";
 import SkillsPanels from "@/components/sections/SkillsPanels";
 import TechShowcase from "@/components/sections/TechShowcase";
@@ -28,13 +28,7 @@ export default function SkillsPage() {
 
       <div className="wrap">
         <Reveal variant="scale">
-          <ParallaxPoster className="poster poster-band tight">
-            <img
-              src="img/hero-poster.jpg"
-              alt="Abstract technology artwork with navy duotone"
-              loading="eager"
-            />
-          </ParallaxPoster>
+          <GenArt scene="terrain" label="Generative art: layered waves of navy and gold" />
         </Reveal>
       </div>
 

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Reveal from "@/components/Reveal";
-import ParallaxPoster from "@/components/ParallaxPoster";
+import GenArt from "@/components/GenArt";
 import PageHero from "@/components/sections/PageHero";
 import ContactSection from "@/components/sections/ContactSection";
 import BookACall from "@/components/sections/BookACall";
@@ -34,13 +34,7 @@ export default function ContactPage() {
 
       <div className="wrap">
         <Reveal variant="scale">
-          <ParallaxPoster className="poster poster-band tight">
-            <img
-              src="img/contact-neon.jpg"
-              alt="Vibrant network of glowing connections forming a sphere"
-              loading="eager"
-            />
-          </ParallaxPoster>
+          <GenArt scene="network" label="Generative art: a constellation of glowing gold nodes on navy" />
         </Reveal>
       </div>
 

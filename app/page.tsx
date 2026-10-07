@@ -1,6 +1,5 @@
 import Reveal from "@/components/Reveal";
 import CtaBand from "@/components/CtaBand";
-import ParallaxPoster from "@/components/ParallaxPoster";
 import HomeHero from "@/components/sections/HomeHero";
 import HomeFeatures from "@/components/sections/HomeFeatures";
 import HowIWork from "@/components/sections/HowIWork";
@@ -8,6 +7,7 @@ import TechShowcase from "@/components/sections/TechShowcase";
 import LeadMagnet from "@/components/sections/LeadMagnet";
 import Testimonials from "@/components/sections/Testimonials";
 import WaveReveal from "@/components/WaveReveal";
+import GenArt from "@/components/GenArt";
 
 export default function HomePage() {
   return (
@@ -31,13 +31,7 @@ export default function HomePage() {
         <div className="wrap">
           <Reveal variant="scale">
             <WaveReveal>
-              <ParallaxPoster className="poster">
-                <img
-                  src="img/contact-neon.jpg"
-                  alt="Vibrant network of glowing connections forming a sphere"
-                  loading="lazy"
-                />
-              </ParallaxPoster>
+              <GenArt scene="network" label="Generative art: a constellation of glowing gold nodes on navy" />
             </WaveReveal>
           </Reveal>
         </div>
