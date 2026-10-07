@@ -1284,3 +1284,55 @@ footer .brand{color:var(--accent)}
 @media(max-width:768px){
   .cb-wrap{bottom:86px;right:14px}
 }
+
+/* ---------- X-feed blog ---------- */
+.xfeed-wrap{max-width:680px;margin:0 auto 40px}
+.xprofile{border:1px solid var(--line);border-radius:18px;overflow:hidden;background:#fff;
+  box-shadow:0 18px 44px rgba(27,47,75,.1)}
+.xprofile-banner{height:150px;position:relative;overflow:hidden;
+  background:linear-gradient(120deg,#1B2F4B 55%,#2b4568 100%)}
+.xprofile-banner span{position:absolute;border:2px solid rgba(201,162,39,.5);border-radius:50%}
+.xprofile-banner .xb1{width:220px;height:220px;right:-40px;top:-70px}
+.xprofile-banner .xb2{width:140px;height:140px;right:120px;top:-30px;border-color:rgba(201,162,39,.28)}
+.xprofile-banner .xb3{width:70px;height:70px;right:230px;top:60px;border-color:rgba(201,162,39,.18)}
+.xprofile-main{padding:0 22px 22px;position:relative}
+.xavatar{width:112px;height:112px;border-radius:50%;object-fit:cover;
+  border:4px solid #fff;margin-top:-56px;box-shadow:0 10px 26px rgba(27,47,75,.22)}
+.xfollow{position:absolute;right:22px;top:14px;padding:10px 22px;font-size:14px}
+.xname-lg{font-family:var(--font-fraunces);font-weight:700;font-size:24px;color:var(--ink);margin-top:10px}
+.xhandle-lg{color:var(--muted);font-size:14.5px;margin:2px 0 10px}
+.xbio{font-size:15px;line-height:1.6;color:var(--ink);margin:0 0 12px;max-width:52ch}
+.xstats{display:flex;flex-wrap:wrap;gap:8px 22px;font-size:14px;color:var(--muted)}
+.xstats b{color:var(--ink)}
+.xstats a{color:#8a6d1c;font-weight:600}
+.xtabs{display:flex;border-bottom:1px solid var(--line);margin-top:26px;background:var(--paper);
+  position:sticky;top:0;z-index:5}
+.xtab{flex:1;background:none;border:0;padding:16px;font-size:15px;font-weight:700;color:var(--muted);
+  cursor:pointer;position:relative;font-family:var(--font-inter)}
+.xtab.active{color:var(--ink)}
+.xtab.active::after{content:"";position:absolute;left:50%;transform:translateX(-50%);bottom:0;
+  width:64px;height:4px;border-radius:4px;background:var(--gold)}
+.xfeed{border-left:1px solid var(--line);border-right:1px solid var(--line)}
+.xtweet{display:flex;gap:12px;padding:18px 16px;border-bottom:1px solid var(--line);
+  color:inherit;transition:background .2s}
+a.xtweet:hover{background:rgba(27,47,75,.025)}
+.xavatar-sm{width:44px;height:44px;border-radius:50%;object-fit:cover;flex:none}
+.xbody{flex:1;min-width:0}
+.xmeta{display:flex;flex-wrap:wrap;gap:6px;align-items:baseline;margin-bottom:4px}
+.xname{font-weight:700;color:var(--ink);font-size:15px}
+.xhandle{color:var(--muted);font-size:13.5px}
+.xtitle{font-family:var(--font-fraunces);font-weight:700;font-size:18px;line-height:1.35;
+  color:var(--ink);margin:2px 0 6px}
+.xdesc{font-size:14.5px;line-height:1.6;color:var(--muted);margin:0 0 10px}
+.xrow{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.xtag{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  color:#8a6d1c;background:var(--gold-soft);border-radius:999px;padding:4px 12px}
+.xcta{font-size:13.5px;font-weight:700;color:var(--gold-dark,#8a6d1c)}
+.xactions{display:flex;justify-content:space-between;max-width:340px;color:#9AA6B8;padding-right:24px}
+.xactions .xact{width:18px;height:18px}
+@media(max-width:560px){
+  .xprofile-main{padding:0 16px 18px}
+  .xavatar{width:88px;height:88px;margin-top:-44px}
+  .xfollow{padding:8px 16px;font-size:13px}
+  .xtweet{padding:14px 12px}
+}
