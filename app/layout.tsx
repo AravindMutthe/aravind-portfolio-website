@@ -5,8 +5,8 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ChatBot from "@/components/ChatBot";
 import ScrollProgress from "@/components/ScrollProgress";
-import StickyCtaBar from "@/components/StickyCtaBar";
 import RouteSplash from "@/components/RouteSplash";
+import TabBar from "@/components/feed/TabBar";
 
 /* Premium consultancy pairing: high-contrast serif display + clean grotesque body */
 const fraunces = Fraunces({
@@ -96,7 +96,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         {children}
         <Footer />
         <ChatBot />
-        <StickyCtaBar />
+        <TabBar />
         <RouteSplash />
       </body>
     </html>

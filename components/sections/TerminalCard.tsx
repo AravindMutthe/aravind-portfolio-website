@@ -18,7 +18,7 @@ const LINES: { text: string; cls?: string }[] = [
   { text: "→ handover docs + walkthrough call", cls: "" },
 ];
 
-export default function TerminalCard() {
+export default function TerminalCard({ compact = false }: { compact?: boolean }) {
   const ref = useRef<HTMLDivElement>(null);
   const [n, setN] = useState(0);
 
@@ -50,6 +50,27 @@ export default function TerminalCard() {
     };
   }, []);
 
+  const card = (
+    <div ref={ref} className="terminal-card" role="img" aria-label="Terminal showing the engagement process: scope, plan, green pipeline, monitoring, handover">
+      <div className="term-bar">
+        <span className="term-dot" style={{ background: "#E06C5B" }} />
+        <span className="term-dot" style={{ background: "#C9A227" }} />
+        <span className="term-dot" style={{ background: "#7FB069" }} />
+        <span className="term-title">aravind — engagement.sh</span>
+      </div>
+      <div className="term-body">
+        {LINES.slice(0, n).map((l, i) => (
+          <div key={i} className={l.cls}>
+            {l.text}
+          </div>
+        ))}
+        {n < LINES.length && <span className="term-cursor" />}
+      </div>
+    </div>
+  );
+
+  if (compact) return card;
+
   return (
     <section className="block" aria-label="How an engagement runs">
       <div className="wrap">
@@ -61,24 +82,7 @@ export default function TerminalCard() {
             What working together <span className="grad">looks like.</span>
           </h2>
         </Reveal>
-        <Reveal delay="d1">
-          <div ref={ref} className="terminal-card" role="img" aria-label="Terminal showing the engagement process: scope, plan, green pipeline, monitoring, handover">
-            <div className="term-bar">
-              <span className="term-dot" style={{ background: "#E06C5B" }} />
-              <span className="term-dot" style={{ background: "#C9A227" }} />
-              <span className="term-dot" style={{ background: "#7FB069" }} />
-              <span className="term-title">aravind — engagement.sh</span>
-            </div>
-            <div className="term-body">
-              {LINES.slice(0, n).map((l, i) => (
-                <div key={i} className={l.cls}>
-                  {l.text}
-                </div>
-              ))}
-              {n < LINES.length && <span className="term-cursor" />}
-            </div>
-          </div>
-        </Reveal>
+        <Reveal delay="d1">{card}</Reveal>
       </div>
     </section>
   );
