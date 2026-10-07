@@ -1110,3 +1110,34 @@ footer .brand{color:var(--accent)}
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
 }
+
+/* ---------- blog cards as social posts ---------- */
+.blog-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+.blog-card{
+  display:flex;flex-direction:column;background:#fff;border:1px solid var(--line);
+  border-radius:20px;padding:0;overflow:hidden;text-decoration:none;
+  transition:transform .35s cubic-bezier(.2,.8,.3,1.2),box-shadow .35s ease,border-color .3s;
+}
+.blog-card:hover{transform:translateY(-6px);box-shadow:0 20px 44px rgba(201,162,39,.16);border-color:var(--gold)}
+.blog-card-top{
+  display:flex;align-items:center;gap:12px;padding:18px 22px;
+  border-bottom:1px solid var(--line-soft);background:linear-gradient(135deg,#FAFAF7,#fff);
+}
+.blog-avatar{
+  width:44px;height:44px;border-radius:50%;background:var(--accent);color:#fff;
+  display:grid;place-items:center;font-weight:800;font-size:16px;flex:none;
+  border:2px solid var(--gold);
+}
+.blog-meta{display:flex;flex-direction:column}
+.blog-author{font-weight:700;font-size:14px;color:var(--ink)}
+.blog-time{font-size:12px;color:var(--faint)}
+.blog-card-body{padding:22px}
+.blog-card-body h3{font-size:19px;font-weight:700;color:var(--ink);margin:0 0 10px;line-height:1.4}
+.blog-card-body p{font-size:14.5px;color:var(--muted);line-height:1.65;margin:0 0 16px}
+.blog-card-footer{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:14px 22px;border-top:1px solid var(--line-soft);margin-top:auto;
+}
+.blog-actions{display:flex;gap:18px;font-size:13px;color:var(--faint)}
+.blog-read{font-size:14px;font-weight:700;color:var(--gold)}
+.blog-card:hover .blog-read{color:#a8841c}

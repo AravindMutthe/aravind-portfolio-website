@@ -120,10 +120,25 @@ export default function BlogPage() {
             <div className="blog-grid">
               {NOTE_POSTS.map((p) => (
                 <Link key={p.slug} className="blog-card" href={`/blog/${p.slug}`}>
-                  <span className="blog-tag">{p.category}</span>
-                  <h3>{p.title}</h3>
-                  <p>{p.desc}</p>
-                  <span className="blog-read">{p.readTime} read →</span>
+                  <div className="blog-card-top">
+                    <div className="blog-avatar">AM</div>
+                    <div className="blog-meta">
+                      <span className="blog-author">Aravind Mutte</span>
+                      <span className="blog-time">{p.category} · {p.readTime} read</span>
+                    </div>
+                    <span className="blog-tag" style={{ marginLeft: "auto", marginBottom: 0 }}>{p.category}</span>
+                  </div>
+                  <div className="blog-card-body">
+                    <h3>{p.title}</h3>
+                    <p>{p.desc}</p>
+                  </div>
+                  <div className="blog-card-footer">
+                    <div className="blog-actions">
+                      <span>📖 {p.readTime}</span>
+                      <span>💬 Notes</span>
+                    </div>
+                    <span className="blog-read">Read →</span>
+                  </div>
                 </Link>
               ))}
             </div>
@@ -138,10 +153,25 @@ export default function BlogPage() {
             <div className="blog-grid">
               {FEATURED.map((a) => (
                 <a key={a.href} className="blog-card" href={a.href} target="_blank" rel="noopener">
-                  <span className="blog-tag">{a.tag}</span>
-                  <h3>{a.title}</h3>
-                  <p>{a.desc}</p>
-                  <span className="blog-read">Read on Medium →</span>
+                  <div className="blog-card-top">
+                    <div className="blog-avatar">AM</div>
+                    <div className="blog-meta">
+                      <span className="blog-author">Aravind Mutte</span>
+                      <span className="blog-time">Medium · {a.tag}</span>
+                    </div>
+                    <span className="blog-tag" style={{ marginLeft: "auto", marginBottom: 0 }}>{a.tag}</span>
+                  </div>
+                  <div className="blog-card-body">
+                    <h3>{a.title}</h3>
+                    <p>{a.desc}</p>
+                  </div>
+                  <div className="blog-card-footer">
+                    <div className="blog-actions">
+                      <span>📖 Article</span>
+                      <span>🔗 Medium</span>
+                    </div>
+                    <span className="blog-read">Read →</span>
+                  </div>
                 </a>
               ))}
             </div>

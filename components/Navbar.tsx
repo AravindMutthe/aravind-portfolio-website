@@ -34,20 +34,20 @@ export default function Navbar() {
           <Link href="/" className={isActive("/") ? "active" : ""}>
             Home
           </Link>
+          <Link href="/about" className={isActive("/about") ? "active" : ""}>
+            About
+          </Link>
           <Link href="/services" className={isActive("/services") ? "active" : ""}>
             Services
-          </Link>
-          <Link href="/experience" className={isActive("/experience") ? "active" : ""}>
-            Experience
           </Link>
           <Link href="/projects" className={isActive("/projects") ? "active" : ""}>
             Projects
           </Link>
+          <Link href="/experience" className={isActive("/experience") ? "active" : ""}>
+            Experience
+          </Link>
           <Link href="/skills" className={isActive("/skills") ? "active" : ""}>
             Skills
-          </Link>
-          <Link href="/about" className={isActive("/about") ? "active" : ""}>
-            About
           </Link>
           <Link href="/blog" className={isActive("/blog") ? "active" : ""}>
             Blog
