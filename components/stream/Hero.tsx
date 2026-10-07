@@ -7,8 +7,9 @@ import CountUp from "@/components/CountUp";
 
 /**
  * Full-viewport living hero — PixiJS pipeline art, alive behind
- * a SplitText headline. The wow: this is a DevOps engineer's world,
- * rendered in real time, not a stock photo.
+ * a SplitText headline. Research directives: [Outcome] without [Pain],
+ * specific availability, ONE first-person CTA, live status as proof
+ * the site is a demo of the craft it sells.
  */
 export default function Hero() {
   const ref = useRef<HTMLElement>(null);
@@ -31,8 +32,7 @@ export default function Hero() {
           .from(split.lines, { yPercent: 115, duration: 1.1, stagger: 0.1 }, 0.45)
           .from(".hero-sub", { y: 26, opacity: 0, duration: 0.9 }, 1.0)
           .from(".hero-ctas .btn", { y: 22, opacity: 0, duration: 0.8, stagger: 0.1 }, 1.15)
-          .from(".hero-stats .stat", { y: 18, opacity: 0, duration: 0.7, stagger: 0.08 }, 1.3)
-          .from(".hero-scroll", { opacity: 0, duration: 0.8 }, 1.6);
+          .from(".hero-stats .stat", { y: 18, opacity: 0, duration: 0.7, stagger: 0.08 }, 1.3);
 
         const btn = ref.current?.querySelector(".magnetic") as HTMLElement | null;
         if (btn && window.matchMedia("(pointer: fine)").matches) {
@@ -77,35 +77,32 @@ export default function Hero() {
       <div className="wrap hero-content">
         <div className="hero-status">
           <span className="mh-dot" aria-hidden="true" />
-          Available for new projects
+          Now booking — new projects
         </div>
         <h1 className="hero-title">
-          <span className="hero-line">Aravind Mutte</span>
-          <span className="hero-line hero-line-italic">builds infrastructure</span>
-          <span className="hero-line hero-line-italic">that <em>never sleeps.</em></span>
+          <span className="hero-line">Ship daily</span>
+          <span className="hero-line hero-line-italic">without the <em>2 a.m. pages.</em></span>
         </h1>
         <p className="hero-sub">
-          Cloud DevOps & SRE Engineer from Hyderabad. Pipelines, cloud cost control,
-          and production systems so calm you&apos;ll forget they exist.
+          I&apos;m Aravind Mutte — Cloud DevOps & SRE. I build the pipelines,
+          cloud setups, and monitoring that let small teams ship like big ones.
         </p>
         <div className="hero-ctas">
           <Link className="btn btn-gold magnetic" href="/contact">
-            Start a Project
-          </Link>
-          <Link className="btn btn-ghost-light" href="/projects">
-            See the proof
+            Book my discovery call
           </Link>
         </div>
+        <p className="hero-proof">
+          <span className="hero-live-dot" aria-hidden="true" /> All systems operational
+          <span className="hero-sep">·</span> this site deploys on every commit
+          <span className="hero-sep">·</span> NDA-friendly, fixed scope
+        </p>
         <div className="hero-stats">
           <div className="stat"><b><CountUp to={2} /></b><span>yrs experience</span></div>
           <div className="stat"><b><CountUp to={3} /></b><span>systems live</span></div>
           <div className="stat"><b>$<CountUp to={0} /></b><span>infra spend</span></div>
           <div className="stat"><b><CountUp to={18} /></b><span>tools mastered</span></div>
         </div>
-      </div>
-      <div className="hero-scroll" aria-hidden="true">
-        <span>scroll</span>
-        <i />
       </div>
     </section>
   );

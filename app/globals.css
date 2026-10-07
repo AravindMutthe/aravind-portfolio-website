@@ -1680,36 +1680,76 @@ a.xtweet:hover{background:rgba(27,47,75,.03)}
 .hero-stats{display:flex;gap:44px;flex-wrap:wrap}
 .hero-stats .stat b{display:block;font-family:var(--font-fraunces);font-size:34px;color:#fff}
 .hero-stats .stat span{font-size:13px;color:rgba(255,255,255,.6)}
-.hero-scroll{position:absolute;left:50%;bottom:28px;transform:translateX(-50%);z-index:2;
-  display:flex;flex-direction:column;align-items:center;gap:8px;
-  font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.55)}
-.hero-scroll i{width:1px;height:44px;background:rgba(255,255,255,.4);position:relative;overflow:hidden}
-.hero-scroll i::after{content:"";position:absolute;left:0;top:-40%;width:100%;height:40%;
-  background:var(--gold);animation:scrollcue 2.2s ease-in-out infinite}
-@keyframes scrollcue{to{top:110%}}
 
-/* ============ MAGAZINE RHYTHM ============ */
-.pull-quote{margin:34px 0;padding:0 8px;text-align:center}
-.pull-quote blockquote{font-family:var(--font-fraunces);font-style:italic;font-weight:600;
-  font-size:clamp(24px,3.4vw,34px);line-height:1.35;color:var(--ink);margin:0;max-width:26ch;
-  margin-inline:auto}
-.pull-quote blockquote::before{content:"";display:block;width:56px;height:3px;
-  background:var(--gold);margin:0 auto 20px}
-.dark-panel{background:linear-gradient(140deg,#16283f,#1B2F4B 60%,#243b5c);border-radius:24px;
-  padding:40px 38px;color:#fff;box-shadow:0 30px 70px rgba(14,28,48,.35)}
-.dark-panel .sc-kicker{background:rgba(201,162,39,.16);border-color:rgba(201,162,39,.5)}
-.dark-panel-title{font-family:var(--font-fraunces);font-weight:700;font-size:28px;
-  line-height:1.25;margin:0 0 20px}
-.dark-panel-title em{color:var(--gold);font-style:italic}
-.dark-list li{color:rgba(255,255,255,.88)}
-.dark-list .scard-check{background:rgba(201,162,39,.2)}
-.dark-panel .scard-cta{color:var(--gold)}
-@media(max-width:768px){
-  .hero-content{padding-top:110px}
-  .hero-stats{gap:28px}
-  .dark-panel{padding:30px 24px}
-  .pull-quote{margin:26px 0}
-}
 @media(prefers-reduced-motion:reduce){
-  .hero-scroll i::after{animation:none}
 }
+
+.hero-proof{display:flex;align-items:center;flex-wrap:wrap;gap:8px;font-size:13.5px;
+  color:rgba(255,255,255,.72);margin:0 0 40px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+.hero-live-dot{width:8px;height:8px;border-radius:50%;background:#2e9d5b;
+  box-shadow:0 0 0 4px rgba(46,157,91,.22)}
+.hero-sep{opacity:.4}
+.hero-sep{opacity:.4}
+
+/* changelog */
+.changelog{list-style:none;margin:6px 0 0;padding:0;display:flex;flex-direction:column}
+.changelog li{display:grid;grid-template-columns:64px 110px 1fr;gap:14px;align-items:baseline;
+  padding:12px 0;border-bottom:1px dashed var(--line);font-size:14.5px}
+.changelog li:last-child{border-bottom:0}
+.chg-v{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-weight:700;color:#8a6d1c}
+.chg-date{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--muted);font-size:13px}
+.chg-text{color:var(--ink);line-height:1.55}
+@media(max-width:560px){
+  .changelog li{grid-template-columns:56px 1fr}
+  .chg-date{display:none}
+}
+
+/* challenge -> fix -> numbers */
+.cfn{margin:4px 0 0;display:flex;flex-direction:column;gap:12px}
+.cfn div{display:grid;grid-template-columns:130px 1fr;gap:14px;align-items:baseline}
+.cfn dt{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12px;
+  font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#8a6d1c}
+.cfn dd{margin:0;font-size:15px;line-height:1.6;color:var(--ink)}
+@media(max-width:560px){
+  .cfn div{grid-template-columns:1fr;gap:2px}
+}
+
+/* productized offer menu — bento: featured is biggest/brightest */
+.offer-menu{display:grid;grid-template-columns:1fr 1.12fr 1fr;gap:20px;align-items:stretch;margin:8px 0 8px}
+.offer-card{position:relative;background:#fff;border:1px solid var(--line);border-radius:20px;
+  padding:32px 28px;display:flex;flex-direction:column;
+  box-shadow:0 14px 36px rgba(27,47,75,.07);transition:transform .28s,box-shadow .28s}
+.offer-card:hover{transform:translateY(-4px);box-shadow:0 24px 56px rgba(27,47,75,.13)}
+.offer-card.featured{background:linear-gradient(150deg,#1B2F4B,#243b5c);color:#fff;
+  border-color:#1B2F4B;box-shadow:0 28px 64px rgba(14,28,48,.35);padding:40px 32px}
+.offer-badge{position:absolute;top:-14px;left:50%;transform:translateX(-50%);
+  background:var(--gold);color:#fff;font-size:12px;font-weight:800;letter-spacing:.08em;
+  text-transform:uppercase;border-radius:999px;padding:6px 18px;white-space:nowrap}
+.offer-scope{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12px;
+  font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#8a6d1c;margin-bottom:12px}
+.offer-card.featured .offer-scope{color:var(--gold)}
+.offer-card h3{font-family:var(--font-fraunces);font-weight:700;font-size:24px;margin:0 0 10px}
+.offer-card p{font-size:14.5px;line-height:1.65;color:var(--muted);margin:0 0 18px}
+.offer-card.featured p{color:rgba(255,255,255,.78)}
+.offer-card ul{list-style:none;margin:0 0 26px;padding:0;display:flex;flex-direction:column;gap:10px;flex:1}
+.offer-card li{font-size:14px;line-height:1.55;padding-left:26px;position:relative}
+.offer-card li::before{content:"✓";position:absolute;left:0;color:#8a6d1c;font-weight:800}
+.offer-card.featured li::before{color:var(--gold)}
+.offer-card .btn{justify-content:center}
+@media(max-width:860px){
+  .offer-menu{grid-template-columns:1fr;max-width:520px;margin-inline:auto}
+}
+
+/* persistent copy-email (Cyd Stumpel pattern) */
+.copy-email{position:relative;display:inline-flex;align-items:center;gap:8px;
+  background:transparent;border:1px solid rgba(255,255,255,.35);color:#fff;
+  border-radius:999px;padding:8px 16px;font-size:13px;font-weight:700;cursor:pointer;
+  font-family:inherit;transition:border-color .2s,background .2s;overflow:hidden}
+.copy-email svg{width:15px;height:15px;flex:none}
+.copy-email:hover{border-color:var(--gold);background:rgba(201,162,39,.12)}
+.copy-email .copied-label{position:absolute;inset:0;display:grid;place-items:center;
+  background:var(--gold);color:#fff;border-radius:999px;opacity:0;transform:translateY(6px);
+  transition:opacity .25s,transform .25s;pointer-events:none;font-size:13px}
+.copy-email.copied .copied-label{opacity:1;transform:none}
+@media(max-width:1100px){.copy-email .copy-label{display:none}}
+@media(max-width:768px){.copy-email{display:none}}

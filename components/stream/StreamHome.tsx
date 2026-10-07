@@ -7,6 +7,7 @@ import Hero from "@/components/stream/Hero";
 import { Chapters, ConversationStarter } from "@/components/stream/Chapters";
 import StreamCard, { CardFooter } from "@/components/stream/StreamCard";
 import TerminalCard from "@/components/sections/TerminalCard";
+import Changelog from "@/components/stream/Changelog";
 import GenArt from "@/components/GenArt";
 import { DoodleDivider } from "@/components/doodles";
 
@@ -108,18 +109,21 @@ const SERVICES = [
 const WORK = [
   {
     title: "Axon Lead API",
-    desc: "Production lead-capture API on GCP Cloud Run — Zod validation, reCAPTCHA, Supabase storage.",
-    impact: "Serving real enquiries at $0/month infra spend.",
+    challenge: "GradeSpot needed reliable enquiry capture with zero backend budget.",
+    fix: "TypeScript API on GCP Cloud Run free tier — Zod validation, reCAPTCHA Enterprise, Supabase.",
+    numbers: "$0/month infra · live in production · every lead validated",
   },
   {
     title: "GradeSpot Frontend",
-    desc: "Next.js 15 marketing site with a working admissions enquiry funnel.",
-    impact: "Live site + funnel shipped on the free tier.",
+    challenge: "A training institute needed a marketing site that actually captures admissions.",
+    fix: "Next.js 15 + Tailwind v4 + IBM Carbon, enquiry funnel wired end to end.",
+    numbers: "Live site + working funnel · ships on the free tier",
   },
   {
     title: "Termux Homelab",
-    desc: "An Android phone turned into a 24/7 self-hosted lab over Tailscale.",
-    impact: "Always-on services at $0 hardware and hosting cost.",
+    challenge: "Always-on services with no hardware and no hosting budget.",
+    fix: "Android phone as a 24/7 lab — Termux, Tailscale mesh, wake-locked services.",
+    numbers: "$0 hardware · $0 hosting · reachable from anywhere",
   },
 ];
 
@@ -265,12 +269,17 @@ export default function StreamHome() {
                 title={w.title}
                 footer={<CardFooter href="/projects" cta="Read the case study" />}
               >
-                <p className="scard-sub">{w.desc}</p>
-                <p className="scard-impact">
-                  <b>Impact:</b> {w.impact}
-                </p>
+                <dl className="cfn">
+                  <div><dt>The challenge</dt><dd>{w.challenge}</dd></div>
+                  <div><dt>The fix</dt><dd>{w.fix}</dd></div>
+                  <div><dt>The numbers</dt><dd>{w.numbers}</dd></div>
+                </dl>
               </StreamCard>
             ))}
+
+          <div className="stream-anim">
+            <Changelog />
+          </div>
 
           {show("insights") && (
             <StreamCard

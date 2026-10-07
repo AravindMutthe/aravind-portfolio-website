@@ -57,6 +57,26 @@ export default function Navbar() {
           </Link>
         </div>
 
+        <button
+          className="copy-email"
+          onClick={() => {
+            navigator.clipboard?.writeText("mutthe.aravind@gmail.com").catch(() => {});
+            const el = document.querySelector(".copy-email");
+            if (el) {
+              el.classList.add("copied");
+              setTimeout(() => el.classList.remove("copied"), 1600);
+            }
+          }}
+          aria-label="Copy email address"
+          title="Copy email"
+        >
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">
+            <rect x="9" y="9" width="12" height="12" rx="2" />
+            <path d="M5 15V5a2 2 0 0 1 2-2h10" strokeLinecap="round" />
+          </svg>
+          <span className="copy-label">Copy email</span>
+          <span className="copied-label">Copied!</span>
+        </button>
         <Link href="/contact" className="btn btn-sm nav-cta">
           Hire Me
         </Link>
