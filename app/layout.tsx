@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 import ChatBot from "@/components/ChatBot";
 import ScrollProgress from "@/components/ScrollProgress";
 import StickyCtaBar from "@/components/StickyCtaBar";
+import RouteSplash from "@/components/RouteSplash";
 
 /* Premium consultancy pairing: high-contrast serif display + clean grotesque body */
 const fraunces = Fraunces({
@@ -96,6 +97,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Footer />
         <ChatBot />
         <StickyCtaBar />
+        <RouteSplash />
       </body>
     </html>
   );

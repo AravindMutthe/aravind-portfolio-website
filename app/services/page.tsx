@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Reveal from "@/components/Reveal";
 import CtaBand from "@/components/CtaBand";
-import ParallaxPoster from "@/components/ParallaxPoster";
+import GenArt from "@/components/GenArt";
 import PageHero from "@/components/sections/PageHero";
 import ServicesGrid from "@/components/sections/ServicesGrid";
 import ServicesFaq from "@/components/sections/ServicesFaq";
@@ -72,13 +72,7 @@ export default function ServicesPage() {
 
       <div className="wrap">
         <Reveal variant="scale">
-          <ParallaxPoster className="poster poster-band tight">
-            <img
-              src="img/services-neon.jpg"
-              alt="Vibrant 3D DevOps pipeline — glowing gears, containers and cloud nodes"
-              loading="eager"
-            />
-          </ParallaxPoster>
+          <GenArt scene="pipeline" label="Generative art: CI/CD pipeline stages lighting up in sequence" />
         </Reveal>
       </div>
 
