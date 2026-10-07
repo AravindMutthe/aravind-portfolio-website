@@ -1241,3 +1241,39 @@ footer .brand{color:var(--accent)}
 .gen-art.gen-loading{background:linear-gradient(135deg,#1B2F4B,#24405f)}
 .f-visual .gen-art{position:absolute;inset:0;aspect-ratio:auto;height:100%;border-radius:0;box-shadow:none}
 @media(prefers-reduced-motion:reduce){.gen-art{box-shadow:none}}
+
+/* ---------- code-comment labels (fyberhub-style, DevOps-native) ---------- */
+.eyebrow::before{content:"//";color:var(--gold);letter-spacing:0}
+.sub-label::before{content:"// ";color:var(--gold);letter-spacing:0}
+
+/* ---------- terminal card ---------- */
+.terminal-card{background:#101E33;border:1px solid rgba(201,162,39,.28);border-radius:16px;
+  overflow:hidden;box-shadow:0 24px 60px rgba(27,47,75,.3);max-width:640px;margin:0 auto}
+.term-bar{display:flex;align-items:center;gap:8px;padding:12px 16px;
+  background:rgba(255,255,255,.04);border-bottom:1px solid rgba(255,255,255,.08)}
+.term-dot{width:12px;height:12px;border-radius:50%}
+.term-title{margin-left:8px;font-size:12.5px;color:#9AA6B8;font-family:ui-monospace,monospace}
+.term-body{padding:22px 24px 26px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+  font-size:14.5px;line-height:2;color:#E8E4D8;min-height:220px;white-space:pre-wrap}
+.term-body .p{color:#C9A227;font-weight:700}
+.term-body .ok{color:#C9A227}
+.term-cursor{display:inline-block;width:9px;height:18px;background:#C9A227;vertical-align:-3px;
+  animation:termBlink 1s steps(1) infinite}
+@keyframes termBlink{50%{opacity:0}}
+@media(prefers-reduced-motion:reduce){.term-cursor{animation:none}}
+
+/* ---------- pain checklist ---------- */
+.pain-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin:28px 0 8px}
+.pain-item{display:flex;gap:14px;align-items:flex-start;background:#fff;border:1px solid var(--line);
+  border-radius:14px;padding:18px 20px;font-size:15px;color:var(--ink);line-height:1.55;
+  transition:transform .3s cubic-bezier(.2,.8,.3,1.2),box-shadow .3s,border-color .3s}
+.pain-item:hover{transform:translateY(-3px);border-color:var(--gold);box-shadow:0 12px 28px rgba(201,162,39,.12)}
+.pain-check{flex:none;width:26px;height:26px;border-radius:8px;border:2px solid var(--gold);
+  display:grid;place-items:center;color:var(--gold);font-weight:800;font-size:15px;background:var(--gold-soft)}
+@media(max-width:700px){.pain-grid{grid-template-columns:1fr}}
+
+/* ---------- impact line ---------- */
+.impact-line{margin-top:14px;padding:14px 18px;background:var(--gold-soft);
+  border-left:3px solid var(--gold);border-radius:0 12px 12px 0;
+  font-size:15px;color:var(--ink)}
+.impact-line strong{color:#8a6d1c}

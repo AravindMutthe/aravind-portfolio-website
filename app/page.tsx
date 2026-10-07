@@ -8,6 +8,8 @@ import HowIWork from "@/components/sections/HowIWork";
 import TechShowcase from "@/components/sections/TechShowcase";
 import LeadMagnet from "@/components/sections/LeadMagnet";
 import Testimonials from "@/components/sections/Testimonials";
+import PainChecklist from "@/components/sections/PainChecklist";
+import TerminalCard from "@/components/sections/TerminalCard";
 import { DoodleDivider } from "@/components/doodles";
 
 export default function HomePage() {
@@ -15,8 +17,10 @@ export default function HomePage() {
     <>
       <HomeHero />
       <DoodleDivider />
+      <PainChecklist />
       <HomeFeatures />
       <DoodleDivider />
+      <TerminalCard />
       <HowIWork />
       <TechShowcase
         eyebrow="Tech stack"

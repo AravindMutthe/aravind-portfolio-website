@@ -23,6 +23,7 @@ interface CaseStudy {
   problem: string;
   approach: string[];
   outcome: string[];
+  impact: string;
   stack: StackItem[];
   link?: string;
   linkLabel?: string;
@@ -83,6 +84,7 @@ const CASES: CaseStudy[] = [
       "Live at axon-api-246396716039.us-central1.run.app — powers the contact forms on this portfolio and GradeSpot.",
       "$0/month infrastructure spend (GCP free tier).",
     ],
+    impact: "Production lead API serving real enquiries — at $0/month infra spend.",
     stack: [
       { name: "TypeScript", logo: S("typescript"), alt: "TypeScript logo" },
       { name: "GCP Cloud Run", logo: S("googlecloud"), alt: "Google Cloud logo" },
@@ -113,6 +115,7 @@ const CASES: CaseStudy[] = [
       "Live at gradespot-site-axonfde.vercel.app.",
       "Real course catalog, admissions enquiry flow wired to the Axon API.",
     ],
+    impact: "Live marketing site with a working admissions funnel — shipped on the free tier.",
     stack: [
       { name: "Next.js 15", logo: S("nextdotjs"), alt: "Next.js logo" },
       { name: "React", logo: S("react"), alt: "React logo" },
@@ -143,6 +146,7 @@ const CASES: CaseStudy[] = [
       "Runs 24/7 — portfolio mirror and file server served from the phone.",
       "$0 cost — existing hardware plus free tiers only.",
     ],
+    impact: "24/7 self-hosted services from a phone in a pocket — $0 hardware and hosting cost.",
     stack: [
       { name: "Linux", logo: S("linux"), alt: "Linux logo" },
       { name: "Tailscale", logo: S("tailscale"), alt: "Tailscale logo" },
@@ -183,6 +187,9 @@ export default function ProjectsCaseStudies() {
                 </ul>
 
                 <h4 className="proj-h">The outcome</h4>
+                <div className="impact-line">
+                  <strong>Impact:</strong> {c.impact}
+                </div>
                 <ul className="proj-list-ul">
                   {c.outcome.map((o, i) => (
                     <li key={i}>{o}</li>
