@@ -1886,12 +1886,19 @@ a.xtweet:hover{background:rgba(27,47,75,.03)}
 .motto-word.w-money{color:#8a6d1c}
 .motto-word.w-med{font-style:italic}
 .motto-squig{width:min(420px,70%);height:auto;margin:6px auto 0;display:block}
-.motto-coins{display:flex;justify-content:center;gap:26px;margin-bottom:14px;flex-wrap:wrap}
+.motto-coins{display:flex;justify-content:center;align-items:flex-start;gap:clamp(10px,3.4vw,26px);margin-bottom:14px;flex-wrap:nowrap}
 .motto-coin-wrap{display:flex;flex-direction:column;align-items:center;gap:6px}
-.motto-coin{width:74px;height:74px;display:block}
-.motto-coin-label{font-size:11.5px;letter-spacing:.04em;color:var(--muted)}
+.motto-coin{width:clamp(46px,15.5vw,74px);height:auto;aspect-ratio:1;display:block}
+.motto-coin-label{font-size:11.5px;letter-spacing:.04em;color:var(--muted);white-space:nowrap}
+@media(max-width:520px){
+  .motto-coin-sub{display:none}
+  .motto-coin-label{font-size:10.5px}
+  .motto-coins{gap:8px}
+}
 .motto-coin-label b{font-weight:800;letter-spacing:.12em;color:var(--ink)}
-.motto-coin-wrap{perspective:400px}
+.motto-coin-wrap{perspective:400px;flex:0 1 auto;min-width:0}
+.motto-coin-flag{position:relative;display:block}
+.flag-badge{position:absolute;right:-6px;bottom:-4px;width:34%;min-width:22px;height:auto}
 .motto-spark{position:absolute;width:34px;height:34px}
 .motto-spark-a{top:6%;left:8%}
 .motto-spark-b{bottom:10%;right:9%;width:26px;height:26px}
