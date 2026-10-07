@@ -6,6 +6,7 @@ import { useEffect, useRef } from "react";
 import Reveal from "@/components/Reveal";
 import CountUp from "@/components/CountUp";
 import Ticker from "@/components/Ticker";
+import WordCycler from "@/components/WordCycler";
 
 /* Branch-only: pixi canvas is code-split and client-only so the main
  * bundle stays untouched by the ~1MB WebGL lib. */
@@ -56,8 +57,7 @@ export default function HomeHero() {
             <span className="dot"></span> Available for immediate joining — freelance &amp; full-time
           </div>
           <h1 className="gs-in">
-            Infrastructure that <span className="grad">ships fast</span> and{" "}
-            <span className="grad">never sleeps.</span>
+            Infrastructure that <span className="grad"><WordCycler /></span>
           </h1>
           <p className="lead gs-in">
             I&apos;m <strong>Aravind Mutte</strong>, a Cloud DevOps &amp; Site Reliability Engineer

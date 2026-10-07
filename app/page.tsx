@@ -7,6 +7,7 @@ import HowIWork from "@/components/sections/HowIWork";
 import TechShowcase from "@/components/sections/TechShowcase";
 import LeadMagnet from "@/components/sections/LeadMagnet";
 import Testimonials from "@/components/sections/Testimonials";
+import WaveReveal from "@/components/WaveReveal";
 
 export default function HomePage() {
   return (
@@ -29,13 +30,15 @@ export default function HomePage() {
       <section className="block" style={{ paddingTop: 0 }}>
         <div className="wrap">
           <Reveal variant="scale">
-            <ParallaxPoster className="poster">
-              <img
-                src="img/contact-neon.jpg"
-                alt="Vibrant network of glowing connections forming a sphere"
-                loading="lazy"
-              />
-            </ParallaxPoster>
+            <WaveReveal>
+              <ParallaxPoster className="poster">
+                <img
+                  src="img/contact-neon.jpg"
+                  alt="Vibrant network of glowing connections forming a sphere"
+                  loading="lazy"
+                />
+              </ParallaxPoster>
+            </WaveReveal>
           </Reveal>
         </div>
       </section>
