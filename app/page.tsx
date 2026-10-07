@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import StreamHome from "@/components/stream/StreamHome";
+import HomeNarrative from "@/components/stream/HomeNarrative";
 
 export const metadata: Metadata = {
   title: "Aravind Mutte — Cloud DevOps & SRE Engineer",
@@ -7,10 +7,7 @@ export const metadata: Metadata = {
     "Cloud DevOps & Site Reliability Engineer in Hyderabad — pipelines, cloud cost control, and infrastructure that ships fast and never sleeps.",
 };
 
-/**
- * Homepage — full-viewport living hero over a magazine stream.
- * Original language throughout: no platform chrome anywhere.
- */
+/** Homepage — the confident linear narrative. */
 export default function HomePage() {
-  return <StreamHome />;
+  return <HomeNarrative />;
 }

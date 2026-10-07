@@ -92,17 +92,6 @@ export default function Hero() {
             Book my discovery call
           </Link>
         </div>
-        <p className="hero-proof">
-          <span className="hero-live-dot" aria-hidden="true" /> All systems operational
-          <span className="hero-sep">·</span> this site deploys on every commit
-          <span className="hero-sep">·</span> NDA-friendly, fixed scope
-        </p>
-        <div className="hero-stats">
-          <div className="stat"><b><CountUp to={2} /></b><span>yrs experience</span></div>
-          <div className="stat"><b><CountUp to={3} /></b><span>systems live</span></div>
-          <div className="stat"><b>$<CountUp to={0} /></b><span>infra spend</span></div>
-          <div className="stat"><b><CountUp to={18} /></b><span>tools mastered</span></div>
-        </div>
       </div>
     </section>
   );
