@@ -1231,7 +1231,7 @@ footer .brand{color:var(--accent)}
 .wc-word.on{transform:translateY(0)}
 
 /* hero mascot + doodles */
-.hero-bot{position:absolute;right:6%;top:150px;width:110px;z-index:1;
+.hero-bot{position:absolute;right:6%;top:150px;width:110px;z-index:1;pointer-events:none;
   animation:botFloat 4s ease-in-out infinite}
 @keyframes botFloat{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-14px) rotate(2deg)}}
 .bot-mascot svg{width:100%;height:auto;overflow:visible;
@@ -1242,7 +1242,7 @@ footer .brand{color:var(--accent)}
 @keyframes wave{0%,100%{transform:rotate(0deg)}50%{transform:rotate(-24deg)}}
 .bot-light{animation:botBlink 2.4s infinite}
 @keyframes botBlink{0%,100%{opacity:1}50%{opacity:.35}}
-.doodle-sparkle{position:absolute;width:34px;z-index:1;animation:sparkleTw 2.8s ease-in-out infinite}
+.doodle-sparkle{position:absolute;width:34px;z-index:1;pointer-events:none;animation:sparkleTw 2.8s ease-in-out infinite}
 .doodle-sparkle.s1{left:10%;top:200px}
 .doodle-sparkle.s2{right:16%;top:330px;width:24px;animation-delay:1.2s}
 @keyframes sparkleTw{0%,100%{transform:scale(.7) rotate(0deg);opacity:.6}50%{transform:scale(1.15) rotate(20deg);opacity:1}}
@@ -1272,7 +1272,7 @@ footer .brand{color:var(--accent)}
 
 /* keep the fun desktop-weighted; calm it on small screens */
 @media(max-width:768px){
-  .hero-bot{width:74px;right:4%;top:128px}
+  .hero-bot{width:60px;right:5%;top:96px}
   .doodle-sparkle.s1{left:5%;top:170px}
   .doodle-sparkle{display:none}
   .doodle-sparkle.s1{display:block}
