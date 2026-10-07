@@ -1811,3 +1811,66 @@ a.xtweet:hover{background:rgba(27,47,75,.03)}
 /* secondary links use › chevron (Apple rule) */
 .scard-cta span{transition:transform .2s;display:inline-block}
 .scard-cta:hover span{transform:translateX(4px)}
+
+/* ============ NATIVE BOOK-A-CALL (Apple/Samsung calendar language) ============ */
+.native-book{align-items:start}
+.book-points{list-style:none;margin:0 0 26px;padding:0;display:flex;flex-direction:column;gap:10px}
+.book-points li{font-size:15px;color:var(--muted);padding-left:26px;position:relative}
+.book-points li::before{content:"✓";position:absolute;left:0;color:#8a6d1c;font-weight:700}
+.book-alt{font-size:15px;color:var(--ink)}
+.book-alt span{color:#8a6d1c}
+.book-native{background:#fff;border:1px solid var(--line);border-radius:20px;
+  padding:28px;box-shadow:0 18px 50px -20px rgba(27,47,75,.25)}
+.cal-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+.cal-head b{font-family:var(--font-fraunces);font-size:19px;font-weight:700;color:var(--ink)}
+.cal-nav{width:36px;height:36px;border-radius:50%;border:1px solid var(--line);
+  background:#fff;font-size:20px;line-height:1;color:var(--ink);cursor:pointer;
+  display:flex;align-items:center;justify-content:center;transition:all .2s}
+.cal-nav:hover:not(:disabled){border-color:#8a6d1c;color:#8a6d1c}
+.cal-nav:disabled{opacity:.25;cursor:default}
+.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:2px}
+.cal-wd{text-align:center;font-size:11.5px;font-weight:700;color:var(--muted);
+  text-transform:uppercase;letter-spacing:.06em;padding:8px 0}
+.cal-day{aspect-ratio:1;border:0;background:transparent;border-radius:50%;
+  font-size:15.5px;font-weight:500;color:var(--ink);cursor:pointer;
+  display:flex;align-items:center;justify-content:center;transition:all .18s;
+  position:relative}
+.cal-day:hover:not(:disabled):not(.sel){background:rgba(201,162,39,.14)}
+.cal-day.past{color:#c9c9c9;cursor:default}
+.cal-day.today{font-weight:800;color:#8a6d1c}
+.cal-day.today::after{content:"";position:absolute;bottom:5px;width:5px;height:5px;
+  border-radius:50%;background:#8a6d1c}
+.cal-day.sel{background:var(--accent);color:#fff;font-weight:700;
+  box-shadow:0 6px 16px -4px rgba(27,47,75,.5)}
+.cal-day.sel.today{color:#fff}
+.cal-day.sel.today::after{background:#fff}
+.cal-day.empty{cursor:default}
+.slot-wrap{margin-top:22px;border-top:1px solid var(--line);padding-top:20px}
+.slot-label{font-size:14px;font-weight:600;color:var(--ink);margin:0 0 12px}
+.slot-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.slot{padding:10px 4px;border-radius:10px;border:1px solid var(--line);background:#fff;
+  font-size:13.5px;font-weight:600;color:var(--ink);cursor:pointer;transition:all .18s}
+.slot:hover{border-color:#8a6d1c}
+.slot.sel{background:var(--accent);border-color:var(--accent);color:#fff}
+.book-fields{margin-top:22px;border-top:1px solid var(--line);padding-top:20px;
+  display:flex;flex-direction:column;gap:14px}
+.book-fields label{font-size:13.5px;font-weight:600;color:var(--ink);
+  display:flex;flex-direction:column;gap:7px}
+.book-fields input[type=text],.book-fields input[type=email]{
+  padding:13px 15px;border-radius:12px;border:1px solid var(--line);font-size:15.5px;
+  background:var(--paper);color:var(--ink);font-family:inherit;transition:border-color .2s}
+.book-fields input:focus{outline:none;border-color:#8a6d1c;
+  box-shadow:0 0 0 3px rgba(201,162,39,.15)}
+.book-submit{margin-top:4px;width:100%}
+.book-err{font-size:14px;color:#b3261e;margin:0}
+.book-done{text-align:center;padding:36px 12px}
+.book-done-tick{width:64px;height:64px;border-radius:50%;background:var(--accent);
+  color:#fff;font-size:30px;display:flex;align-items:center;justify-content:center;
+  margin:0 auto 18px}
+.book-done h3{font-family:var(--font-fraunces);font-size:24px;color:var(--ink);margin:0 0 10px}
+.book-done p{font-size:15.5px;color:var(--muted);line-height:1.65;margin:0}
+.hp{position:absolute;left:-9999px;opacity:0;height:0;width:0}
+@media(max-width:900px){
+  .native-book{grid-template-columns:1fr}
+  .slot-grid{grid-template-columns:repeat(3,1fr)}
+}

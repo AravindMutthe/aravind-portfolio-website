@@ -3,7 +3,7 @@ import Reveal from "@/components/Reveal";
 import GenArt from "@/components/GenArt";
 import PageHero from "@/components/sections/PageHero";
 import ContactSection from "@/components/sections/ContactSection";
-import BookACall from "@/components/sections/BookACall";
+import NativeBookCall from "@/components/sections/NativeBookCall";
 
 export const metadata: Metadata = {
   title: "Contact — Aravind Mutte",
@@ -40,7 +40,7 @@ export default function ContactPage() {
 
       <ContactSection />
 
-      <BookACall />
+      <NativeBookCall />
     </>
   );
 }
