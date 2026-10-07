@@ -111,7 +111,7 @@ export default function LeadMagnet() {
                       {error}
                     </p>
                   )}
-                  <button className="btn" type="submit" disabled={sending}>
+                  <button className="btn btn-gold" type="submit" disabled={sending}>
                     {sending ? "Sending…" : "Send me the checklist →"}
                   </button>
                   <p className="magnet-status" style={{ fontSize: 12, opacity: 0.7 }}>
@@ -122,7 +122,7 @@ export default function LeadMagnet() {
               {/* Native fallback for no-JS: direct PDF link */}
               <noscript>
                 <div className="magnet-form">
-                  <a className="btn" href="/production-readiness-checklist.pdf" download>
+                  <a className="btn btn-gold" href="/production-readiness-checklist.pdf" download>
                     Download the PDF ↓
                   </a>
                 </div>

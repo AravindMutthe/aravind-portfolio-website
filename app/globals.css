@@ -191,6 +191,14 @@ body::after{
 .btn:active{transform:scale(.98)}
 .btn-ghost{background:transparent;color:var(--ink);border-color:rgba(30,42,58,.28)}
 .btn-ghost:hover{background:rgba(30,42,58,.05);box-shadow:none;border-color:rgba(30,42,58,.5);filter:none}
+/* Golden button variant — matches the golden form theme */
+.btn-gold{background:var(--gold);border-color:var(--gold);color:#fff}
+.btn-gold:hover{background:#b8931f;border-color:#b8931f;box-shadow:0 12px 32px rgba(201,162,39,.4)}
+.btn-gold:active{transform:scale(.98)}
+.btn-gold .spinner{border:2px solid rgba(255,255,255,.3);border-top-color:#fff}
+/* Golden outline variant for secondary/back buttons in forms */
+.btn-gold-outline{background:transparent;color:var(--gold);border-color:var(--gold)}
+.btn-gold-outline:hover{background:var(--gold-soft);box-shadow:none;border-color:var(--gold);filter:none;color:#a8841c}
 .btn-sm{padding:9px 20px;font-size:13px}
 .btn .spinner{
   display:none;width:16px;height:16px;border-radius:50%;
@@ -652,8 +660,8 @@ footer{border-top:1px solid var(--line-soft);margin-top:40px;background:var(--bg
 .cb-input input{flex:1;min-width:0;border:2px solid var(--gold);border-radius:12px;padding:10px 12px;font-size:16px;font-family:var(--fb);color:var(--ink);background:#fff;outline:none;transition:border-color .25s,box-shadow .25s,background .25s}
 .cb-input input:focus{border-color:var(--gold);box-shadow:0 0 0 4px var(--gold-soft);background:var(--gold-soft)}
 .cb-input input:focus{border-color:#1B2F4B;box-shadow:0 0 0 3px rgba(27,47,75,.1)}
-.cb-send{background:#1B2F4B;border:0;border-radius:12px;width:42px;height:42px;display:grid;place-items:center;cursor:pointer;flex:none;transition:.2s}
-.cb-send:hover:not(:disabled){background:#C9A227}
+.cb-send{background:var(--gold);border:0;border-radius:12px;width:42px;height:42px;display:grid;place-items:center;cursor:pointer;flex:none;transition:.2s}
+.cb-send:hover:not(:disabled){background:#b8931f;transform:scale(1.05)}
 .cb-send svg{width:18px;height:18px;stroke:#fff;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 .cb-send:disabled{opacity:.45;cursor:default}
 @media(max-width:600px){

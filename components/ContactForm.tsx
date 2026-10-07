@@ -569,18 +569,18 @@ export default function ContactForm() {
 
           <div className="istep-nav">
             {step > 0 && (
-              <button type="button" className="btn btn-ghost" onClick={() => goStep(step - 1)}>
+              <button type="button" className="btn btn-gold-outline" onClick={() => goStep(step - 1)}>
                 ← Back
               </button>
             )}
             {step < 2 ? (
-              <button type="button" className="btn" onClick={onContinue}>
+              <button type="button" className="btn btn-gold" onClick={onContinue}>
                 Continue →
               </button>
             ) : (
               <button
                 type="submit"
-                className={`btn${sending ? " loading" : ""}`}
+                className={`btn btn-gold${sending ? " loading" : ""}`}
                 id="hireBtn"
                 disabled={sending}
               >
@@ -623,7 +623,7 @@ export default function ContactForm() {
             <label htmlFor="fb-message">Project details</label>
             <textarea id="fb-message" name="message" required placeholder="Tell me about your project..." />
           </div>
-          <button className="btn btn-go" type="submit">
+          <button className="btn btn-gold" type="submit">
             Send Enquiry →
           </button>
         </form>
