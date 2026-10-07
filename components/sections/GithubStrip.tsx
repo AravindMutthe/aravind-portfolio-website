@@ -10,7 +10,7 @@ const REPOS = [
     desc: "This site — Next.js 15, Tailwind, IBM Carbon, navy/gold theme.",
     tech: ["Next.js", "TypeScript", "Carbon"],
     href: "https://aravind-portfolio-next.vercel.app",
-    linkLabel: "Live site →",
+    linkLabel: "Live site ›",
     private: true,
   },
   {
@@ -18,7 +18,7 @@ const REPOS = [
     desc: "GradeSpot marketing site — courses, admissions, enquiry flows.",
     tech: ["Next.js", "Tailwind", "Framer Motion"],
     href: "https://gradespot-site-axonfde.vercel.app",
-    linkLabel: "Live site →",
+    linkLabel: "Live site ›",
     private: true,
   },
   {
@@ -26,7 +26,7 @@ const REPOS = [
     desc: "Axon lead-capture API — TypeScript, Zod, reCAPTCHA, Supabase on Cloud Run.",
     tech: ["TypeScript", "GCP", "Supabase"],
     href: "https://github.com/AravindMutthe",
-    linkLabel: "GitHub profile →",
+    linkLabel: "GitHub profile ›",
     private: true,
   },
 ];

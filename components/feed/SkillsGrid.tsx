@@ -25,7 +25,7 @@ export default function SkillsGrid() {
             <span><b>∞</b> curiosity</span>
           </div>
         </div>
-        <div className="xname-lg">aravind_mutthe</div>
+        <h1 className="xname-lg">aravind_mutthe</h1>
         <p className="xbio">
           {"// toolbox"} — every platform, language, and tool I&apos;ve actually
           worked with. Tap any tile for the story behind it.
@@ -54,7 +54,7 @@ export default function SkillsGrid() {
 
       <p className="ig-foot">
         All logos are the official marks of their owners, shown in original colours —{" "}
-        <a href="/contact" className="xcta">put them to work →</a>
+        <a href="/contact" className="xcta">put them to work <span aria-hidden="true">›</span></a>
       </p>
     </div>
   );

@@ -48,11 +48,10 @@ const SOCIALS: SocCard[] = [
   { label: "GitHub", value: "@AravindMutthe", href: "https://github.com/AravindMutthe", external: true, img: "/logos/github.svg", imgAlt: "GitHub logo" },
   { label: "X", value: "@aravind_mutthe", href: "https://x.com/aravind_mutthe", external: true, img: "/logos/x.svg", imgAlt: "X logo" },
   { label: "Medium", value: "@aravind.mutthe", href: "https://medium.com/@aravind.mutthe", external: true, img: "/logos/medium.svg", imgAlt: "Medium logo" },
-  { label: "Substack", value: "Newsletter", href: "https://aravindmutthe.substack.com", external: true, img: "/logos/substack.svg", imgAlt: "Substack logo" },
   { label: "Reddit", value: "u/aravindmutte", href: "https://www.reddit.com/user/aravindmutte/", external: true, img: "/logos/reddit.svg", imgAlt: "Reddit logo" },
   { label: "WhatsApp", value: "Chat instantly", href: "https://wa.me/919885189951", external: true, img: "/logos/whatsapp.svg", imgAlt: "WhatsApp logo" },
   { label: "Email", value: "mutthe.aravind@gmail.com", href: "mailto:mutthe.aravind@gmail.com", svg: '<rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/>' },
-  { label: "Hire Me", value: "Start a project →", href: "/contact", svg: '<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>' },
+  { label: "Hire Me", value: "Start a project ›", href: "/contact", svg: '<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>' },
 ];
 
 const DELAYS = ["", "d1", "d2", "d3"] as const;
@@ -89,7 +88,7 @@ export default function AboutProjects() {
                     ))}
                   </div>
                   <span className="proj-link">
-                    {p.linkLabel} <span className="arr">→</span>
+                    {p.linkLabel} <span className="arr">›</span>
                   </span>
                 </ClickableTile>
               </Reveal>

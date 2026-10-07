@@ -163,7 +163,6 @@ export default function BlogFeed() {
                 <b>Elsewhere:</b>{" "}
                 <a href="https://medium.com/@aravind.mutthe" target="_blank" rel="noopener">Medium</a>
                 {" · "}
-                <a href="https://aravindmutthe.substack.com" target="_blank" rel="noopener">Substack</a>
                 {" · "}
                 <a href="https://www.reddit.com/user/aravindmutte/" target="_blank" rel="noopener">Reddit</a>
               </span>

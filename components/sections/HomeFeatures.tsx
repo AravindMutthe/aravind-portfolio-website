@@ -53,7 +53,7 @@ export default function HomeFeatures() {
                 <h3>{f.title}</h3>
                 <p>{f.copy}</p>
                 <Link className="link-arrow" href={f.href}>
-                  {f.linkLabel} <span className="arr">→</span>
+                  {f.linkLabel} <span className="arr">›</span>
                 </Link>
               </div>
               <div className="f-visual">
