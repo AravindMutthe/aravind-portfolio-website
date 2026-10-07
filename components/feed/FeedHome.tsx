@@ -7,6 +7,9 @@ import TerminalCard from "@/components/sections/TerminalCard";
 import { XPost, InstaPost, FBCard, MediumPost, X_URL } from "@/components/feed/posts";
 import Stories, { Composer } from "@/components/feed/Stories";
 import NavRail from "@/components/feed/NavRail";
+import PinnedPost from "@/components/feed/PinnedPost";
+import PainPost from "@/components/feed/PainPost";
+import { DoodleDivider } from "@/components/doodles";
 
 type Cat = "all" | "insights" | "visuals" | "reading" | "services" | "work";
 
@@ -214,6 +217,7 @@ export default function FeedHome() {
           <Composer />
         </div>
 
+        <div className="code-label">{"// the-feed"}</div>
         <div className="xtabs feed-tabs" role="tablist" aria-label="Feed filter">
           {TABS.map((t) => (
             <button
@@ -229,25 +233,7 @@ export default function FeedHome() {
         </div>
 
         <div className="xfeed">
-          {show("insights") && (
-            <XPost meta="Pinned" pinned>
-              <p className="xlead">
-                Infrastructure that <em>ships fast</em> and <em>never sleeps.</em>
-              </p>
-              <p className="xdesc">
-                I&apos;m Aravind — Cloud DevOps & SRE. I build pipelines, tame cloud
-                bills, and keep production calm. Scroll the feed, then let&apos;s talk.
-              </p>
-              <div className="xrow">
-                <Link className="btn btn-gold" href="/contact" style={{ fontSize: 14, padding: "10px 22px" }}>
-                  Start a Project
-                </Link>
-                <Link className="xcta" href="/services">
-                  Explore services →
-                </Link>
-              </div>
-            </XPost>
-          )}
+          {show("insights") && <PinnedPost />}
 
           {show("insights") &&
             INSIGHTS.map((p, i) => (
@@ -255,6 +241,10 @@ export default function FeedHome() {
                 <p className="xtext">{p.text}</p>
               </XPost>
             ))}
+
+          {show("insights") && <PainPost />}
+
+          {show("insights") && <DoodleDivider />}
 
           {show("visuals") &&
             VISUALS.map((v) => (
@@ -278,6 +268,8 @@ export default function FeedHome() {
               <TerminalCard compact />
             </XPost>
           )}
+
+          {show("visuals") && <DoodleDivider />}
 
           {show("services") &&
             SERVICES.map((s) => (

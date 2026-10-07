@@ -1480,3 +1480,62 @@ a.xtweet:hover{background:rgba(27,47,75,.03)}
 .mpost-meta .mdot{opacity:.5}
 .mpost-icons{margin-left:auto;display:flex;gap:16px;color:var(--muted)}
 .mpost-icons svg{width:20px;height:20px}
+
+/* ---------- research-grade pinned post ---------- */
+.pin-post{overflow:visible}
+.pin-wrap{position:relative;padding:6px 0 4px}
+.pin-kicker{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13px;
+  color:#8a6d1c;margin-bottom:10px}
+.pin-head{font-family:var(--font-fraunces);font-weight:700;color:var(--ink);
+  font-size:clamp(30px,4.6vw,44px);line-height:1.12;letter-spacing:-.015em;margin:0 0 4px}
+.pin-head .pin-line{display:block;overflow:hidden}
+.pin-head em{font-style:italic;color:#8a6d1c}
+.pin-squiggle{width:120px;height:14px;color:var(--gold);margin:6px 0 12px}
+.pin-lead{font-size:16.5px;line-height:1.65;color:var(--muted);max-width:52ch;margin:0 0 18px}
+.pin-ctas{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+.pin-arrow{position:absolute;right:120px;bottom:34px;width:64px;height:64px;
+  color:var(--gold);transform:rotate(12deg)}
+.pin-pip{position:absolute;right:8px;bottom:0;width:96px;height:auto}
+/* code-comment section labels */
+.code-label{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13px;
+  color:#8a6d1c;margin:18px 0 2px;padding:0 4px}
+/* pain post list */
+.pain-post-list{list-style:none;margin:12px 0;padding:0;display:flex;flex-direction:column;gap:10px}
+.pain-post-list li{display:flex;gap:12px;align-items:flex-start;font-size:15.5px;
+  line-height:1.55;color:var(--ink);background:var(--paper);
+  border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+.pain-check{flex:none;width:26px;height:26px;border-radius:50%;background:var(--gold-soft);
+  color:#8a6d1c;display:grid;place-items:center;font-weight:800;font-size:14px}
+@media(max-width:560px){
+  .pin-pip{width:72px}
+  .pin-arrow{display:none}
+}
+
+/* ---------- instagram profile grid (skills) ---------- */
+.ig-profile{max-width:680px;margin:0 auto 6px}
+.ig-profile-top{display:flex;align-items:center;gap:28px;margin-bottom:14px}
+.ig-avatar-ring{width:92px;height:92px;flex:none}
+.ig-avatar-ring .story-inner{font-size:34px}
+.ig-counts{display:flex;gap:26px;font-size:14px;color:var(--muted)}
+.ig-counts b{display:block;font-size:19px;color:var(--ink)}
+.ig-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;max-width:680px;margin:0 auto}
+.ig-tile{position:relative;aspect-ratio:1/1;background:#fff;border:1px solid var(--line);
+  border-radius:8px;display:grid;place-items:center;padding:22px;cursor:pointer;overflow:hidden;
+  transition:transform .25s,box-shadow .25s}
+.ig-tile:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(27,47,75,.12)}
+.ig-tile img{max-width:72%;max-height:72%;object-fit:contain}
+.ig-tile-note{position:absolute;inset:0;background:rgba(27,47,75,.94);color:#fff;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;
+  padding:16px;text-align:center;font-size:12.5px;line-height:1.5;
+  opacity:0;transition:opacity .25s;pointer-events:none}
+.ig-tile-note.show{opacity:1}
+.ig-tile-note b{font-size:14px;color:var(--gold)}
+.ig-foot{max-width:680px;margin:26px auto 0;text-align:center;font-size:14.5px;color:var(--muted)}
+/* project architecture diagrams as IG "photos" */
+.proj-diagram{background:#fff;border:1px solid var(--line);border-radius:14px;
+  padding:18px;margin:10px 0 4px}
+.proj-diagram svg{width:100%;height:auto;display:block}
+@media(max-width:560px){
+  .ig-grid{grid-template-columns:repeat(3,1fr);gap:4px}
+  .ig-tile{padding:12px;border-radius:6px}
+}

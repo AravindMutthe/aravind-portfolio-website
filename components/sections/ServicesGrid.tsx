@@ -7,7 +7,7 @@ const CHECK = (
   </svg>
 );
 
-interface Service {
+export interface Service {
   num: string;
   delay: "" | "d1" | "d2" | "d3";
   icon: string;
@@ -16,7 +16,7 @@ interface Service {
   checks: string[];
 }
 
-const SERVICES: Service[] = [
+export const SERVICES: Service[] = [
   {
     num: "/ 01",
     delay: "",

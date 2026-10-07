@@ -15,7 +15,7 @@ const W_MAP: Record<string, string> = {
 const W = (f: string) => W_MAP[f] ?? `/logos/${f}`;
 
 interface StackItem { name: string; logo: string; alt: string }
-interface CaseStudy {
+export interface CaseStudy {
   num: string;
   delay: "" | "d1" | "d2";
   title: string;
@@ -67,7 +67,7 @@ const DIAGRAM_HOMELAB = `<svg viewBox="0 0 560 150" role="img" aria-label="Homel
 <rect x="346" y="84" width="206" height="46" rx="10" fill="#fff" stroke="#C9A227" stroke-width="2"/><text x="449" y="112" text-anchor="middle" font-size="13" font-weight="600" fill="#1B2F4B">File server :8080</text>
 </svg>`;
 
-const CASES: CaseStudy[] = [
+export const CASES: CaseStudy[] = [
   {
     num: "/ 01",
     delay: "",
