@@ -1141,3 +1141,42 @@ footer .brand{color:var(--accent)}
 .blog-actions{display:flex;gap:18px;font-size:13px;color:var(--faint)}
 .blog-read{font-size:14px;font-weight:700;color:var(--gold)}
 .blog-card:hover .blog-read{color:#a8841c}
+
+/* ---------- sticky mobile CTA bar ---------- */
+.sticky-cta{
+  display:none;position:fixed;left:0;right:0;bottom:0;z-index:90;
+  padding:10px 14px calc(10px + env(safe-area-inset-bottom));
+  background:rgba(27,47,75,.96);backdrop-filter:blur(12px);
+  border-top:1px solid rgba(201,162,39,.35);
+  gap:10px;justify-content:center;
+}
+@media(max-width:768px){
+  .sticky-cta{display:flex}
+  body{padding-bottom:64px}
+}
+.sticky-cta .btn{flex:1;justify-content:center;text-align:center}
+
+/* ---------- engagement packages ---------- */
+.pkg-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:32px}
+.pkg-card{
+  background:#fff;border:1px solid var(--line);border-radius:20px;padding:32px 28px;
+  display:flex;flex-direction:column;position:relative;
+  transition:transform .35s cubic-bezier(.2,.8,.3,1.2),box-shadow .35s,border-color .3s;
+}
+.pkg-card:hover{transform:translateY(-6px);box-shadow:0 20px 44px rgba(201,162,39,.14)}
+.pkg-featured{border:2px solid var(--gold);box-shadow:0 12px 32px rgba(201,162,39,.12)}
+.pkg-badge{
+  position:absolute;top:-14px;left:50%;transform:translateX(-50%);
+  background:var(--gold);color:#fff;font-size:12px;font-weight:700;
+  padding:4px 16px;border-radius:20px;white-space:nowrap;
+}
+.pkg-tag{
+  display:inline-block;align-self:flex-start;font-size:12px;font-weight:700;
+  color:var(--gold);background:var(--gold-soft);padding:4px 12px;border-radius:20px;margin-bottom:12px;
+}
+.pkg-card h3{font-size:22px;font-weight:700;color:var(--ink);margin:0 0 12px}
+.pkg-card p{font-size:14.5px;color:var(--muted);line-height:1.65;margin:0 0 18px}
+.pkg-card ul{list-style:none;margin:0 0 24px;padding:0;display:flex;flex-direction:column;gap:10px}
+.pkg-card li{font-size:14px;color:var(--ink)}
+.pkg-card .btn{margin-top:auto;justify-content:center}
+@media(max-width:900px){.pkg-grid{grid-template-columns:1fr}}

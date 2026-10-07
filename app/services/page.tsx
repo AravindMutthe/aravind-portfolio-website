@@ -5,6 +5,7 @@ import ParallaxPoster from "@/components/ParallaxPoster";
 import PageHero from "@/components/sections/PageHero";
 import ServicesGrid from "@/components/sections/ServicesGrid";
 import ServicesFaq from "@/components/sections/ServicesFaq";
+import EngagementModels from "@/components/sections/EngagementModels";
 
 export const metadata: Metadata = {
   title: "Services — Aravind Mutte",
@@ -12,9 +13,52 @@ export const metadata: Metadata = {
     "Freelance DevOps & SRE services: cloud architecture, CI/CD pipelines, Kubernetes platforms, reliability and cost optimization.",
 };
 
+const FAQ_SCHEMA = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "How much does a project cost?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Fixed-scope engagements are quoted up front after a short scoping call. You'll get a written quote before any work begins.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "What engagement models do you offer?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Freelance fixed-scope projects, contract engagements (ongoing DevOps support), and full-time roles in Hyderabad or remote.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "How long does a typical project take?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "A CI/CD pipeline or cloud landing zone typically takes 2–6 weeks. Larger builds are scoped in phases.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Are you available right now?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Yes — available for immediate joining, both freelance/contract and full-time DevOps / SRE / Platform Engineering roles.",
+      },
+    },
+  ],
+};
+
 export default function ServicesPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(FAQ_SCHEMA) }}
+      />
       <PageHero
         num="01"
         eyebrow="Services"
@@ -39,6 +83,8 @@ export default function ServicesPage() {
       </div>
 
       <ServicesGrid />
+
+      <EngagementModels />
 
       <ServicesFaq />
 
