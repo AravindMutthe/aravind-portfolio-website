@@ -4,6 +4,7 @@ import Link from "next/link";
 import { EXPERIENCE } from "@/components/data";
 import StreamCard, { CardFooter } from "@/components/stream/StreamCard";
 import { DoodleDivider } from "@/components/doodles";
+import Motto from "@/components/Motto";
 
 /**
  * About as an original profile — masthead identity, experience
@@ -59,6 +60,10 @@ export default function AboutFeed() {
               </ul>
             </StreamCard>
           ))}
+
+          <DoodleDivider />
+
+          <Motto compact />
 
           <DoodleDivider />
 

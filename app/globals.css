@@ -1874,3 +1874,28 @@ a.xtweet:hover{background:rgba(27,47,75,.03)}
   .native-book{grid-template-columns:1fr}
   .slot-grid{grid-template-columns:repeat(3,1fr)}
 }
+
+/* ============ MOTTO — "duty is pain, money is medicine" ============ */
+.motto{position:relative;text-align:center;padding:20px 16px;max-width:900px;margin:0 auto}
+.motto-line{font-family:var(--font-motto);font-weight:800;letter-spacing:-.02em;
+  font-size:clamp(34px,5.4vw,64px);line-height:1.12;color:var(--ink);margin:0}
+.motto-word{display:inline-block;margin:0 .14em;will-change:transform}
+.motto-word.w-pain{color:#9a9a9a;position:relative}
+.motto-word.w-pain::after{content:"";position:absolute;left:-4%;right:-4%;top:54%;
+  height:5px;background:#C9A227;border-radius:3px;transform:rotate(-4deg)}
+.motto-word.w-money{color:#8a6d1c}
+.motto-word.w-med{font-style:italic}
+.motto-squig{width:min(420px,70%);height:auto;margin:6px auto 0;display:block}
+.motto-coin{width:74px;height:74px;margin:0 auto 10px;display:block}
+.motto-spark{position:absolute;width:34px;height:34px}
+.motto-spark-a{top:6%;left:8%}
+.motto-spark-b{bottom:10%;right:9%;width:26px;height:26px}
+.motto-compact .motto-line{font-size:clamp(24px,3.4vw,36px)}
+.motto-compact .motto-coin{width:52px;height:52px}
+.motto-band{background:linear-gradient(180deg,var(--paper),#fff);border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);padding:72px 0}
+@media(max-width:768px){
+  .motto-spark-a{left:2%}.motto-spark-b{right:3%}
+  .motto-band{padding:52px 0}
+}
+.foot-motto{font-family:var(--font-motto);font-weight:700;font-style:italic;color:#8a6d1c}

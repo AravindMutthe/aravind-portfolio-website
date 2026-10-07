@@ -72,6 +72,7 @@ export default function Footer() {
         </div>
         <div className="foot-base">
           <span>© 2026 Aravind Mutte · Hyderabad, India</span>
+          <span className="foot-motto">duty is pain, money is medicine</span>
           <span>Built with Next.js, Tailwind &amp; IBM Carbon</span>
         </div>
       </div>

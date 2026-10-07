@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Fraunces, Inter } from "next/font/google";
+import { Fraunces, Inter, Bricolage_Grotesque } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -21,6 +21,13 @@ const inter = Inter({
   weight: ["400", "500", "600", "700"],
   display: "swap",
   variable: "--font-inter",
+});
+/* Motto font — Aravind's "duty is pain, money is medicine" brand line */
+const bricolage = Bricolage_Grotesque({
+  subsets: ["latin"],
+  weight: ["500", "600", "700", "800"],
+  display: "swap",
+  variable: "--font-motto",
 });
 
 export const viewport = {
@@ -77,7 +84,7 @@ const PERSON_SCHEMA = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${fraunces.variable} ${inter.variable}`}>
+    <html lang="en" className={`${fraunces.variable} ${inter.variable} ${bricolage.variable}`}>
       <head>
         {/* Cloudflare Web Analytics — free. */}
         <script

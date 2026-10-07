@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Hero from "@/components/stream/Hero";
 import OfferMenu from "@/components/stream/OfferMenu";
+import Motto from "@/components/Motto";
 import { DoodleDivider } from "@/components/doodles";
 
 /**
@@ -133,6 +134,11 @@ export default function HomeNarrative() {
           </div>
           <Link href="/blog" className="scard-cta">All writing <span aria-hidden="true">›</span></Link>
         </div>
+      </section>
+
+      {/* motto band */}
+      <section className="motto-band" aria-label="Motto">
+        <Motto />
       </section>
 
       {/* final CTA */}
