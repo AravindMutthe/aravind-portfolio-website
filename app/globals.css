@@ -1221,3 +1221,61 @@ footer .brand{color:var(--accent)}
   .wave-reveal{opacity:1;transform:none;transition:none}
   .wave-reveal .wave-top{animation:none}
 }
+
+/* ---------- lab/pixi-gsap: playful doodle pass ---------- */
+
+/* bouncy word cycler */
+.wc-word{transition:opacity .45s ease,transform .55s cubic-bezier(.34,1.8,.5,1)}
+.wc-word.on{transform:translateY(0)}
+
+/* hero mascot + doodles */
+.hero-bot{position:absolute;right:6%;top:150px;width:110px;z-index:1;
+  animation:botFloat 4s ease-in-out infinite}
+@keyframes botFloat{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-14px) rotate(2deg)}}
+.bot-mascot svg{width:100%;height:auto;overflow:visible;
+  filter:drop-shadow(0 10px 18px rgba(27,47,75,.18))}
+.bot-eyes{transform-origin:center;transform-box:fill-box;animation:blink 4.2s infinite}
+@keyframes blink{0%,92%,100%{transform:scaleY(1)}95%{transform:scaleY(.08)}}
+.bot-light{animation:botBlink 2.4s infinite}
+@keyframes botBlink{0%,100%{opacity:1}50%{opacity:.35}}
+.doodle-sparkle{position:absolute;width:34px;z-index:1;animation:sparkleTw 2.8s ease-in-out infinite}
+.doodle-sparkle.s1{left:10%;top:200px}
+.doodle-sparkle.s2{right:16%;top:330px;width:24px;animation-delay:1.2s}
+@keyframes sparkleTw{0%,100%{transform:scale(.7) rotate(0deg);opacity:.6}50%{transform:scale(1.15) rotate(20deg);opacity:1}}
+.hero-squiggle{display:block;width:min(320px,60%);height:22px;margin:6px auto 0}
+.hero-squiggle path{stroke-dasharray:240;stroke-dashoffset:240;animation:drawSquiggle 1.2s ease .9s forwards}
+@keyframes drawSquiggle{to{stroke-dashoffset:0}}
+
+/* bouncing scroll cue */
+.scroll-cue{display:flex;flex-direction:column;align-items:center;gap:6px;
+  margin-top:34px;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--faint)}
+.cue-dot{width:10px;height:10px;border-radius:50%;background:var(--gold);
+  animation:cueBounce 1.6s cubic-bezier(.34,1.56,.64,1) infinite}
+@keyframes cueBounce{0%,100%{transform:translateY(0)}50%{transform:translateY(10px)}}
+
+/* bouncy buttons */
+.btn{transition:transform .25s cubic-bezier(.34,1.8,.5,1),box-shadow .25s,background .25s}
+.btn:hover{transform:scale(1.06) rotate(-1deg)}
+.btn:active{transform:scale(.92)}
+
+/* card wiggle on hover */
+.card:hover,.t-card:hover,.blog-card:hover,.pkg-card:hover{
+  animation:cardWiggle .45s cubic-bezier(.34,1.56,.64,1)}
+@keyframes cardWiggle{0%{transform:translateY(-6px) rotate(0)}30%{transform:translateY(-6px) rotate(1.1deg)}60%{transform:translateY(-6px) rotate(-.8deg)}100%{transform:translateY(-6px) rotate(0)}}
+
+/* doodle divider between sections */
+.doodle-divider{display:block;width:min(420px,70%);height:36px;margin:8px auto}
+
+/* keep the fun desktop-weighted; calm it on small screens */
+@media(max-width:768px){
+  .hero-bot{width:74px;right:4%;top:128px}
+  .doodle-sparkle.s1{left:5%;top:170px}
+  .doodle-sparkle{display:none}
+  .doodle-sparkle.s1{display:block}
+}
+@media(prefers-reduced-motion:reduce){
+  .hero-bot,.doodle-sparkle,.cue-dot{animation:none}
+  .hero-squiggle path{animation:none;stroke-dashoffset:0}
+  .card:hover,.t-card:hover,.blog-card:hover,.pkg-card:hover{animation:none}
+  .btn:hover{transform:none}
+}
