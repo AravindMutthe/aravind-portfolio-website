@@ -71,7 +71,7 @@ export default function HomeHero() {
             <span className="dot"></span> Available for immediate joining — freelance &amp; full-time
           </div>
           <h1 className="gs-in">
-            Infrastructure that <span className="grad"><WordCycler /></span>
+            Infrastructure that <WordCycler />
             <Squiggle className="hero-squiggle" />
           </h1>
           <p className="lead gs-in">

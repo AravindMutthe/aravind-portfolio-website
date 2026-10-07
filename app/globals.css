@@ -585,7 +585,7 @@ fieldset.field{margin-bottom:20px}
 .cta-band p{color:#9AA6B8;font-size:17px;max-width:560px;margin:0 auto 36px}
 .cta-band .btn:not(.btn-ghost){background:var(--gold);border-color:var(--gold);color:#14243A}
 .cta-band .btn:not(.btn-ghost):hover{background:var(--gold);border-color:var(--gold);color:#14243A;filter:brightness(1.08);box-shadow:0 12px 32px rgba(201,162,39,.35)}
-.cta-band .btn-ghost{color:#fff;border-color:rgba(255,255,255,.3)}
+.cta-band .btn-ghost{color:#fff;border-color:rgba(255,255,255,.3);background:transparent}
 .cta-band .btn-ghost:hover{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.55)}
 .cta-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
 
@@ -1195,9 +1195,10 @@ footer .brand{color:var(--accent)}
 .word-cycler{position:relative;display:inline-block;min-width:12ch;text-align:left}
 .wc-word{position:absolute;left:0;top:0;opacity:0;transform:translateY(12px);
   transition:opacity .6s ease,transform .6s ease;white-space:nowrap}
-.wc-word.on{opacity:1;transform:translateY(0)}
+.wc-word.on{opacity:1;transform:translateY(0);animation:wordPop .55s cubic-bezier(.34,1.8,.5,1)}
+@keyframes wordPop{0%{transform:translateY(16px) scale(.65) rotate(-4deg);opacity:0}60%{transform:translateY(-3px) scale(1.08) rotate(1.5deg);opacity:1}100%{transform:translateY(0) scale(1) rotate(0);opacity:1}}
 .wc-static{visibility:hidden;white-space:nowrap} /* reserves width, SEO/no-JS */
-@media(prefers-reduced-motion:reduce){.wc-word{transition:none}.wc-word.on{transform:none}}
+@media(prefers-reduced-motion:reduce){.wc-word{transition:none}.wc-word.on{transform:none;animation:none}}
 
 /* cursor glow ring — pointer:fine only, set in JS */
 .cursor-glow{position:fixed;left:0;top:0;z-index:200;pointer-events:none;
@@ -1235,8 +1236,10 @@ footer .brand{color:var(--accent)}
 @keyframes botFloat{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-14px) rotate(2deg)}}
 .bot-mascot svg{width:100%;height:auto;overflow:visible;
   filter:drop-shadow(0 10px 18px rgba(27,47,75,.18))}
-.bot-eyes{transform-origin:center;transform-box:fill-box;animation:blink 4.2s infinite}
+.bot-eyes{transform-origin:70px 64px;transform-box:view-box;animation:blink 4.2s infinite}
 @keyframes blink{0%,92%,100%{transform:scaleY(1)}95%{transform:scaleY(.08)}}
+.bot-wave{transform-origin:112px 84px;transform-box:view-box;animation:wave 3s ease-in-out infinite}
+@keyframes wave{0%,100%{transform:rotate(0deg)}50%{transform:rotate(-24deg)}}
 .bot-light{animation:botBlink 2.4s infinite}
 @keyframes botBlink{0%,100%{opacity:1}50%{opacity:.35}}
 .doodle-sparkle{position:absolute;width:34px;z-index:1;animation:sparkleTw 2.8s ease-in-out infinite}
@@ -1276,6 +1279,7 @@ footer .brand{color:var(--accent)}
 }
 @media(prefers-reduced-motion:reduce){
   .hero-bot,.doodle-sparkle,.cue-dot{animation:none}
+  .bot-wave{animation:none}
   .hero-squiggle path{animation:none;stroke-dashoffset:0}
   .card:hover,.t-card:hover,.blog-card:hover,.pkg-card:hover{animation:none}
   .btn:hover{transform:none}

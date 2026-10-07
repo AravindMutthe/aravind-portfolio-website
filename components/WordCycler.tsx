@@ -21,7 +21,13 @@ export default function WordCycler() {
   return (
     <span className="word-cycler" aria-live="polite">
       {WORDS.map((w, idx) => (
-        <span key={w} className={`wc-word${idx === i ? " on" : ""}`} aria-hidden={idx !== i}>
+        <span
+          key={w}
+          /* each word carries its own gradient: the parent .grad's
+             transparent text-fill doesn't propagate to abs-pos children */
+          className={`wc-word grad${idx === i ? " on" : ""}`}
+          aria-hidden={idx !== i}
+        >
           {w}
         </span>
       ))}

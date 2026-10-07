@@ -1,5 +1,7 @@
 "use client";
 
+import { useEffect, useRef } from "react";
+
 /**
  * Original hand-drawn doodle SVG set — hellomonday-style playfulness,
  * drawn from scratch in the portfolio's navy/gold palette. Wobbly strokes,
@@ -79,9 +81,46 @@ export function Sparkle({ className = "" }: { className?: string }) {
 
 /**
  * Pip — an original little DevOps bot mascot. Navy server-body, gold eyes
- * that blink, antenna with a blinking light, tiny arms. Bobs gently.
+ * that blink AND follow your cursor, antenna with a blinking light, tiny
+ * arms. Bobs gently.
  */
 export function BotMascot({ className = "" }: { className?: string }) {
+  const pupilsRef = useRef<SVGGElement>(null);
+
+  useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const pupils = pupilsRef.current;
+    if (!pupils) return;
+    let raf = 0;
+    let tx = 0;
+    let ty = 0;
+    let cx = 0;
+    let cy = 0;
+    const onMove = (e: PointerEvent) => {
+      const svg = pupils.ownerSVGElement;
+      if (!svg) return;
+      const r = svg.getBoundingClientRect();
+      const px = (e.clientX - (r.left + r.width / 2)) / r.width;
+      const py = (e.clientY - (r.top + r.height / 2)) / r.height;
+      const m = Math.hypot(px, py) || 1;
+      const cl = Math.min(m, 1);
+      tx = (px / m) * cl * 7;
+      ty = (py / m) * cl * 5;
+    };
+    const loop = () => {
+      cx += (tx - cx) * 0.12;
+      cy += (ty - cy) * 0.12;
+      pupils.setAttribute("transform", `translate(${cx.toFixed(2)} ${cy.toFixed(2)})`);
+      raf = requestAnimationFrame(loop);
+    };
+    window.addEventListener("pointermove", onMove, { passive: true });
+    raf = requestAnimationFrame(loop);
+    return () => {
+      window.removeEventListener("pointermove", onMove);
+      cancelAnimationFrame(raf);
+    };
+  }, []);
+
   return (
     <div className={`bot-mascot ${className}`} aria-hidden="true">
       <svg viewBox="0 0 140 160" fill="none">
@@ -90,15 +129,19 @@ export function BotMascot({ className = "" }: { className?: string }) {
         <circle className="bot-light" cx="70" cy="8" r="6" fill="#C9A227" stroke="#1B2F4B" strokeWidth="3" />
         {/* arms */}
         <path d="M28 84 Q 14 92, 18 108" stroke="#1B2F4B" strokeWidth="6" strokeLinecap="round" />
-        <path d="M112 84 Q 126 92, 122 108" stroke="#1B2F4B" strokeWidth="6" strokeLinecap="round" />
+        <path className="bot-wave" d="M112 84 Q 126 92, 122 108" stroke="#1B2F4B" strokeWidth="6" strokeLinecap="round" />
         {/* body */}
         <rect x="28" y="26" width="84" height="96" rx="26" fill="#1B2F4B" stroke="#1B2F4B" strokeWidth="4" />
         {/* face screen */}
         <rect x="40" y="40" width="60" height="52" rx="14" fill="#FAFAF7" />
-        {/* eyes (blink via CSS) */}
-        <g className="bot-eyes" stroke="#1B2F4B" strokeWidth="5" strokeLinecap="round">
-          <line x1="56" y1="60" x2="56" y2="72" />
-          <line x1="84" y1="60" x2="84" y2="72" />
+        {/* pupils follow the cursor; blink via CSS scaleY */}
+        <g ref={pupilsRef}>
+          <g className="bot-eyes">
+            <circle cx="58" cy="64" r="6.5" fill="#1B2F4B" />
+            <circle cx="82" cy="64" r="6.5" fill="#1B2F4B" />
+            <circle cx="60" cy="62" r="2" fill="#FAFAF7" />
+            <circle cx="84" cy="62" r="2" fill="#FAFAF7" />
+          </g>
         </g>
         {/* smile */}
         <path d="M58 82 Q 70 90, 82 82" stroke="#1B2F4B" strokeWidth="4" strokeLinecap="round" />
