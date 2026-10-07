@@ -8,14 +8,9 @@ export const metadata: Metadata = {
 };
 
 /**
- * Homepage as an original stream — the browsing ease of the best feeds,
- * the trust of the best marketing, the clarity of the best marketplaces,
- * in a visual language that belongs to no platform but this site.
+ * Homepage — full-viewport living hero over a magazine stream.
+ * Original language throughout: no platform chrome anywhere.
  */
 export default function HomePage() {
-  return (
-    <div className="wrap" style={{ paddingTop: 110, paddingBottom: 40 }}>
-      <StreamHome />
-    </div>
-  );
+  return <StreamHome />;
 }

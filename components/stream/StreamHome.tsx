@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import Masthead from "@/components/stream/Masthead";
+import Hero from "@/components/stream/Hero";
 import { Chapters, ConversationStarter } from "@/components/stream/Chapters";
 import StreamCard, { CardFooter } from "@/components/stream/StreamCard";
 import TerminalCard from "@/components/sections/TerminalCard";
@@ -154,17 +155,17 @@ export default function StreamHome() {
   }, []);
 
   return (
-    <div className="stream-app" ref={rootRef}>
-      <div className="stream-col">
-        <div className="stream-anim">
-          <Masthead />
-        </div>
-        <div className="stream-anim">
-          <Chapters />
-        </div>
-        <div className="stream-anim">
-          <ConversationStarter />
-        </div>
+    <>
+      <Hero />
+      <div className="wrap" style={{ paddingTop: 56, paddingBottom: 40 }}>
+        <div className="stream-app" ref={rootRef}>
+          <div className="stream-col">
+            <div className="stream-anim">
+              <Chapters />
+            </div>
+            <div className="stream-anim">
+              <ConversationStarter />
+            </div>
 
         <div className="code-label">{"// the-stream"}</div>
         <div className="filter-pills" role="tablist" aria-label="Stream filter">
@@ -184,18 +185,18 @@ export default function StreamHome() {
         <div className="stream">
           {show("insights") &&
             INSIGHTS.map((t, i) => (
-              <StreamCard key={i} kicker="Insight" footer={<CardFooter meta="From the field" />}>
-                <p className="scard-text">{t}</p>
-              </StreamCard>
+              <figure key={i} className="pull-quote stream-anim">
+                <blockquote>“{t}”</blockquote>
+              </figure>
             ))}
 
           {show("insights") && (
-            <StreamCard
-              kicker="Sound familiar?"
-              title={<>Infrastructure problems <em>I&apos;ve solved before.</em></>}
-              footer={<CardFooter href="/contact" cta="Let's talk about fixing them" />}
-            >
-              <ul className="scard-list">
+            <div className="dark-panel stream-anim">
+              <span className="sc-kicker">Sound familiar?</span>
+              <h3 className="dark-panel-title">
+                Infrastructure problems <em>I&apos;ve solved before.</em>
+              </h3>
+              <ul className="scard-list dark-list">
                 {PAINS.map((p) => (
                   <li key={p}>
                     <span className="scard-check" aria-hidden="true">✓</span>
@@ -203,7 +204,8 @@ export default function StreamHome() {
                   </li>
                 ))}
               </ul>
-            </StreamCard>
+              <CardFooter href="/contact" cta="Let's talk about fixing them" />
+            </div>
           )}
 
           {show("insights") && <DoodleDivider />}
@@ -324,6 +326,8 @@ export default function StreamHome() {
           </ul>
         </div>
       </aside>
-    </div>
+        </div>
+      </div>
+    </>
   );
 }
