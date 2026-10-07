@@ -152,11 +152,12 @@ body::after{
 /* ---------- nav: solid orange ---------- */
 #nav{
   position:fixed;inset:0 0 auto 0;z-index:1000;
-  background:var(--accent);
-  border-bottom:1px solid rgba(0,0,0,.12);
-  transition:background .3s;
+  background:transparent;
+  border-bottom:1px solid transparent;
+  transition:background .35s,border-color .35s,backdrop-filter .35s;
 }
-#nav.scrolled{background:var(--accent)}
+#nav.scrolled{background:rgba(27,47,75,.92);backdrop-filter:blur(14px);
+  border-bottom:1px solid rgba(255,255,255,.08)}
 .nav-inner{display:flex;align-items:center;justify-content:space-between;height:60px}
 .brand{display:flex;align-items:center;gap:11px;font-weight:600;font-size:15px;letter-spacing:-.01em;color:#fff}
 .brand-mark{
@@ -1790,3 +1791,23 @@ a.xtweet:hover{background:rgba(27,47,75,.03)}
   .proof-inner{gap:36px}
   .final-cta{padding:80px 0}
 }
+
+/* billionaire rules: text-link secondary CTA */
+.hero-link{font-size:17px;font-weight:600;color:#fff;display:inline-flex;align-items:center;gap:6px}
+.hero-link span{color:var(--gold);font-size:20px;transition:transform .2s}
+.hero-link:hover span{transform:translateX(4px)}
+.hero-link:hover{color:var(--gold)}
+
+/* dark band (Apple alternation) */
+.dark-band{background:linear-gradient(160deg,#101f33,#1B2F4B 60%,#16283f);color:#fff}
+.dark-band .narr-title{color:#fff}
+.dark-band .work-list{border-top-color:rgba(255,255,255,.14)}
+.dark-band .work-row{border-bottom-color:rgba(255,255,255,.14)}
+.dark-band .work-row h3{color:#fff}
+.dark-band .cfn dt{color:var(--gold)}
+.dark-band .cfn dd{color:rgba(255,255,255,.82)}
+.dark-band .scard-cta{color:var(--gold)}
+.dark-band .code-label{color:var(--gold)}
+/* secondary links use › chevron (Apple rule) */
+.scard-cta span{transition:transform .2s;display:inline-block}
+.scard-cta:hover span{transform:translateX(4px)}

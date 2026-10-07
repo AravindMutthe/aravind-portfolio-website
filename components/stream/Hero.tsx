@@ -84,12 +84,14 @@ export default function Hero() {
           <span className="hero-line hero-line-italic">without the <em>2 a.m. pages.</em></span>
         </h1>
         <p className="hero-sub">
-          I&apos;m Aravind Mutte — Cloud DevOps & SRE. I build the pipelines,
-          cloud setups, and monitoring that let small teams ship like big ones.
+          Cloud DevOps & SRE — pipelines and monitoring for teams that ship.
         </p>
         <div className="hero-ctas">
           <Link className="btn btn-gold magnetic" href="/contact">
             Book my discovery call
+          </Link>
+          <Link className="hero-link" href="/projects">
+            See the work <span aria-hidden="true">›</span>
           </Link>
         </div>
       </div>

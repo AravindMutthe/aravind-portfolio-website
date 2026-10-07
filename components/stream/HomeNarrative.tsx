@@ -90,8 +90,8 @@ export default function HomeNarrative() {
 
       <DoodleDivider />
 
-      {/* work */}
-      <section className="narr-section" aria-label="Selected work">
+      {/* work — dark band */}
+      <section className="narr-section dark-band" aria-label="Selected work">
         <div className="wrap">
           <div className="code-label">{"// selected-work"}</div>
           <h2 className="narr-title">
@@ -109,7 +109,7 @@ export default function HomeNarrative() {
               </article>
             ))}
           </div>
-          <Link href="/projects" className="scard-cta">All case studies →</Link>
+          <Link href="/projects" className="scard-cta">All case studies <span aria-hidden="true">›</span></Link>
         </div>
       </section>
 
@@ -127,11 +127,11 @@ export default function HomeNarrative() {
               <a key={e.href} href={e.href} target="_blank" rel="noopener" className="essay-row">
                 <span className="essay-title">{e.title}</span>
                 <span className="essay-meta">{e.meta}</span>
-                <span className="essay-arrow" aria-hidden="true">→</span>
+                <span className="essay-arrow" aria-hidden="true">›</span>
               </a>
             ))}
           </div>
-          <Link href="/blog" className="scard-cta">All writing →</Link>
+          <Link href="/blog" className="scard-cta">All writing <span aria-hidden="true">›</span></Link>
         </div>
       </section>
 
