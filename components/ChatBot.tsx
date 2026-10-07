@@ -175,6 +175,10 @@ export default function ChatBot() {
     } catch {
       /* storage unavailable — ignore */
     }
+    // External opener (e.g. the feed composer box).
+    const opener = () => setOpen(true);
+    window.addEventListener("open-chatbot", opener);
+    return () => window.removeEventListener("open-chatbot", opener);
   }, []);
 
   const pushBot = (text: string, chips?: string[]) => {

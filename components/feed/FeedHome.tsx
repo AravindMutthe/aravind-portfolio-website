@@ -5,6 +5,8 @@ import Link from "next/link";
 import Reveal from "@/components/Reveal";
 import TerminalCard from "@/components/sections/TerminalCard";
 import { XPost, InstaPost, FBCard, X_URL } from "@/components/feed/posts";
+import Stories, { Composer } from "@/components/feed/Stories";
+import NavRail from "@/components/feed/NavRail";
 
 type Cat = "all" | "insights" | "visuals" | "services" | "work";
 
@@ -143,11 +145,15 @@ export default function FeedHome() {
   const show = (c: Cat) => tab === "all" || tab === c;
 
   return (
-    <div className="feed-layout">
+    <div className="feed-app">
+      <NavRail />
       <div className="feed-col">
         <Reveal>
           <ProfileHeader />
         </Reveal>
+
+        <Stories />
+        <Composer />
 
         <div className="xtabs feed-tabs" role="tablist" aria-label="Feed filter">
           {TABS.map((t) => (
