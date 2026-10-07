@@ -1539,3 +1539,6 @@ a.xtweet:hover{background:rgba(27,47,75,.03)}
   .ig-grid{grid-template-columns:repeat(3,1fr);gap:4px}
   .ig-tile{padding:12px;border-radius:6px}
 }
+.xlinks{display:flex;flex-wrap:wrap;gap:8px 20px;margin-top:14px}
+.xlinks a{font-size:14px;font-weight:700;color:#8a6d1c}
+.xlinks a:hover{text-decoration:underline}
