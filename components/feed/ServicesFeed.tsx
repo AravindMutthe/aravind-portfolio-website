@@ -60,7 +60,9 @@ export default function ServicesFeed() {
                 ))}
               </ul>
               <Link className={`btn ${o.featured ? "btn-gold" : "btn-ghost"}`} href="/contact">
-                Get my {o.name.toLowerCase().includes("sre") ? "retainer" : "audit"}
+                {o.name === "Infra Audit Sprint" && "Get my audit"}
+                {o.name === "Pipeline Buildout" && "Get my pipeline"}
+                {o.name === "Fractional SRE" && "Get my retainer"}
               </Link>
             </article>
           ))}
