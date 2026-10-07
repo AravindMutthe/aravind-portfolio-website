@@ -988,3 +988,26 @@ footer .brand{color:var(--accent)}
 .blog-card p{font-size:14px;color:var(--muted);line-height:1.6;margin:0 0 12px}
 .blog-read{font-size:14px;font-weight:700;color:var(--gold)}
 @media(max-width:860px){.blog-platforms{grid-template-columns:1fr}.blog-grid{grid-template-columns:1fr}}
+
+/* ---------- blog post page ---------- */
+.blog-post{padding:120px 0 80px}
+.blog-back{display:inline-block;margin-bottom:20px;color:var(--gold);font-weight:600;text-decoration:none;font-size:14px}
+.blog-back:hover{text-decoration:underline}
+.blog-post h1{font-family:var(--fd);font-size:clamp(30px,4.5vw,44px);font-weight:600;color:var(--ink);line-height:1.15;margin:12px 0}
+.blog-post-desc{font-size:18px;color:var(--muted);line-height:1.6;margin:0 0 12px}
+.blog-post-meta{display:flex;gap:10px;align-items:center;font-size:13px;color:var(--faint);margin-bottom:36px;padding-bottom:24px;border-bottom:1px solid var(--line)}
+.blog-post-body{font-size:16.5px;line-height:1.75;color:var(--ink)}
+.blog-post-body h1,.blog-post-body h2{font-family:var(--fd);color:var(--ink);margin:36px 0 14px;line-height:1.25}
+.blog-post-body h2{font-size:26px}
+.blog-post-body h3,.blog-post-body h4,.blog-post-body h5{font-family:var(--fb);font-weight:700;color:var(--ink);margin:28px 0 10px}
+.blog-post-body p{margin:0 0 16px}
+.blog-post-body ul{margin:0 0 20px;padding-left:24px}
+.blog-post-body li{margin-bottom:8px}
+.blog-post-body code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.88em;background:var(--gold-soft);color:#7a5f14;border-radius:6px;padding:2px 7px}
+.blog-post-body pre{background:#14243A;border-radius:14px;padding:20px;overflow-x:auto;margin:0 0 24px}
+.blog-post-body pre code{background:none;color:#e8eef4;padding:0;font-size:14px;line-height:1.6}
+.blog-post-body blockquote{border-left:3px solid var(--gold);margin:0 0 20px;padding:8px 0 8px 20px;color:var(--muted);font-style:italic;background:var(--gold-soft);border-radius:0 10px 10px 0}
+.blog-post-body strong{color:var(--ink)}
+.blog-post-cta{margin-top:48px;padding:32px;background:var(--accent);border-radius:18px;text-align:center}
+.blog-post-cta p{color:rgba(255,255,255,.85);font-size:16px;margin:0 0 18px}
+.section-lead{font-size:16px;color:var(--muted);max-width:640px;margin:-8px 0 28px;line-height:1.6}

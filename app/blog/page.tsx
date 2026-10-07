@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import Reveal from "@/components/Reveal";
 import PageHero from "@/components/sections/PageHero";
+import { NOTE_POSTS } from "@/components/blog-posts";
 
 export const metadata: Metadata = {
   title: "Blog — Aravind Mutte",
@@ -101,6 +103,28 @@ export default function BlogPage() {
                     <span className="bp-cta">{p.cta} →</span>
                   </div>
                 </a>
+              ))}
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      <section className="block">
+        <div className="wrap">
+          <Reveal>
+            <h2 className="section-title">From my notes</h2>
+            <p className="section-lead">
+              Technical reference notes from my GitHub — Linux, Docker, Kubernetes,
+              Git, Java, and Python. The stuff I actually look up.
+            </p>
+            <div className="blog-grid">
+              {NOTE_POSTS.map((p) => (
+                <Link key={p.slug} className="blog-card" href={`/blog/${p.slug}`}>
+                  <span className="blog-tag">{p.category}</span>
+                  <h3>{p.title}</h3>
+                  <p>{p.desc}</p>
+                  <span className="blog-read">{p.readTime} read →</span>
+                </Link>
               ))}
             </div>
           </Reveal>

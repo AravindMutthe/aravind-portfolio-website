@@ -37,7 +37,7 @@ export default function HomeHero() {
           </Reveal>
           <Reveal delay="d2">
             <div className="hero-ctas">
-              <Link href="/contact" className="btn">
+              <Link href="/contact" className="btn btn-gold">
                 Start a Project
               </Link>
               <Link href="/services" className="btn btn-ghost">
