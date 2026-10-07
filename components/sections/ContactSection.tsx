@@ -1,5 +1,5 @@
 import Reveal from "@/components/Reveal";
-import ContactForm from "@/components/ContactForm";
+import FormTabs from "@/components/FormTabs";
 
 interface Method {
   label: string;
@@ -73,7 +73,7 @@ export default function ContactSection() {
           </div>
         </Reveal>
 
-        <ContactForm />
+        <FormTabs />
       </div>
     </section>
   );

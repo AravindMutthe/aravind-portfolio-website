@@ -956,3 +956,16 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 
 /* footer brand on light background */
 footer .brand{color:var(--accent)}
+
+/* ---------- form tabs (services vs hire-me) ---------- */
+.form-tabs-wrap{margin-top:8px}
+.form-tabs{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:28px}
+.form-tab{display:flex;align-items:center;gap:14px;padding:18px 20px;border:2px solid var(--line);border-radius:16px;background:#fff;cursor:pointer;text-align:left;font-family:var(--fb);transition:border-color .25s,box-shadow .25s,background .25s,transform .2s}
+.form-tab:hover{border-color:var(--gold);transform:translateY(-1px)}
+.form-tab.active{border-color:var(--gold);background:var(--gold-soft);box-shadow:0 0 0 3px var(--gold-soft)}
+.ft-icon{font-size:28px;flex:none}
+.ft-text{display:flex;flex-direction:column;gap:2px}
+.ft-text strong{font-size:16px;color:var(--ink)}
+.ft-text small{font-size:13px;color:var(--muted)}
+.form-tab.active .ft-text strong{color:var(--ink)}
+@media(max-width:560px){.form-tabs{grid-template-columns:1fr}}

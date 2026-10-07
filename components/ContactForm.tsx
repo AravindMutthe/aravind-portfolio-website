@@ -2,6 +2,7 @@
 
 import { useRef, useState, type FormEvent } from "react";
 import { EMAIL, WA_NUMBER } from "./data";
+import CountrySelect from "./CountrySelect";
 
 declare global {
   interface Window {
@@ -53,6 +54,7 @@ export default function ContactForm() {
   const [email, setEmail] = useState("");
   const [company, setCompany] = useState("");
   const [role, setRole] = useState("");
+  const [country, setCountry] = useState("");
   // Step 2
   const [service, setService] = useState("");
   const [description, setDescription] = useState("");
@@ -120,7 +122,7 @@ export default function ContactForm() {
     const who = org && rl ? `${org} (${rl})` : org || rl || "—";
     return (
       `New project enquiry — portfolio site\n` +
-      `Company: ${who}\n` +
+      `Company: ${who} | Country: ${country || "—"}\n` +
       `Service: ${service}\n` +
       `Budget: ${budget} | Timeline: ${timeline}\n` +
       `Cloud: ${cloud || "—"} | Team: ${teamSize || "—"} | Found via: ${referral || "—"}\n` +
@@ -182,6 +184,7 @@ export default function ContactForm() {
           email: em,
           company: company.trim(),
           role: role.trim(),
+          country: country || "—",
           service,
           budget,
           timeline,
@@ -360,6 +363,7 @@ export default function ContactForm() {
                     />
                   </div>
                 </div>
+                <CountrySelect id="cf-country" label="Country" value={country} onChange={setCountry} />
               </>
             )}
 
