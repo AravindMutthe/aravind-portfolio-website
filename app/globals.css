@@ -1925,3 +1925,28 @@ a.xtweet:hover{background:rgba(27,47,75,.03)}
 .process-card p{font-size:14.5px;line-height:1.65;color:var(--muted);margin:0}
 @media(max-width:1024px){.process-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:600px){.process-grid{grid-template-columns:1fr}}
+
+/* ============ BIO BAND (portfolio handshake) ============ */
+.bio-band{background:#fff;border-bottom:1px solid var(--line);padding:76px 0}
+.bio-inner{display:grid;grid-template-columns:200px 1fr;gap:48px;align-items:center;
+  max-width:960px}
+.bio-photo{width:200px;height:200px;border-radius:50%;background:linear-gradient(140deg,#1B2F4B,#2a4a73);
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 20px 44px -18px rgba(27,47,75,.45);border:5px solid #fff;
+  outline:2px solid var(--line)}
+.bio-photo span{font-family:var(--font-fraunces);font-weight:700;font-size:64px;color:#fff;
+  letter-spacing:-.02em}
+.bio-copy h2{font-family:var(--font-fraunces);font-weight:700;letter-spacing:-.015em;
+  font-size:clamp(30px,3.8vw,44px);line-height:1.1;color:var(--ink);margin:0 0 8px}
+.bio-copy h2 em{font-style:italic;color:#8a6d1c}
+.bio-role{font-size:15.5px;font-weight:600;color:var(--ink);margin:0 0 14px}
+.bio-text{font-size:16.5px;line-height:1.7;color:var(--muted);margin:0 0 20px;max-width:58ch}
+.bio-facts{display:flex;gap:28px;flex-wrap:wrap;margin-bottom:22px}
+.bio-facts span{font-size:14px;color:var(--muted)}
+.bio-facts b{color:var(--ink);font-weight:700}
+@media(max-width:768px){
+  .bio-band{padding:56px 0}
+  .bio-inner{grid-template-columns:1fr;gap:28px;text-align:left}
+  .bio-photo{width:140px;height:140px}
+  .bio-photo span{font-size:46px}
+}

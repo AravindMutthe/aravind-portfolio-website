@@ -10,10 +10,10 @@ import { usePathname } from "next/navigation";
  */
 const TABS = [
   {
-    href: "/",
-    label: "Home",
+    href: "/skills",
+    label: "Skills",
     icon: (
-      <path d="M3 10.5L12 3l9 7.5M5 9.5V21h14V9.5" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v6m0-6v18m0 0h10a2 2 0 0 0 2-2v-4" strokeLinecap="round" strokeLinejoin="round" />
     ),
   },
   {

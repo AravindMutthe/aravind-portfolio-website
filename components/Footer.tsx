@@ -1,12 +1,10 @@
 import Link from "next/link";
 
 const PAGE_LINKS = [
-  { href: "/", label: "Home" },
   { href: "/services", label: "Services" },
   { href: "/experience", label: "Experience" },
   { href: "/projects", label: "Projects" },
   { href: "/skills", label: "Skills" },
-  { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
 ];
 

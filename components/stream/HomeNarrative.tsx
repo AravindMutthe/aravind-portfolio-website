@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import Hero from "@/components/stream/Hero";
+import BioBand from "@/components/stream/BioBand";
 import OfferMenu from "@/components/stream/OfferMenu";
 import Motto from "@/components/Motto";
 import { DoodleDivider } from "@/components/doodles";
@@ -83,6 +84,9 @@ export default function HomeNarrative() {
   return (
     <>
       <Hero />
+
+      {/* bio — first-time visitors meet the person first */}
+      <BioBand />
 
       {/* proof */}
       <section className="proof-strip" aria-label="Proof">

@@ -26,17 +26,11 @@ export default function Navbar() {
   return (
     <nav id="nav" className={scrolled ? "scrolled" : ""}>
       <div className="wrap nav-inner">
-        <Link className="brand" href="/" aria-label="Home">
+        <Link className="brand" href="/" aria-label="Aravind Mutte — home and about">
           <span className="brand-mark">AM</span> Aravind Mutte
         </Link>
 
         <div className={`nav-links${menuOpen ? " open" : ""}`} id="navLinks">
-          <Link href="/" className={isActive("/") ? "active" : ""}>
-            Home
-          </Link>
-          <Link href="/about" className={isActive("/about") ? "active" : ""}>
-            About
-          </Link>
           <Link href="/services" className={isActive("/services") ? "active" : ""}>
             Services
           </Link>
