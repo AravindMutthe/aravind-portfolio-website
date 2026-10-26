@@ -21,6 +21,10 @@ const ITEMS = [
   { href: "/atlas/notebook", label: "🗂️ All original scans" },
   { href: "/atlas/study-notes", label: "📓 Study notes, 129 photos" },
   { href: "/atlas/recovered-fragments", label: "🧩 Recovered fragments" },
+  { href: "/atlas/semiconductors", label: "⚡ Semiconductors · Ch 08–11" },
+  { href: "/atlas/kubernetes-networks", label: "☸️ Kubernetes networking · B011" },
+  { href: "/atlas/memory-systems", label: "💾 Memory systems · B015" },
+  { href: "/atlas/linux-datapaths", label: "🐧 Linux datapaths · B012" },
   { href: "/atlas/source-index", label: "📚 Source index" },
 ];
 

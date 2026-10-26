@@ -105,6 +105,59 @@ export default function AtlasHub() {
         </Link>
       </div>
 
+      <h2>What is original, and what is added?</h2>
+      <p>
+        The prototype's own legend, kept on every new page: ✍️ Original sources
+        are the handwritten notes, unchanged. 🧭 Editorial reading is a
+        structured summary. ✨ AI explanations add worked examples and context.
+        🟢 New diagrams are teaching redraws, not original diagrams. ✅ Verify
+        marks corrections and limits. Nothing here is presented as a verbatim
+        transcription.
+      </p>
+      <h2>Choose your learning path</h2>
+      <div className="atlas-grid">
+        <div className="atlas-card">
+          <h3>🛠️ Engineering &amp; interviews</h3>
+          <p>Hardware, NIC, drivers, kernel, TCP/IP, semiconductors, Kubernetes networking, memory, Linux datapaths, systems and operations.</p>
+        </div>
+        <div className="atlas-card">
+          <h3>🌐 History, business &amp; founders</h3>
+          <p>Trade and finance, communications, institutions, industry supply chains, business strategy, governance and leadership.</p>
+        </div>
+      </div>
+
+      <h2>Newly integrated — from the fullest Atlas edition</h2>
+      <div className="atlas-grid">
+        <Link className="atlas-card atlas-rich" href="/atlas/semiconductors">
+          <div className="atlas-rich-body">
+            <span className="atlas-tag">Chapters 08–11 · ⚡🧠🗃️🌐🔬</span>
+            <h3>Semiconductors</h3>
+            <p>Electric signals to silicon, processing engines and ISAs, memory hierarchy and controllers, embedded to cloud, and source-by-source notes.</p>
+          </div>
+        </Link>
+        <Link className="atlas-card atlas-rich" href="/atlas/kubernetes-networks">
+          <div className="atlas-rich-body">
+            <span className="atlas-tag">B011 · ☸️</span>
+            <h3>Physical networks, Kubernetes networking</h3>
+            <p>Modem to cluster datapaths, ingress, CNI, CSI, ADC, SAN, media, packet trace and labs, with exact analogies and their limits.</p>
+          </div>
+        </Link>
+        <Link className="atlas-card atlas-rich" href="/atlas/memory-systems">
+          <div className="atlas-rich-body">
+            <span className="atlas-tag">B015 · 💾</span>
+            <h3>Memory systems</h3>
+            <p>From physical cells to processes, NUMA and durable data, in seven pages, with a web-request-and-memory path.</p>
+          </div>
+        </Link>
+        <Link className="atlas-card atlas-rich" href="/atlas/linux-datapaths">
+          <div className="atlas-rich-body">
+            <span className="atlas-tag">B012 · 🐧</span>
+            <h3>Interfaces, Linux datapaths</h3>
+            <p>ISP termination to Linux routing, firewall, switching, namespaces, virtual NICs, seven physical-to-virtual mappings and one request journey.</p>
+          </div>
+        </Link>
+      </div>
+
       <div className="atlas-panel">
         <h2 style={{ marginTop: 0 }}>Source index</h2>
         <p>
