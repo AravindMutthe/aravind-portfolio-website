@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Kernel analogies: mining & government — Atlas",
-  description: "Study notes 001–011 (Oct 25): the second notebook's complete mining-as-kernel analogy, integrated with chapters 02, 03 and 06, memory and Linux datapaths.",
+  description: "Study notes 001–016 (Oct 25, the full day): the second notebook's mining-as-kernel analogy (001–012) plus mining on its own terms (013–016), integrated with chapters 02, 03 and 06, memory and Linux datapaths.",
 };
 
 const MAP: [string, string, string][] = [
@@ -39,18 +39,21 @@ const SHOTS: [string, string, string][] = [
   ["/atlas/study-notes/008.jpg", "Note 008 · Big Picture", "The whole system on one page: mines, miners, kernel, markets, government, consumers."],
   ["/atlas/study-notes/010.jpg", "Note 010 · Tools", "Every tool has a kernel twin: drill, blast, trucks, refinery, pumps, helmets."],
   ["/atlas/study-notes/011.jpg", "Note 011 · Trade & distribution", "Outside the mine: ports, borders, traders, exchanges, stockpiles, warehouses."],
+  ["/atlas/study-notes/012.jpg", "Note 012 · Government", "Currency standards, licences, environmental law, boundaries, boom and bust."],
+  ["/atlas/study-notes/013.jpg", "Note 013 · Mining process & profit", "Extraction defined; ore as the proportion minable at a profit."],
+  ["/atlas/study-notes/015.jpg", "Note 015 · Quarrying & surface mining", "Ornamental stone blocks; surface work near the Earth's surface."],
 ];
 
 export default function KernelAnalogies() {
   return (
     <div className="atlas-wrap">
       <Link href="/atlas">← Atlas library</Link>
-      <p className="atlas-eyebrow" style={{ marginTop: 20 }}>Study notes 001–011 · Oct 25 · Newly integrated, not previously published</p>
+      <p className="atlas-eyebrow" style={{ marginTop: 20 }}>Study notes 001–016 · Oct 25, complete · Newly integrated, not previously published</p>
       <h1 className="atlas-hero">⛏️ Kernel analogies: a mine, a government, a kernel</h1>
       <p className="atlas-lead">
         The second notebook does not start with computers. It starts with mining,
         and it uses mining to explain the kernel — then uses government to explain
-        both. Eleven pages, photographed October 25, form one complete analogy
+        both. Sixteen pages, photographed October 25, form one complete analogy
         system: design, roles, governance, supply chain, resource types, tools,
         and trade. Until now these pages sat in the study-notes sequence as
         reference only. They are integrated here, page by page, with the rest of
@@ -110,6 +113,19 @@ export default function KernelAnalogies() {
         ))}
       </div>
 
+      <h2>⛏️ Mining on its own terms (notes 013–016)</h2>
+      <p>After twelve pages of analogy, the notebook steps back and studies mining itself — process, economics and method. These four pages are not kernel mappings; they are the ground the analogy stands on, and they are included here so the analogy is never mistaken for the whole subject.</p>
+      <div className="atlas-grid">
+        <div className="atlas-card"><h3>📖 Process (013)</h3><p>Mining is the process of extracting useful minerals from the Earth's surface and from under the seas. Cost of mining is the extraction itself; minerals are naturally occurring substances with a definite composition, and a mineral's physical properties decide how it is won.</p></div>
+        <div className="atlas-card"><h3>💰 Profit measure: ore (013–014)</h3><p>Ore is the proportion of a mineral inventory that can be mined at a profit. The same page turns that into a limit: ore is the mining limit set by the profit target. A deposit that cannot be mined at a profit is inventory, not ore.</p></div>
+        <div className="atlas-card"><h3>🏞️ Surface methods (014–015)</h3><p>Contour strip mining, area strip mining, open-pit mining and auger mining, plus quarrying — which extracts ornamental stone blocks — all work near the Earth's surface, where the ore body is reachable and waste removal stays affordable.</p></div>
+        <div className="atlas-card"><h3>🕳️ Underground mining (015–016)</h3><p>Used when the ore body lies far below the surface and surface waste removal becomes prohibitive. It costs more per ton — smaller equipment, limited access, lower productivity — and the choice turns on five factors: rock strength, ore-body size, shape, orientation and mineral grade.</p></div>
+      </div>
+      <div className="atlas-panel atlas-original">
+        <span className="atlas-tag">Note 012 · Government, continued</span>
+        <p style={{ margin: "6px 0 0" }}>Note 012 closes the analogy thread with the government's full role: currency and value standards (gold, the US dollar, the system clock as timestamp), licences, contracts, environmental law protecting ecology, boundaries, commodity cycles and boom-and-bust, security, and collapse when the system fails. The kernel twin is policy: what the system allows, what it charges, and what it refuses.</p>
+      </div>
+
       <h2>🔗 Related across the Atlas</h2>
       <div className="atlas-grid">
         <Link className="atlas-card" href="/atlas/chapter-02-institutions-governance"><span className="atlas-tag">Ch 02</span><h3>🏛️ Institutions &amp; governance</h3><p>The same outside bodies — WTO, OPEC, FCC — governing networks instead of mines.</p></Link>
@@ -122,7 +138,7 @@ export default function KernelAnalogies() {
 
       <div className="atlas-panel atlas-verify">
         <span className="atlas-tag">Verify · what is not claimed</span>
-        <p style={{ margin: "6px 0 0" }}>Notes 012–016 (rest of Oct 25) have not been viewed yet, so this page covers 001–011 only. Three readings above are marked “reading partial” where handwriting in the downscaled copy is ambiguous; they are the most likely readings, not certainties. The mapping table is an editorial arrangement of the notes' own pairings — the notes draw the pairs, the table collects them.</p>
+        <p style={{ margin: "6px 0 0" }}>All sixteen Oct 25 notes have now been viewed, so Oct 25 is complete on this page. What remains unviewed is Oct 26 (notes 017–129, except the already-verified 065 and 129). Three readings above are marked “reading partial” where handwriting in the downscaled copy is ambiguous; they are the most likely readings, not certainties. The mapping table is an editorial arrangement of the notes' own pairings — the notes draw the pairs, the table collects them.</p>
       </div>
     </div>
   );
