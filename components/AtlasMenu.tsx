@@ -16,6 +16,7 @@ const GROUPS: { label: string; items: { href: string; label: string }[] }[] = [
     { href: "/atlas/chapter-07-government-business-networks", label: "🗂️ 07 · Government, business & technical networks" },
   ]},
   { label: "Deep dives · new", items: [
+    { href: "/atlas/kernel-analogies", label: "⛏️ Kernel analogies"},
     { href: "/atlas/semiconductors", label: "⚡ Semiconductors · Ch 08–11" },
     { href: "/atlas/kubernetes-networks", label: "☸️ Kubernetes networking · B011" },
     { href: "/atlas/memory-systems", label: "💾 Memory systems · B015" },
@@ -27,6 +28,7 @@ const GROUPS: { label: string; items: { href: string; label: string }[] }[] = [
     { href: "/atlas/recovered-fragments", label: "🧩 Recovered fragments" },
   ]},
   { label: "Reference", items: [
+    { href: "/atlas/concepts", label: "🧭 Concepts across the Atlas" },
     { href: "/atlas/era-timeline", label: "⏳ Era timeline" },
     { href: "/atlas/evidence-register", label: "📋 Evidence register" },
     { href: "/atlas/engineering-notes", label: "🛠️ Engineering notes" },

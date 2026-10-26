@@ -151,3 +151,9 @@
 /* atlas.css is only loaded on /atlas routes, so these rules hide the
    portfolio chrome on Atlas pages only, even in the static export. */
 #nav, footer, .sticky-cta, #progress { display: none !important; }
+
+/* Library catalogue: search + concept filter. */
+.atlas-search { width: 100%; margin-top: 10px; padding: 12px 16px; font-size: 15px; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); color: var(--ink); }
+.atlas-concept-chips { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 14px; }
+.atlas-concept-btn { border: 1px solid var(--line); background: var(--surface); color: var(--ink); border-radius: 999px; padding: 7px 13px; font-size: 12.5px; cursor: pointer; }
+.atlas-concept-btn.active { background: var(--accent); color: #fff; border-color: var(--accent); font-weight: 700; }
