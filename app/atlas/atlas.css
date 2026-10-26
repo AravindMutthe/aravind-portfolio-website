@@ -172,3 +172,21 @@
 .atlas-related ul { padding-left: 20px; }
 .atlas-related li { margin: 8px 0; }
 .domain-card-img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; display: block; }
+
+/* Responsive fixes (deep inspection 2026-10-26): domain card images must
+   crop-cover as designed, not inherit the 280px contain treatment of
+   .atlas-rich img; plus a small-phone breakpoint and overflow safety so
+   every Atlas page is fully responsive on phones, tablets and desktops. */
+.atlas-rich img.domain-card-img { height: auto; object-fit: cover; padding: 0; border-bottom: 0; }
+.atlas-main { overflow-wrap: break-word; }
+.atlas img { max-width: 100%; }
+@media (max-width: 520px) {
+  .atlas-main { padding: 20px 5vw 60px; }
+  .atlas-header { flex-wrap: wrap; gap: 8px; }
+  .atlas-hero-panel { padding: 18px; }
+  .atlas-card, .atlas-panel { padding: 18px; }
+  .atlas-rich .atlas-rich-body { padding: 16px; }
+  .atlas-grid { gap: 12px; }
+  .atlas-lead { font-size: 17px; }
+  .atlas-article h1 { font-size: clamp(30px, 8vw, 38px); }
+}
