@@ -157,3 +157,17 @@
 .atlas-concept-chips { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 14px; }
 .atlas-concept-btn { border: 1px solid var(--line); background: var(--surface); color: var(--ink); border-radius: 999px; padding: 7px 13px; font-size: 12.5px; cursor: pointer; }
 .atlas-concept-btn.active { background: var(--accent); color: #fff; border-color: var(--accent); font-weight: 700; }
+
+/* Article reading design: Substack/Medium long-form, Atlas identity. */
+.atlas-article { max-width: 720px; margin: 0 auto; }
+.atlas-article h1 { font-family: var(--serif); font-size: clamp(34px, 5vw, 52px); line-height: 1.12; letter-spacing: -0.8px; margin: 12px 0 10px; }
+.atlas-byline { font-size: 13px; letter-spacing: 0.4px; color: var(--muted); margin: 0 0 6px; }
+.atlas-divider { text-align: center; color: var(--gold); letter-spacing: 10px; margin: 22px 0 30px; }
+.atlas-figure { margin: 32px 0; }
+.atlas-figure img { width: 100%; border: 1px solid var(--line); border-radius: 14px; box-shadow: var(--shadow-sm); background: #fff; display: block; }
+.atlas-figure figcaption { font-size: 13px; line-height: 1.6; color: var(--muted); text-align: center; margin-top: 10px; }
+.atlas-pull { font-family: var(--serif); font-size: 22px; line-height: 1.5; font-style: italic; border-left: 4px solid var(--gold); padding: 6px 0 6px 20px; margin: 30px 0; color: var(--ink); }
+.atlas-related { border-top: 1px solid var(--line); margin-top: 44px; padding-top: 8px; }
+.atlas-related h2 { font-size: 20px; border-top: 0; padding-top: 0; }
+.atlas-related ul { padding-left: 20px; }
+.atlas-related li { margin: 8px 0; }
