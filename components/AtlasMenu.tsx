@@ -32,6 +32,7 @@ const GROUPS: { label: string; items: { href: string; label: string }[] }[] = [
     { href: "/atlas/gaps", label: "🚧 What the Atlas does not contain" },
     { href: "/atlas/study-notes-categorized", label: "🗂️ Study notes, categorized" },
     { href: "/atlas/domains", label: "🏛️ Atlas by domain" },
+    { href: "/atlas/v1", label: "📕 Atlas V1 — Hybrid & Research" },
     { href: "/atlas/era-timeline", label: "⏳ Era timeline" },
     { href: "/atlas/evidence-register", label: "📋 Evidence register" },
     { href: "/atlas/engineering-notes", label: "🛠️ Engineering notes" },
