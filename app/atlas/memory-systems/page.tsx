@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import AtlasTabs from "@/components/AtlasTabs";
+import AtlasDiagram from "@/components/AtlasDiagram";
 import AtlasFlow from "@/components/AtlasFlow";
 
 export const metadata: Metadata = {
@@ -47,6 +48,8 @@ export default function MemorySystems() {
           <div key={t} className="atlas-card"><h3>{t}</h3><p>{d}</p></div>
         ))}
       </div>
+      <AtlasDiagram variant="memory" />
+
       <h2>🔗 Connections to the whole Atlas</h2>
       <p>Earlier hardware and chip chapters: DRAM cells, controllers, PCIe and NVMe explain the hardware behind page frames and persistent storage. Linux process chapter: text, data, BSS, heap and stack are virtual-memory mappings of a process. Containers: cgroups account and limit memory; namespaces isolate views but do not create private physical RAM. Kubernetes: scheduler requests and limits are resource policies; Linux enforces memory accounting and OOM behavior on nodes. Networks and distributed systems: a remote NUMA node is not the same as remote RAM across a network; distributed memory requires explicit communication or specialized software.</p>
       <h2>🌐 Applied path: a web request and memory</h2>

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import AtlasTabs from "@/components/AtlasTabs";
+import AtlasDiagram from "@/components/AtlasDiagram";
 import AtlasFlow from "@/components/AtlasFlow";
 
 export const metadata: Metadata = {
@@ -54,6 +55,8 @@ export default function LinuxDatapaths() {
         ))}
       </div>
       <p>Original second mapping: device → virtual resource, port → interface, cable → link, path → route, plug → attachment, signal → packet/frame, physical network → logical network. These are design analogies, not one-to-one replacements.</p>
+
+      <AtlasDiagram variant="nic" />
 
       <h2>📦 05 · Follow one request from the wire into a workload</h2>
       <AtlasFlow steps={[

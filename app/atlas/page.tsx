@@ -21,6 +21,12 @@ export default function AtlasHub() {
         networking, software, interfaces and leadership. The original research
         remains visibly distinct from added explanations.
       </p>
+      <div className="atlas-statrow">
+        <div className="atlas-stat"><b>20</b><span>original notebook pages, viewed as reference</span></div>
+        <div className="atlas-stat"><b>129</b><span>study-note photos, Oct 25–26</span></div>
+        <div className="atlas-stat"><b>11</b><span>chapters, 01–11 in the fullest edition</span></div>
+        <div className="atlas-stat"><b>14</b><span>unique source texts among 35 HTML files</span></div>
+      </div>
       <div className="atlas-chips">
         <span className="atlas-chip">20 original notebook pages, indexed not embedded</span>
         <span className="atlas-chip">7 curriculum chapters + overview</span>

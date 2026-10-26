@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import AtlasTabs from "@/components/AtlasTabs";
 import AtlasFlow from "@/components/AtlasFlow";
+import AtlasDiagram from "@/components/AtlasDiagram";
 
 export const metadata: Metadata = {
   title: "⚡ Semiconductors — Atlas",
@@ -29,6 +30,8 @@ export default function Semiconductors() {
         { label: "✨ AI explanations", content: <p>Worked paths: sensor → transducer → amplifier/filter → ADC → MCU/SoC peripheral → interrupt or DMA → driver → application → decision → DAC/PWM/actuator. And: application → syscall/VFS → filesystem → block layer → NVMe driver → PCIe → SSD controller → NAND flash, returning to DRAM by DMA.</p> },
         { label: "✅ Verify", content: <p>Corrections kept separate: a memory controller manages DRAM, a storage controller manages device commands and flash translation, a cache controller maintains cache state — the chipset does not universally control all traffic in modern SoCs. PCIe is an interconnect, NVMe is a storage protocol over PCIe, USB is a peripheral interconnect — interfaces are not devices.</p> },
       ]} />
+
+      <AtlasDiagram variant="signal" />
 
       <h2>⚡ Chapter 08 · From electric signals to functional silicon</h2>
       <AtlasFlow steps={[

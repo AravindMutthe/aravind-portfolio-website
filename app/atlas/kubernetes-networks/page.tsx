@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import AtlasTabs from "@/components/AtlasTabs";
 import AtlasFlow from "@/components/AtlasFlow";
+import AtlasDiagram from "@/components/AtlasDiagram";
 
 export const metadata: Metadata = {
   title: "☸️ Physical networks, Kubernetes networking — Atlas",
@@ -65,6 +66,8 @@ export default function KubernetesNetworks() {
 
       <h2>📶 05 · Physical vs virtual media</h2>
       <p>Guided: copper twisted pair, coaxial and fiber constrain signal propagation along a material path. Unguided: radio and other wireless electromagnetic propagation use space as the medium. Virtual: VLANs, VRFs, tunnels, VXLAN overlays, veth pairs, Linux bridges, virtual switches, VPNs and software-defined policies are logical constructs implemented on physical hardware. VLANs segment Layer-2 broadcast domains; VRFs isolate routing tables; VPNs can provide protected tunnels; VXLAN encapsulates L2 segments over an L3 underlay; LAG bonds links into one logical aggregation; SSIDs identify Wi-Fi networks, but SSIDs alone do not guarantee isolation.</p>
+
+      <AtlasDiagram variant="packet" />
 
       <h2>📦 06 · Trace a packet: laptop to application Pod</h2>
       <AtlasFlow steps={[

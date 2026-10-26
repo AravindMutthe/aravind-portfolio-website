@@ -4,24 +4,20 @@ import { useState, type ReactNode } from "react";
 
 export interface AtlasTab { label: string; content: ReactNode }
 
-/** Advanced Atlas UI: layered reading, as in the prototype's own legend.
+/** Layered reading, as in the prototype's own legend.
  *  ✍️ Original = what the source notes say. 🧭 Editorial = structured reading.
  *  ✨ AI explanations = worked examples and context. ✅ Verify = corrections and limits. */
 export default function AtlasTabs({ tabs }: { tabs: AtlasTab[] }) {
   const [active, setActive] = useState(0);
   return (
     <div>
-      <div style={{ display: "flex", gap: 8, flexWrap: "wrap", margin: "16px 0" }}>
+      <div className="atlas-tabs" role="tablist">
         {tabs.map((tab, i) => (
           <button
             key={tab.label}
             onClick={() => setActive(i)}
-            style={{
-              border: "1px solid var(--line)", borderRadius: 30, padding: "8px 14px",
-              fontSize: 13, cursor: "pointer",
-              background: active === i ? "var(--hero)" : "var(--surface)",
-              color: "var(--ink)", fontWeight: active === i ? 800 : 400,
-            }}
+            className={`atlas-tab-btn${active === i ? " active" : ""}`}
+            aria-selected={active === i}
           >
             {tab.label}
           </button>
