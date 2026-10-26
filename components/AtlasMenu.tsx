@@ -31,6 +31,7 @@ const GROUPS: { label: string; items: { href: string; label: string }[] }[] = [
     { href: "/atlas/concepts", label: "🧭 Concepts across the Atlas" },
     { href: "/atlas/gaps", label: "🚧 What the Atlas does not contain" },
     { href: "/atlas/study-notes-categorized", label: "🗂️ Study notes, categorized" },
+    { href: "/atlas/domains", label: "🏛️ Atlas by domain" },
     { href: "/atlas/era-timeline", label: "⏳ Era timeline" },
     { href: "/atlas/evidence-register", label: "📋 Evidence register" },
     { href: "/atlas/engineering-notes", label: "🛠️ Engineering notes" },

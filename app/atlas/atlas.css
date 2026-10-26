@@ -171,3 +171,4 @@
 .atlas-related h2 { font-size: 20px; border-top: 0; padding-top: 0; }
 .atlas-related ul { padding-left: 20px; }
 .atlas-related li { margin: 8px 0; }
+.domain-card-img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; display: block; }
