@@ -1,6 +1,6 @@
 # Atlas Chapter 06 — Project Scheduling and Resource Allocation
 
-Curriculum chapter 06. Theme: operations and business. Source page in the Atlas: page 20, provisionally assigned.
+Curriculum chapter 06. Theme: operations and business. Source page in the Atlas: page 19 — corrected 2026-10-26: viewing the page image showed page 19 is the scheduling page; the prototype had assigned it to page 20.
 
 ## The original note, in brief
 

@@ -55,10 +55,13 @@ export default function AtlasHub() {
       <h2>Curriculum</h2>
       <div className="atlas-grid">
         {curriculum.map((s) => (
-          <Link key={s.slug} className="atlas-card" href={`/atlas/${s.slug}`}>
-            <span className="atlas-tag">{s.kind} · {s.readTime}</span>
-            <h3>{s.title}</h3>
-            <p>{s.desc}</p>
+          <Link key={s.slug} className="atlas-card atlas-rich" href={`/atlas/${s.slug}`}>
+            {s.image && <img src={s.image} alt="" loading="lazy" />}
+            <div className="atlas-rich-body">
+              <span className="atlas-tag">{s.kind} · {s.readTime}</span>
+              <h3>{s.title}</h3>
+              <p>{s.desc}</p>
+            </div>
           </Link>
         ))}
       </div>
@@ -66,10 +69,13 @@ export default function AtlasHub() {
       <h2>Notes</h2>
       <div className="atlas-grid">
         {notes.map((s) => (
-          <Link key={s.slug} className="atlas-card" href={`/atlas/${s.slug}`}>
-            <span className="atlas-tag">{s.kind} · {s.readTime}</span>
-            <h3>{s.title}</h3>
-            <p>{s.desc}</p>
+          <Link key={s.slug} className="atlas-card atlas-rich" href={`/atlas/${s.slug}`}>
+            {s.image && <img src={s.image} alt="" loading="lazy" />}
+            <div className="atlas-rich-body">
+              <span className="atlas-tag">{s.kind} · {s.readTime}</span>
+              <h3>{s.title}</h3>
+              <p>{s.desc}</p>
+            </div>
           </Link>
         ))}
       </div>

@@ -1,6 +1,6 @@
 # Atlas Chapter 05 — Business Control and Technology Leadership
 
-Curriculum chapter 05. Theme: leadership and strategy. Source page in the Atlas: page 19, provisionally assigned.
+Curriculum chapter 05. Theme: leadership and strategy. Source page in the Atlas: page 20 — corrected 2026-10-26: viewing the page image showed page 20 is the leadership page; the prototype had assigned it to page 19.
 
 ## The original note, in brief
 

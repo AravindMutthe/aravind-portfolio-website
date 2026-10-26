@@ -56,3 +56,11 @@
   .atlas tr { margin: 14px 0; border: 1px solid var(--atlas-line); border-radius: 10px; }
   .atlas td { border: 0; padding: 9px; }
 }
+
+.atlas .atlas-rich { padding: 0; overflow: hidden; }
+.atlas .atlas-rich img { width: 100%; display: block; aspect-ratio: 3/4; object-fit: cover; background: #0e1928; }
+.atlas .atlas-rich .atlas-rich-body { padding: 16px; }
+.atlas .atlas-rich h3 { margin: 8px 0; }
+.atlas .atlas-cat { margin-top: 40px; }
+.atlas .atlas-cat h2 { font-size: 24px; margin-bottom: 8px; }
+.atlas .atlas-deep { background: var(--atlas-panel); border: 1px solid var(--atlas-line); border-left: 4px solid var(--atlas-green); border-radius: 12px; padding: 18px; color: var(--atlas-ink); margin: 0 0 18px; }
