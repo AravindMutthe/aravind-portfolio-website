@@ -74,6 +74,31 @@ export default function AtlasHub() {
         ))}
       </div>
 
+      <h2>In sequence</h2>
+      <p>
+        The full Atlas, in order, with enhancements and without touching the
+        originals: overview, chapters 01–07, era timeline, evidence register,
+        engineering notes, methods and safeguards, then the two notebooks in
+        page order, then the recovered dated fragments, then the source index.
+      </p>
+      <div className="atlas-grid">
+        <Link className="atlas-card" href="/atlas/notebook">
+          <span className="atlas-tag">Sequence · 20 pages</span>
+          <h3>Notebook pages 01–20</h3>
+          <p>The original 2025 systems notebook, in page order, downscaled copies only.</p>
+        </Link>
+        <Link className="atlas-card" href="/atlas/study-notes">
+          <span className="atlas-tag">Sequence · 129 photos</span>
+          <h3>Study notes, 129 photos</h3>
+          <p>The second notebook, photographed October 25–26, 2026, in timestamp order.</p>
+        </Link>
+        <Link className="atlas-card" href="/atlas/recovered-fragments">
+          <span className="atlas-tag">Sequence · Aug–Nov 2025</span>
+          <h3>Recovered dated fragments</h3>
+          <p>The zip-only supplements, in chronological order, privacy items omitted.</p>
+        </Link>
+      </div>
+
       <div className="atlas-panel">
         <h2 style={{ marginTop: 0 }}>Source index</h2>
         <p>

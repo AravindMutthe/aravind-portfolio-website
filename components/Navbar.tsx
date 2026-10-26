@@ -52,6 +52,9 @@ export default function Navbar() {
           <Link href="/blog" className={isActive("/blog") ? "active" : ""}>
             Blog
           </Link>
+          <Link href="/atlas" className={pathname.startsWith("/atlas") ? "active" : ""}>
+            Notes
+          </Link>
           <Link href="/contact" className={isActive("/contact") ? "active" : ""}>
             Contact
           </Link>

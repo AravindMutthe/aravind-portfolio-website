@@ -79,6 +79,9 @@ export default async function AtlasSectionPage(
     notFound();
   }
   const html = mdToHtml(md);
+  const idx = ATLAS_SECTIONS.findIndex((s) => s.slug === slug);
+  const prev = idx > 0 ? ATLAS_SECTIONS[idx - 1] : null;
+  const next = idx < ATLAS_SECTIONS.length - 1 ? ATLAS_SECTIONS[idx + 1] : null;
   return (
     <article className="atlas-body">
       <Link href="/atlas">← Atlas index</Link>
@@ -95,6 +98,10 @@ export default async function AtlasSectionPage(
         </p>
       </div>
       <div dangerouslySetInnerHTML={{ __html: html }} />
+      <div className="atlas-panel" style={{ display: "flex", justifyContent: "space-between", gap: 16, flexWrap: "wrap" }}>
+        {prev ? <Link href={`/atlas/${prev.slug}`}>← Previous: {prev.title}</Link> : <Link href="/atlas">← Atlas index</Link>}
+        {next ? <Link href={`/atlas/${next.slug}`}>Next: {next.title} →</Link> : <Link href="/atlas/notebook">Next in sequence: Notebook pages 01–20 →</Link>}
+      </div>
       <div className="atlas-panel">
         <p>
           Back to the <Link href="/atlas">Atlas index</Link>, or the{" "}
