@@ -21,6 +21,8 @@ export default function Navbar() {
     setMenuOpen(false);
   }, [pathname]);
 
+  if (pathname.startsWith("/atlas")) return null;
+
   const isActive = (href: string) => pathname === href;
 
   return (

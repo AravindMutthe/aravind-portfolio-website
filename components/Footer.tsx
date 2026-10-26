@@ -1,3 +1,6 @@
+"use client";
+
+import { usePathname } from "next/navigation";
 import Link from "next/link";
 
 const PAGE_LINKS = [
@@ -26,6 +29,8 @@ const CONNECT_LINKS = [
 ];
 
 export default function Footer() {
+  const pathname = usePathname();
+  if (pathname.startsWith("/atlas")) return null;
   return (
     <footer>
       <div className="wrap">
