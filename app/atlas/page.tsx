@@ -59,6 +59,14 @@ export default function AtlasHub() {
         every notebook, note and deep dive it appears in. The original research
         remains visibly distinct from added explanations.
       </p>
+      <div className="atlas-panel atlas-enhanced">
+        <span className="atlas-tag enhanced">Curated gateway</span>
+        <p style={{ margin: "6px 0 0" }}>
+          The standalone Aravind Systems Atlas is the canonical full library.{" "}
+          <a href="/atlas-gateway">Browse the curated gateway</a> for a short
+          introduction and deep links to its library, learning paths, and System Explorer.
+        </p>
+      </div>
       <div className="atlas-statrow">
         <div className="atlas-stat"><b>20</b><span>original notebook pages, viewed as reference</span></div>
         <div className="atlas-stat"><b>129</b><span>study-note photos, Oct 25–26</span></div>
